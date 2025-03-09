@@ -74,7 +74,7 @@ function App() {
           <h1>Functional Analyst</h1>
 
           <div className="buttons">
-            <a href="/Curriculum_Santillan.pdf" download>
+            <a href="https://bsantillan.github.io/Portfolio/Curriculum_Santillan.pdf" download>
               <button className="btn">Descargar CV</button>
             </a>
           </div>
