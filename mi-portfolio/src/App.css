@@ -1,0 +1,381 @@
+/* Contenedor principal de cada sección */
+.container, .about-me, .technologies, .experience, .projects, .soft-skills {
+  height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+}
+
+/* Contenedor principal */
+.container {
+  display: flex; /* Usamos Flexbox para distribuir el contenido */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  text-align: center; /* Centra el texto dentro de su contenedor */
+  padding: 0 200px; /* Añade algo de espacio a los lados si es necesario */
+  background-color: var(--background);
+}
+
+/* Estilo para el contenedor de texto */
+.text {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: left; /* Alineamos el texto a la izquierda */
+  color: var(--text);
+}
+
+/* Estilo para la imagen */
+.image {
+  display: flex;
+  justify-content: center; /* Centra la imagen horizontalmente */
+  align-items: center; /* Centra la imagen verticalmente */
+  flex: 1; /* La imagen ocupará el espacio restante */
+}
+
+/* Imagen dentro del contenedor de la imagen */
+.image img {
+  width: 400px; /* Tamaño de la imagen */
+  height: auto;
+  border-radius: 50%; /* Hace la imagen redonda */
+  object-fit: cover;
+}
+
+/* Estilo para el nombre azul */
+.name {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.text p{
+  font-size: 24px;
+}
+
+h1{
+  font-size: 60px;
+  color: var(--text);
+}
+
+h2{
+  font-size: 40px;
+  text-align: center;
+  color: var(--text);
+}
+
+/* Botón */
+/* Botón con efecto de sombra desplazada */
+.btn {
+  position: relative;
+  background-color: var(--primary); /* Color naranja */
+  color: var(--text-secondary);
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 6px 6px 0px var(--buttom); /* Sombra desplazada */
+}
+
+.btn:hover {
+  transform: translateY(-2px); /* Pequeño levantamiento al hacer hover */
+  background-color: var(--buttom);
+  box-shadow: 6px 6px 0px var(--primary); /* Sombra ajustada */
+}
+
+.about-me {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: var(--primary);
+  text-align: center;
+}
+
+.about-me p {
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: center; /* Centrar el texto */
+  max-width: 80%; /* Para que no sea demasiado ancho */
+}
+
+.technologies {
+  text-align: center;
+  padding: 50px 0;
+  background-color: var(--background);
+}
+
+.technologies h2{
+  text-transform: uppercase;
+}
+
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(2, 0.5fr); /* Dos categorías por fila */
+  justify-items: center;
+  align-items: start;
+}
+
+.category h3 {
+  text-transform: uppercase;
+  font-size: 30px;
+  color: var(--text);
+  text-align: center;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 0.5fr); /* Siempre dos tarjetas por fila */
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: var(--card);
+  color: var(--text);
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px; /* Ajuste de tamaño */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid var(--buttom); /* Borde sólido */
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px); /* Pequeño levantamiento */
+  box-shadow: 6px 6px 0px var(--buttom); /* Sombra sólida desplazada */
+}
+
+.icon {
+  font-size: 40px;
+  align-items: center;
+  display: flex;
+}
+
+.experience {
+  background: var(--primary);
+  padding: 50px 20px;
+  height: 80vh;
+}
+
+.experience h2{
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.experience-container {
+  display: flex; /* Usa flexbox en lugar de grid */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en varias filas */
+  gap: 20px; /* Espaciado entre tarjetas */
+  justify-content: center; /* Centra las tarjetas horizontalmente */
+  align-items: flex-start; /* Evita que todas tengan la misma altura */
+}
+
+.right-container {
+  display: flex;
+  max-width: 45%; /* Asegura que no sean demasiado anchas */
+  flex-direction: column; /* Apila las tarjetas una debajo de la otra */
+  gap: 20px; /* Espaciado entre las dos tarjetas */
+  flex: 1; /* Ocupa el espacio restante de la derecha */
+}
+
+.left-container {
+  display: flex;
+  max-width: 55%; /* Asegura que no sean demasiado anchas */
+  flex-direction: column; /* Apila las tarjetas una debajo de la otra */
+  gap: 20px; /* Espaciado entre las dos tarjetas */
+  flex: 1; /* Ocupa el espacio restante de la derecha */
+}
+
+.experience-container h2{
+  font-size: 18px;
+  text-transform: none;
+}
+
+.experience-container h3{
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.experience-container p{
+  font-size: 15px;
+}
+
+.experience-card {
+  background: var(--card);
+  color: var(--text);
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--buttom);
+  width: auto; /* Permite que el ancho se ajuste al contenido */
+  text-align: left;
+  flex-grow: 1; /* Permite que las tarjetas ocupen el espacio disponible */
+  display: inline-block; /* Evita que las tarjetas se estiren innecesariamente */
+  word-wrap: break-word; /* Permite que el texto no desborde */
+}
+
+.experience-card h2{
+  color: var(--text);
+}
+
+.projects{
+  background: var(--background);
+  padding: 50px 20px;
+  height: 60vh;
+}
+
+.projects h2 {
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.soft-skills{
+  background: var(--background);
+  padding: 50px 20px;
+  height: 80vh;
+}
+
+/* Contenedor general de Soft Skills */
+.soft-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos tarjetas por fila */
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Estilo de cada tarjeta */
+.soft-card {
+  background: var(--card);
+  color: var(--text);
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--buttom);
+  width: 80%;
+  display: flex;
+  flex-direction: column; /* Mantiene el texto debajo */
+  box-sizing: border-box;
+}
+
+/* Contenedor para la imagen y el título */
+.soft-header {
+  display: flex;
+  align-items: center; /* Centra verticalmente la imagen y el título */
+  justify-content: flex-start; /* La imagen a la izquierda, el título sigue la alineación */
+  gap: 10px; /* Espacio entre la imagen y el título */
+  width: 100%;
+}
+
+/* Imagen dentro de la card */
+.skill-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+/* Título centrado */
+.soft-header h2 {
+  flex-grow: 1; /* Permite que el h2 crezca y se centre */
+  text-align: center; /* Centra el texto dentro del espacio que ocupa */
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Estilo del párrafo */
+.soft-card p {
+  font-size: 14px;
+  margin-top: 10px; /* Espaciado entre el título y el párrafo */
+  line-height: 1.5;
+}
+
+/* Sección de Contacto */
+.contact {
+  text-align: center;
+  height: 20vh;
+  padding: 40px 20px;
+  background: var(--primary);
+  color: var(--text);
+  border-radius: 5px;
+}
+
+.email-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra la imagen y el texto horizontalmente */
+  gap: 10px; /* Espacio entre la imagen y el email */
+}
+
+.email-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--background); /* Ajusta el color según tu tema */
+  text-decoration: none;
+}
+
+.email-img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Iconos de Redes Sociales */
+.social-icons {
+  color: var(--background);
+  margin-top: 50px;
+}
+
+.social-icons a {
+  color: var(--background);
+  margin: 0 10px;
+}
+
+/* Para asegurar que en pantallas pequeñas se vea en una sola columna */
+@media screen and (max-width: 600px) {
+  .soft-skills .experience-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .soft-skills .experience-card {
+    width: 100%; /* 100% de ancho en pantallas pequeñas */
+  }
+}
+
+/* Para asegurar que en pantallas pequeñas se vea en una sola columna */
+@media screen and (max-width: 600px) {
+  .tech-grid {
+    grid-template-columns: repeat(1, 1fr); /* Una sola tarjeta por fila en móviles */
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: #1e1e1e;
+    color: white;
+  }
+}
+
+/* Asegurar que en pantallas pequeñas las tarjetas se muestran en una sola columna */
+@media screen and (max-width: 800px) {
+  .experience-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .experience-card {
+    max-width: 90%; /* Ajusta el tamaño en pantallas pequeñas */
+    width: auto;
+  }
+}
+
+/* Para pantallas pequeñas, mostrar una sola columna */
+@media screen and (max-width: 800px) {
+  .categories-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -1,0 +1,89 @@
+.projects-section h2{
+  color: var(--text);
+}
+
+.projects-container {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    justify-content: center; /* Centra en el contenedor */
+  }
+  
+/* Contenedor del carrusel */
+.carousel-container {
+    position: relative; /* Para que las flechas se posicionen sobre la imagen */
+    flex: 1;
+    max-width: 50%;
+  }
+
+  .carousel-slide img {
+    width: 70%;
+    color: black;
+    min-height: 60%;
+    object-fit: cover;
+    border-color: var(--primary);
+    border-radius: 5px; /* Opcional, para bordes redondeados */
+  }
+  
+  .custom-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.0); /* Fondo semi-transparente */
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 40px;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    z-index: 10;
+  }
+  
+  .custom-next {
+    right: 30%;
+  }  
+  
+  .project-description {
+    flex: 1; /* Ocupa el espacio de la derecha */
+    max-width: 30%; /* Reduce un poco para acercarlo al carrusel */
+    text-align: left; /* Alinea el texto a la izquierda */
+  }
+  
+  .project-description h3 {
+    color: var(--text);
+    font-size: 25px;
+  }
+  
+  .project-description p {
+    color: var(--text);
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .project-description ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .project-description li {
+    background-color: var(--buttom);
+    color: var(--text-secondary);
+    padding: 5px 10px;
+    display: inline-flex; /* Usamos inline-flex para alinear icono y texto */
+    align-items: center; /* Centra verticalmente el icono y el texto */
+    justify-content: center; /* Centra horizontalmente el icono y el texto */     
+    margin: 5px 0;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .project-description li svg, .project-description li img {
+    margin-right: 8px; /* Espacio entre el icono y el texto */
+    font-size: 15px; /* Tamaño más grande para el icono */
+  }
+
+  .project-description{
+    font-size: 15px;
+  }
+  
