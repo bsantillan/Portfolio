@@ -1,39 +1,43 @@
 /* Contenedor principal de cada sección */
 .container, .about-me, .technologies, .experience, .projects, .soft-skills {
-  height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+  height: auto; /* Cambio a auto para ajustarse al contenido */
 }
 
 /* Contenedor principal */
 .container {
-  display: flex; /* Usamos Flexbox para distribuir el contenido */
-  justify-content: center; /* Centra los elementos horizontalmente */
-  align-items: center; /* Centra los elementos verticalmente */
-  height: 100vh; /* Ocupa toda la altura de la pantalla */
-  text-align: center; /* Centra el texto dentro de su contenedor */
-  padding: 0 200px; /* Añade algo de espacio a los lados si es necesario */
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  text-align: center;
+  padding: 0 200px; /* Cambié de 200px a 20px para mejorar la adaptabilidad */
   background-color: var(--background);
+  flex-direction: row; /* En pantallas grandes, los elementos se alinean horizontalmente (imagen a la derecha y texto a la izquierda) */
+  gap: 50px; /* Agrega espacio entre el texto y la imagen */
 }
 
 /* Estilo para el contenedor de texto */
 .text {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-align: left; /* Alineamos el texto a la izquierda */
+  text-align: left; 
   color: var(--text);
 }
 
 /* Estilo para la imagen */
 .image {
   display: flex;
-  justify-content: center; /* Centra la imagen horizontalmente */
-  align-items: center; /* Centra la imagen verticalmente */
-  flex: 1; /* La imagen ocupará el espacio restante */
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin-bottom: 20px; /* Agregado espacio entre la imagen y el texto */
 }
 
 /* Imagen dentro del contenedor de la imagen */
 .image img {
-  width: 400px; /* Tamaño de la imagen */
+  width: 100%;
+  max-width: 400px;
   height: auto;
-  border-radius: 50%; /* Hace la imagen redonda */
+  border-radius: 50%;
   object-fit: cover;
 }
 
@@ -43,30 +47,30 @@
   font-weight: bold;
 }
 
-.text p{
-  font-size: 24px;
+.text p {
+  font-size: 20px;
 }
 
-h1{
-  font-size: 60px;
+h1 {
+  font-size: 50px; /* Cambié el tamaño para que sea más amigable en pantallas pequeñas */
   color: var(--text);
 }
 
-h2{
-  font-size: 40px;
+h2 {
+  font-size: 30px; /* Reduje el tamaño de la fuente */
   text-align: center;
   color: var(--text);
 }
 
-h3{
+h3 {
   text-align: center;
+  font-size: 18px;
 }
 
 /* Botón */
-/* Botón con efecto de sombra desplazada */
 .btn {
   position: relative;
-  background-color: var(--primary); /* Color naranja */
+  background-color: var(--primary); 
   color: var(--text-secondary);
   font-weight: bold;
   text-transform: uppercase;
@@ -76,63 +80,66 @@ h3{
   border-radius: 5px;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 6px 6px 0px var(--buttom); /* Sombra desplazada */
+  box-shadow: 6px 6px 0px var(--buttom);
 }
 
 .btn:hover {
-  transform: translateY(-2px); /* Pequeño levantamiento al hacer hover */
+  transform: translateY(-2px);
   background-color: var(--buttom);
-  box-shadow: 6px 6px 0px var(--primary); /* Sombra ajustada */
+  box-shadow: 6px 6px 0px var(--primary);
 }
 
+/* Sección de about me */
 .about-me {
-  height: 60vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 200px;
   background-color: var(--primary);
   text-align: center;
 }
 
 .about-me p {
-  font-size: 20px;
+  font-size: 18px; /* Reduje el tamaño de la fuente */
   line-height: 1.8;
   color: var(--text-secondary);
-  text-align: center; /* Centrar el texto */
-  max-width: 80%; /* Para que no sea demasiado ancho */
+  text-align: center;
+  max-width: 90%; /* Permití un 90% de ancho para mejor adaptabilidad */
+  padding-bottom: 20px;
 }
 
+/* Sección de tecnologías */
 .technologies {
   text-align: center;
-  padding: 50px 0;
+  padding: 50px 20px;
   background-color: var(--background);
 }
 
-.technologies h2{
+.technologies h2 {
   text-transform: uppercase;
 }
 
 .categories-container {
   display: grid;
-  grid-template-columns: repeat(2, 0.5fr); /* Dos categorías por fila */
+  grid-template-columns: 1fr 1fr;
   justify-items: center;
   align-items: start;
+  gap: 20px;
 }
 
 .category h3 {
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 24px;
   color: var(--text);
   text-align: center;
 }
 
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(2, 0.5fr); /* Siempre dos tarjetas por fila */
-  gap: 20px;
-  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
 }
 
 .card {
@@ -140,7 +147,8 @@ h3{
   color: var(--text-secondary);
   padding: 10px;
   border-radius: 20px;
-  width: 200px; /* Ajuste de tamaño */
+  width: 100%;
+  max-width: 200px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -149,7 +157,7 @@ h3{
 }
 
 .card:hover {
-  transform: translateY(-2px); /* Pequeño levantamiento */
+  transform: translateY(-2px);
 }
 
 .icon {
@@ -159,149 +167,138 @@ h3{
 }
 
 .card:hover .icon {
-  transform: scale(1.1); /* Agranda el icono al pasar el mouse */
+  transform: scale(1.1);
 }
 
+/* Sección de experiencia */
 .experience {
   background: var(--primary);
   padding: 50px 20px;
-  height: 80vh;
 }
 
-.experience h2{
+.experience h2 {
   color: var(--text-secondary);
   text-transform: uppercase;
 }
 
 .experience-container {
-  display: flex; /* Usa flexbox en lugar de grid */
-  flex-wrap: wrap; /* Permite que los elementos se ajusten en varias filas */
-  gap: 20px; /* Espaciado entre tarjetas */
-  justify-content: center; /* Centra las tarjetas horizontalmente */
-  align-items: flex-start; /* Evita que todas tengan la misma altura */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .right-container {
   display: flex;
-  max-width: 45%; /* Asegura que no sean demasiado anchas */
-  flex-direction: column; /* Apila las tarjetas una debajo de la otra */
-  gap: 20px; /* Espaciado entre las dos tarjetas */
-  flex: 1; /* Ocupa el espacio restante de la derecha */
+  max-width: 45%;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
 }
 
 .left-container {
   display: flex;
-  max-width: 55%; /* Asegura que no sean demasiado anchas */
-  flex-direction: column; /* Apila las tarjetas una debajo de la otra */
-  gap: 20px; /* Espaciado entre las dos tarjetas */
-  flex: 1; /* Ocupa el espacio restante de la derecha */
-}
-
-.experience-container h2{
-  font-size: 18px;
-  text-transform: none;
-}
-
-.experience-container h3{
-  font-size: 16px;
-  font-weight: bold;
-  color: var(--text-secondary);
-}
-
-.experience-container p{
-  font-size: 15px;
+  max-width: 55%;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
 }
 
 .experience-card {
   background: var(--card-secondary);
   color: var(--text);
-  padding: 20px;
+  padding: 10px;
   border-radius: 20px;
-  width: auto; /* Permite que el ancho se ajuste al contenido */
+  width: 90%;
   text-align: left;
-  flex-grow: 1; /* Permite que las tarjetas ocupen el espacio disponible */
-  display: inline-block; /* Evita que las tarjetas se estiren innecesariamente */
-  word-wrap: break-word; /* Permite que el texto no desborde */
+  flex-grow: 1;
+  word-wrap: break-word;
 }
 
-.experience-card h2, .experience-card h3{
+.experience-card h2 {
   color: var(--text);
+  font-size: 20px;
 }
 
-.projects{
+.experience-card h3 {
+  color: var(--text);
+  font-size: 18px;
+}
+
+.experience-card p {
+  color: var(--text);
+  font-size: 15px;
+}
+
+/* Sección de proyectos */
+.projects {
   background: var(--background);
   padding: 50px 20px;
-  height: 60vh;
 }
 
 .projects h2 {
-  color: var(--text-secondary);
+  color: var(--text);
   text-transform: uppercase;
 }
 
-.soft-skills{
+/* Sección de soft skills */
+.soft-skills {
   background: var(--background);
   padding: 50px 20px;
-  height: 80vh;
 }
 
-/* Contenedor general de Soft Skills */
 .soft-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Dos tarjetas por fila */
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   justify-items: center;
 }
 
-/* Estilo de cada tarjeta */
 .soft-card {
   background: var(--card);
   color: var(--text-secondary);
   padding: 20px;
   border-radius: 20px;
-  width: 80%;
+  width: 100%; /* Ahora es el 100% en pantallas pequeñas */
   display: flex;
-  flex-direction: column; /* Mantiene el texto debajo */
+  flex-direction: column;
   box-sizing: border-box;
 }
 
-/* Contenedor para la imagen y el título */
 .soft-header {
   display: flex;
-  align-items: center; /* Centra verticalmente la imagen y el título */
-  justify-content: flex-start; /* La imagen a la izquierda, el título sigue la alineación */
-  gap: 10px; /* Espacio entre la imagen y el título */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
   width: 100%;
 }
 
-/* Imagen dentro de la card */
 .skill-img {
   width: 60px;
   height: 60px;
   object-fit: cover;
 }
 
-/* Título centrado */
 .soft-header h2 {
   color: var(--text-secondary);
-  flex-grow: 1; /* Permite que el h2 crezca y se centre */
-  text-align: center; /* Centra el texto dentro del espacio que ocupa */
+  flex-grow: 1;
+  text-align: center;
   font-size: 18px;
   font-weight: bold;
   margin: 0;
 }
 
-/* Estilo del párrafo */
 .soft-card p {
   font-size: 14px;
-  margin-top: 10px; /* Espaciado entre el título y el párrafo */
+  margin-top: 10px;
   line-height: 1.5;
 }
 
-/* Sección de Contacto */
+/* Sección de contacto */
 .contact {
   text-align: center;
-  height: 20vh;
+  height: auto;
   padding: 40px 20px;
   background: var(--primary);
   color: var(--text);
@@ -311,24 +308,23 @@ h3{
 .email-container {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centra la imagen y el texto horizontalmente */
-  gap: 10px; /* Espacio entre la imagen y el email */
+  justify-content: center;
+  gap: 10px;
 }
 
 .email-text {
   font-size: 1.2rem;
   font-weight: bold;
-  color: var(--background); /* Ajusta el color según tu tema */
+  color: var(--background);
   text-decoration: none;
 }
 
-.email-img{
+.email-img {
   width: 100px;
   height: 100px;
   object-fit: cover;
 }
 
-/* Iconos de Redes Sociales */
 .social-icons {
   color: var(--background);
   margin-top: 50px;
@@ -339,48 +335,95 @@ h3{
   margin: 0 10px;
 }
 
-/* Para asegurar que en pantallas pequeñas se vea en una sola columna */
-@media screen and (max-width: 600px) {
-  .soft-skills .experience-container {
-    flex-direction: column;
-    align-items: center;
+/* Media Queries para dispositivos pequeños */
+
+/* Para pantallas pequeñas (máximo 768px de ancho) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
+    padding: 50px 50px;
   }
 
-  .soft-skills .experience-card {
-    width: 100%; /* 100% de ancho en pantallas pequeñas */
+  .image img {
+    width: 80%;
   }
-}
 
-/* Para asegurar que en pantallas pequeñas se vea en una sola columna */
-@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .about-me p {
+    font-size: 18px;
+  }
+
+  .technologies .categories-container {
+    grid-template-columns: 1fr;
+  }
+
   .tech-grid {
-    grid-template-columns: repeat(1, 1fr); /* Una sola tarjeta por fila en móviles */
+    grid-template-columns: 1fr;
   }
-}
 
-@media (prefers-color-scheme: dark) {
   .card {
-    background: #1e1e1e;
-    color: white;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
   }
-}
 
-/* Asegurar que en pantallas pequeñas las tarjetas se muestran en una sola columna */
-@media screen and (max-width: 800px) {
   .experience-container {
     flex-direction: column;
+    display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .experience-card {
-    max-width: 90%; /* Ajusta el tamaño en pantallas pequeñas */
-    width: auto;
+    width: 100%;
+  }
+
+  .projects {
+    padding: 20px;
+  }
+
+  .soft-container {
+    grid-template-columns: 1fr;
+  }
+
+  .soft-card {
+    width: 100%;
+  }
+
+  .contact {
+    padding: 20px;
   }
 }
 
-/* Para pantallas pequeñas, mostrar una sola columna */
-@media screen and (max-width: 800px) {
-  .categories-container {
-    grid-template-columns: repeat(1, 1fr);
+/* Para pantallas muy pequeñas (máximo 480px de ancho) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .email-img {
+    width: 80px;
+    height: 80px;
   }
 }

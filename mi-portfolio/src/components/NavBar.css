@@ -12,14 +12,18 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra ligera en el navbar */
 }
 
+.navbar.dark {
+  background-color: var(--dark-background); /* Aplica el fondo oscuro cuando el modo oscuro está activado */
+}
+
 /* Contenedor del navbar */
 .nav-container {
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
-  justify-content: center;
-  align-items: center; /* Asegura que todo esté alineado en la misma altura */
-  height: 60px; /* Establecemos una altura fija */
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
 }
 
 /* Menú */
@@ -48,87 +52,83 @@
 /* Logo */
 .logo {
   font-size: 20px;
-  margin-right: 100px;
   font-weight: bold;
   color: var(--primary);
   text-decoration: none;
   display: flex;
-  align-items: center; /* Asegura que el logo esté alineado con la lista */
-}
-
-/* Contenedor de los iconos */
-.nav-icons {
-  display: flex;
-  gap: 10px;
-  align-items: center; /* Asegura que los iconos estén alineados */
+  align-items: center;
 }
 
 /* Botones de tema y menú */
-.theme-toggle,
-.menu-toggle {
+.theme-toggle {
   background: none;
   border: none;
   cursor: pointer;
   color: var(--text);
   transition: color 0.3s;
-  margin-right: 100px;
-  margin-left: 100px;
 }
 
-.theme-toggle:hover,
-.menu-toggle:hover {
+/* Menú móvil */
+.menu-toggle {
+  display: none; /* Ocultar el botón de menú en pantallas grandes */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 30px;
+}
+
+/* Menú en pantallas pequeñas (se mostrará cuando el menú móvil esté activo) */
+.mobile-menu {
+  display: none; /* Ocultar el menú en pantallas grandes */
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: var(--background);
+  padding: 20px 0;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para el menú */
+}
+
+.mobile-menu.active {
+  display: block; /* Mostrar el menú cuando esté activo */
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Asegura que el menú se muestre en una columna */
+  gap: 15px;
+  align-items: center; /* Centra los enlaces */
+}
+
+.mobile-menu ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--text);
+  font-size: 18px;
+  padding: 10px;
+  transition: color 0.3s;
+}
+
+.mobile-menu ul li a:hover {
   color: var(--primary);
 }
 
-/* Menú Mobile */
-.menu-toggle {
-  display: none;
-}
-
-.mobile-menu {
-  display: none;
-}
-
-/* Responsive: Activar menú hamburguesa */
+/* Media Queries para pantallas pequeñas */
 @media (max-width: 768px) {
-  .nav-container {
-    justify-content: space-between;
-  }
-
   .nav-links {
-    display: none;
+    display: none; /* Ocultar los enlaces del menú en pantallas pequeñas */
   }
 
   .menu-toggle {
-    display: block;
+    display: block; /* Mostrar el botón de menú en pantallas pequeñas */
   }
 
-  .mobile-menu {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    width: 100%;
-    background: white;
-    padding: 10px;
-    list-style: none;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .dark-mode .mobile-menu {
-    background: #1A1A2E;
-  }
-
-  .mobile-menu li {
-    padding: 8px 0;
-  }
-
-  .mobile-menu li a {
-    color: #333;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s;
+  .nav-container {
+    justify-content: space-between;
   }
 }
