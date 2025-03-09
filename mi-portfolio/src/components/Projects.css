@@ -13,11 +13,17 @@
     position: relative; /* Para que las flechas se posicionen sobre la imagen */
     flex: 1;
     max-width: 50%;
+    margin-right: 100px;
+    margin-left: 100px;
   }
 
+/* Ocultar los puntos del carrusel */
+.carousel-container .slick-dots {
+  display: none !important;
+}
   .carousel-slide img {
-    width: 70%;
-    color: black;
+    width: 100%;
+    color: var(--text);
     min-height: 60%;
     object-fit: cover;
     border-color: var(--primary);
@@ -40,12 +46,12 @@
   }
   
   .custom-next {
-    right: 30%;
+    right: 0;
   }  
   
   .project-description {
     flex: 1; /* Ocupa el espacio de la derecha */
-    max-width: 30%; /* Reduce un poco para acercarlo al carrusel */
+    max-width: 100%; /* Reduce un poco para acercarlo al carrusel */
     text-align: left; /* Alinea el texto a la izquierda */
   }
   
@@ -76,6 +82,11 @@
     border-radius: 5px;
     display: inline-block;
     margin-right: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .project-description li:hover {
+    transform: translateY(-2px); /* Pequeño levantamiento al hacer hover */
   }
 
   .project-description li svg, .project-description li img {

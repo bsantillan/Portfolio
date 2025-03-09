@@ -1,181 +1,134 @@
 /* Estilos generales */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 10px 0;
-    background-color: var(--background);
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra ligera en el navbar */
-  }
-
-  /* Estilo para resaltar el enlace activo */
-.nav-links li a.active {
-  color: var(--primary); /* El color que desees para el enlace activo */
-  font-weight: bold; /* Puedes hacerlo en negrita para mayor visibilidad */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 0;
+  background-color: var(--background);
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra ligera en el navbar */
 }
 
-/* Si quieres resaltar el logo también cuando está activo */
-.logo.active {
+/* Contenedor del navbar */
+.nav-container {
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Asegura que todo esté alineado en la misma altura */
+  height: 60px; /* Establecemos una altura fija */
+}
+
+/* Menú */
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  justify-content: center;
+  align-items: center; /* Asegura que los elementos de la lista estén alineados */
+}
+
+/* Estilos de los links */
+.nav-links li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--text);
+  font-size: 18px;
+  transition: color 0.3s;
+  padding: 5px 10px;
+}
+
+.nav-links li a:hover {
   color: var(--primary);
 }
 
-  
-  /* Contenedor del navbar */
+/* Logo */
+.logo {
+  font-size: 20px;
+  margin-right: 100px;
+  font-weight: bold;
+  color: var(--primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center; /* Asegura que el logo esté alineado con la lista */
+}
+
+/* Contenedor de los iconos */
+.nav-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center; /* Asegura que los iconos estén alineados */
+}
+
+/* Botones de tema y menú */
+.theme-toggle,
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  transition: color 0.3s;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+.theme-toggle:hover,
+.menu-toggle:hover {
+  color: var(--primary);
+}
+
+/* Menú Mobile */
+.menu-toggle {
+  display: none;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+/* Responsive: Activar menú hamburguesa */
+@media (max-width: 768px) {
   .nav-container {
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Asegura que todo esté alineado en la misma altura */
-    height: 60px; /* Establecemos una altura fija */
+    justify-content: space-between;
   }
-  
-  /* Logo */
-  .logo {
-    font-size: 20px;
-    margin-right: 100px;
-    font-weight: bold;
-    color: var(--primary);
-    text-decoration: none;
-    display: flex;
-    align-items: center; /* Asegura que el logo esté alineado con la lista */
-  }
-  
-  /* Menú */
+
   .nav-links {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-    justify-content: center;
-    align-items: center; /* Asegura que los elementos de la lista estén alineados */
-  }
-  
-  /* Estilos de los links */
-  .nav-links li a {
-    text-decoration: none;
-    text-transform: uppercase;
-    color: var(--text);
-    font-size: 18px;
-    transition: color 0.3s;
-    padding: 5px 10px;
-  }
-  
-  .nav-links li a:hover {
-    color: var(--primary);
-  }
-  
-  /* Contenedor de los iconos */
-  .nav-icons {
-    display: flex;
-    gap: 10px;
-    align-items: center; /* Asegura que los iconos estén alineados */
-  }
-  
-  /* Botones de tema y menú */
-  .theme-toggle,
-  .menu-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text);
-    transition: color 0.3s;
-    margin-right: 100px;
-    margin-left: 100px;
-  }
-  
-  .theme-toggle:hover,
-  .menu-toggle:hover {
-    color: var(--primary);
-  }
-  
-  /* Modo Oscuro */
-  .dark-mode {
-    background-color: black;
-    color: white;
-  }
-  
-  .dark-mode .navbar {
-    background-color: #023047;
-  }
-  
-  .dark-mode .nav-links li a {
-    color: white;
-  }
-  
-  .dark-mode .nav-links li a:hover {
-    color: #009DFF;
-  }
-  
-  .dark-mode .theme-toggle {
-    color: white;
-  }
-  
-  /* Menú Mobile */
-  .menu-toggle {
     display: none;
   }
-  
+
+  .menu-toggle {
+    display: block;
+  }
+
   .mobile-menu {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 10px;
+    list-style: none;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
-  /* Responsive: Activar menú hamburguesa */
-  @media (max-width: 768px) {
-    .nav-container {
-      justify-content: space-between;
-    }
-  
-    .nav-links {
-      display: none;
-    }
-  
-    .menu-toggle {
-      display: block;
-    }
-  
-    .mobile-menu {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 50px;
-      left: 0;
-      width: 100%;
-      background: white;
-      padding: 10px;
-      list-style: none;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-  
-    .dark-mode .mobile-menu {
-      background: #1A1A2E;
-    }
-  
-    .mobile-menu li {
-      padding: 8px 0;
-    }
-  
-    .mobile-menu li a {
-      color: #333;
-      text-decoration: none;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-  
-    .mobile-menu li a:hover {
-      color: #007BFF;
-    }
-  
-    .dark-mode .mobile-menu li a {
-      color: white;
-    }
-  
-    .dark-mode .mobile-menu li a:hover {
-      color: #009DFF;
-    }
+
+  .dark-mode .mobile-menu {
+    background: #1A1A2E;
   }
-  
+
+  .mobile-menu li {
+    padding: 8px 0;
+  }
+
+  .mobile-menu li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+}

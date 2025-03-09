@@ -27,39 +27,39 @@ function App() {
   }, [darkMode]);
 
   const categories = [
-    {
+    { 
       title: "Frontend",
       technologies: [
-        { name: "HTML", icon: <FaHtml5 color="#E44D26" /> },
-        { name: "CSS", icon: <FaCss3Alt color="#1572B6" /> },
-        { name: "JavaScript", icon: <FaJs color="#F7DF1E" /> },
-        { name: "TypeScript", icon: <SiTypescript color="#3178C6" /> },
-        { name: "React", icon: <FaReact color="#61DAFB" /> },
-        { name: "Angular", icon: <SiAngular color="#DD0031" /> },
+        { name: "HTML", icon: <FaHtml5 /> },
+        { name: "CSS", icon: <FaCss3Alt /> },
+        { name: "JavaScript", icon: <FaJs /> },
+        { name: "TypeScript", icon: <SiTypescript /> },
+        { name: "React", icon: <FaReact /> },
+        { name: "Angular", icon: <SiAngular /> },
       ]
     },
     {
       title: "Backend",
       technologies: [
-        { name: "Java", icon: <FaJava color="#007396" /> },
-        { name: "Spring Boot", icon: <SiSpringboot color="#6DB33F" /> },
-        { name: "Python", icon: <SiPython color="#3776AB" /> },
-        { name: "SQL", icon: <SiMysql color="#4479A1" /> },
+        { name: "Java", icon: <FaJava  /> },
+        { name: "Spring Boot", icon: <SiSpringboot  /> },
+        { name: "Python", icon: <SiPython  /> },
+        { name: "SQL", icon: <SiMysql  /> },
       ]
     },
     {
       title: "DevOps & Cloud",
       technologies: [
-        { name: "Docker", icon: <FaDocker color="#2496ED" /> },
-        { name: "Podman", icon: <SiPodman color="#892CA0" /> },
-        { name: "AWS", icon: <FaAws color="#FF9900" /> },
+        { name: "Docker", icon: <FaDocker  /> },
+        { name: "Podman", icon: <SiPodman  /> },
+        { name: "AWS", icon: <FaAws /> },
       ]
     },
     {
       title: "Herramientas",
       technologies: [
-        { name: "Git", icon: <FaGitAlt color="#F05032" /> }, // Icono correcto de Git
-        { name: "GitHub", icon: <FaGithub color="#181717" /> }, // Icono correcto de GitHub
+        { name: "Git", icon: <FaGitAlt  /> }, // Icono correcto de Git
+        { name: "GitHub", icon: <FaGithub /> }, // Icono correcto de GitHub
       ]
     }
   ];
@@ -132,7 +132,7 @@ function App() {
               <p>
                 Me encargo de evaluar, optimizar y garantizar la accesibilidad de plataformas digitales, 
                 asegurando el cumplimiento de normativas y estándares como WCAG (Web Content Accessibility Guidelines).
-                Contribuyo a la creación de un entorno web más inclusivo, permitiendo que todas las personas, 
+                <br></br>Contribuyo a la creación de un entorno web más inclusivo, permitiendo que todas las personas, 
                 independientemente de sus capacidades, accedan y utilicen la tecnología sin limitaciones.
               </p>
               <p>Mis responsabilidades incluyen:</p>
@@ -149,8 +149,9 @@ function App() {
               <h2>Ayudante Ad-Honorem - Análisis Matemático II</h2>
               <h3>+2 años - Marzo 2023 - Actualmente [UTN-FRLP] [Ciencias Basicas]</h3>
               <p>En este rol, asisto a los estudiantes en la resolución de dudas y en la comprensión de los contenidos matemáticos,
-                brindando apoyo en el desarrollo de ejercicios y trabajos prácticos. 
-                Además, participo en la corrección de evaluaciones,asegurando la correcta aplicación de los conceptos clave de la materia. También contribuyo a la organización y
+                brindando apoyo en el desarrollo de ejercicios y trabajos prácticos.<br></br>
+                Además, participo en la corrección de evaluaciones,asegurando la correcta aplicación de los conceptos clave de la materia. 
+                <br></br>También contribuyo a la organización y
                 actualización de los materiales didácticos utilizados en el curso, con el objetivo de optimizar la calidad educativa y
                 facilitar el aprendizaje de los estudiantes.
                 </p>
@@ -160,8 +161,10 @@ function App() {
               <h3>2024 - Proyecto para el Club de Pádel Los Ciruelos [La Plata]</h3>
               <p>En colaboración con un equipo, desarrollé un sistema para el club de pádel Los Ciruelos, encargándome del análisis
                 funcional para identificar y documentar los requisitos del usuario. Diseñé la interfaz y la estructura de la aplicación,
-                asegurando que la solución fuera intuitiva y fácil de usar. Además, fui responsable del desarrollo de la página web,
-                implementando las funcionalidades necesarias para satisfacer las necesidades del club. A lo largo del proyecto, trabajé
+                asegurando que la solución fuera intuitiva y fácil de usar. 
+                <br></br>Además, fui responsable del desarrollo de la página web,
+                implementando las funcionalidades necesarias para satisfacer las necesidades del club. 
+                <br></br>A lo largo del proyecto, trabajé
                 para asegurar que todos los objetivos y especificaciones se cumplieran de manera eficiente, brindando una solución
                 tecnológica efectiva y de calidad.
               </p>

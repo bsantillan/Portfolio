@@ -13,7 +13,8 @@
   --primary: #36619A;
   --buttom:#0797AD;
   --background: #F2EADF; 
-  --card: #CFD8D7;
+  --card: #36619A;
+  --card-secondary:#C6DFF9;
   --text: #000000; 
   --text-secondary: #FFFFFF; 
 }
@@ -22,25 +23,18 @@
   --primary: #C6DFF9; 
   --buttom:#1FD7DB;
   --background: #0D1721; 
-  --card: #CFD8D7;
+  --card: #C6DFF9;
+  --card-secondary:#36619A;
   --text: #FFFFFF; 
   --text-secondary: #000000; 
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita scroll lateral innecesario */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-html {
   scroll-behavior: smooth; /* Desplazamiento suave */
+
 }
 

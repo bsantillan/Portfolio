@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Moon, Sun } from "lucide-react";
 import "./NavBar.css";
 
@@ -9,67 +9,41 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ darkMode, setDarkMode }) => {
-  const [activeSection, setActiveSection] = useState<string>("");
-
-  // Crear el observer para detectar cuando la sección entra en el viewport
-  useEffect(() => {
-    const sections = document.querySelectorAll("section"); // Obtener todas las secciones
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Si la sección es visible, actualizamos el estado
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.5 } // Cambiar cuando al menos el 50% de la sección esté visible
-    );
-
-    // Observar cada sección
-    sections.forEach((section) => observer.observe(section));
-
-    // Desconectar el observer cuando el componente se desmonte
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <a href="#" className={`logo ${activeSection === "about-me" ? "active" : ""}`}>
+        <a href="#" className="logo">
           BrunoSA
         </a>
 
         <ul className="nav-links">
           <li>
-            <a href="#about-me" className={activeSection === "about-me" ? "active" : ""}>
+            <a href="#about-me">
               Sobre mí
             </a>
           </li>
           <li>
-            <a href="#technologies" className={activeSection === "technologies" ? "active" : ""}>
+            <a href="#technologies" >
               Tecnologías
             </a>
           </li>
           <li>
-            <a href="#experience" className={activeSection === "experience" ? "active" : ""}>
+            <a href="#experience" >
               Experiencia
             </a>
           </li>
           <li>
-            <a href="#projects" className={activeSection === "projects" ? "active" : ""}>
+            <a href="#projects" >
               Proyectos
             </a>
           </li>
           <li>
-            <a href="#soft-skills" className={activeSection === "soft-skills" ? "active" : ""}>
+            <a href="#soft-skills" >
               Habilidades blandas
             </a>
           </li>
           <li>
-            <a href="#contact" className={activeSection === "contact" ? "active" : ""}>
+            <a href="#contact" >
               Contacto
             </a>
           </li>
