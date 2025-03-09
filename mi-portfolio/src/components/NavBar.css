@@ -12,10 +12,6 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra ligera en el navbar */
 }
 
-.navbar.dark {
-  background-color: var(--dark-background); /* Aplica el fondo oscuro cuando el modo oscuro está activado */
-}
-
 /* Contenedor del navbar */
 .nav-container {
   margin: 0 auto;

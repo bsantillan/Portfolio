@@ -110,6 +110,20 @@ h3 {
   padding-bottom: 20px;
 }
 
+/* Para pantallas pequeñas (máximo 768px de ancho) */
+@media (max-width: 768px) {
+  .about-me {
+    padding: 20px 10px; /* Ajusté el padding */
+    flex-direction: column; /* Asegura que el texto esté centrado y en una sola columna */
+    justify-content: flex-start; /* Alinea el contenido al inicio */
+  }
+
+  .about-me p {
+    font-size: 16px; /* Reducir el tamaño del texto si es necesario */
+    line-height: 1.6;
+  }
+}
+
 /* Sección de tecnologías */
 .technologies {
   text-align: center;
@@ -341,7 +355,7 @@ h3 {
 @media (max-width: 768px) {
   .container {
     flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
-    padding: 50px 50px;
+    padding: 30% 50px;
   }
 
   .image img {
