@@ -16,29 +16,16 @@
   gap: 50px; /* Agrega espacio entre el texto y la imagen */
 }
 
+.container .buttons{
+  display: flex;
+  justify-content: left; /* Alinea los botones al centro */
+}
+
 /* Estilo para el contenedor de texto */
 .text {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: left; 
   color: var(--text);
-}
-
-/* Estilo para la imagen */
-.image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  margin-bottom: 20px; /* Agregado espacio entre la imagen y el texto */
-}
-
-/* Imagen dentro del contenedor de la imagen */
-.image img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 50%;
-  object-fit: cover;
 }
 
 /* Estilo para el nombre azul */
@@ -52,8 +39,8 @@
 }
 
 h1 {
-  font-size: 50px; /* Cambié el tamaño para que sea más amigable en pantallas pequeñas */
-  color: var(--text);
+  font-size: 60px; /* Cambié el tamaño para que sea más amigable en pantallas pequeñas */
+  color: var(--primary);
 }
 
 h2 {
@@ -89,71 +76,103 @@ h3 {
   box-shadow: 6px 6px 0px var(--primary);
 }
 
-/* Sección de about me */
+/* Estilos para la sección about-me */
 .about-me {
-  height: auto;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  padding: 200px;
+  padding: 50px;
+  gap: 20px;
+  text-align: left;
   background-color: var(--primary);
-  text-align: center;
 }
 
-.about-me p {
-  font-size: 18px; /* Reduje el tamaño de la fuente */
-  line-height: 1.8;
+/* Contenedor de la imagen */
+.about-me .image {
+  flex: 1;
+  max-width: 400px;
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Contenedor de texto */
+.text {
   color: var(--text-secondary);
-  text-align: center;
-  max-width: 90%; /* Permití un 90% de ancho para mejor adaptabilidad */
-  padding-bottom: 20px;
+  flex: 2;
 }
 
-/* Para pantallas pequeñas (máximo 768px de ancho) */
+/* Estilos para los iconos sociales */
+.about-me .social-icons {
+  display: flex;
+  gap: 20px; /* Espaciado entre los iconos */
+  justify-content: left;
+  margin-top: 20px; /* Espacio entre el texto y los iconos */
+}
+
+.social-icons a {
+  color: var(--text-secondary);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1); /* Efecto de hover para agrandar los iconos */
+}
+
+/* Asegúrate de que la imagen y el texto se acomoden bien en pantallas más pequeñas */
 @media (max-width: 768px) {
   .about-me {
-    padding: 20px 10px; /* Ajusté el padding */
-    flex-direction: column; /* Asegura que el texto esté centrado y en una sola columna */
-    justify-content: flex-start; /* Alinea el contenido al inicio */
+    flex-direction: column;
+    text-align: center;
   }
 
-  .about-me p {
-    font-size: 16px; /* Reducir el tamaño del texto si es necesario */
-    line-height: 1.6;
+  .image {
+    margin-bottom: 20px; /* Espacio entre la imagen y el texto */
+  }
+
+  .social-icons {
+    justify-content: center; /* Centrar los iconos en pantallas pequeñas */
   }
 }
 
 /* Sección de tecnologías */
 .technologies {
-  text-align: center;
+  text-align: left; /* Cambié el texto de todo el contenedor a la izquierda */
   padding: 50px 20px;
   background-color: var(--background);
 }
 
 .technologies h2 {
   text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 20px;
 }
 
 .categories-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-  align-items: start;
-  gap: 20px;
+  display: flex;
+  flex-direction: column; /* Organiza las categorías de arriba hacia abajo */
+  gap: 40px; /* Espacio entre las categorías */
+}
+
+.category {
+  margin-left: 2%;
 }
 
 .category h3 {
   text-transform: uppercase;
   font-size: 24px;
+  text-align: left; /* Alinea el texto de las tarjetas a la izquierda */
   color: var(--text);
-  text-align: center;
+  margin-bottom: 20px;
 }
 
 .tech-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  display: flex;
+  gap: 20px; /* Espacio entre las tarjetas de tecnología */
+  flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias líneas si es necesario */
 }
 
 .card {
@@ -163,7 +182,7 @@ h3 {
   border-radius: 20px;
   width: 100%;
   max-width: 200px;
-  text-align: center;
+  text-align: left; /* Alinea el texto de las tarjetas a la izquierda */
   display: flex;
   align-items: center;
   gap: 10px;
@@ -185,62 +204,34 @@ h3 {
 }
 
 /* Sección de experiencia */
-.experience {
+.experience{
   background: var(--primary);
   padding: 50px 20px;
 }
 
-.experience h2 {
-  color: var(--text-secondary);
-  text-transform: uppercase;
-}
-
-.experience-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.right-container {
-  display: flex;
-  max-width: 45%;
-  flex-direction: column;
-  gap: 20px;
-  flex: 1;
-}
-
-.left-container {
-  display: flex;
-  max-width: 55%;
-  flex-direction: column;
-  gap: 20px;
-  flex: 1;
-}
-
-.experience-card {
+.experience .soft-card{
   background: var(--card-secondary);
-  color: var(--text);
-  padding: 10px;
-  border-radius: 20px;
-  width: 90%;
-  text-align: left;
-  flex-grow: 1;
-  word-wrap: break-word;
 }
 
-.experience-card h2 {
+.experience li{
+  color: var(--text);
+  font-size: 15px;}
+
+.experience .soft-card h2 {
+  color: var(--text);
+}
+
+.experience h2 {
   color: var(--text);
   font-size: 20px;
 }
 
-.experience-card h3 {
+.experience h3 {
   color: var(--text);
   font-size: 18px;
 }
 
-.experience-card p {
+.experience p {
   color: var(--text);
   font-size: 15px;
 }

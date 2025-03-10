@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import logo from "./assets/Yo.jpg";
+import div from "./assets/div.png"
+import yo from "./assets/Yo.jpg";
 import trabajo_en_equipo from "./assets/trabajo-en-equipo.png"
 import resolucion_de_problemas from "./assets/resolucion-de-problemas.png"
 import adaptabilidad from "./assets/adaptabilidad.png"
@@ -12,7 +13,8 @@ import {
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaJava, FaDocker, FaAws, 
   FaGitAlt,
   FaGithub,
-  FaLinkedin
+  FaLinkedin,
+  FaEnvelope
 } from "react-icons/fa";
 import { SiSpringboot, SiTypescript, SiPython, SiMysql, SiPodman, SiAngular } from "react-icons/si";
 import Projects from "./components/Projects";
@@ -69,39 +71,53 @@ function App() {
       <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
       <div className="container" id="Curriculum">
         <div className="text">
-          <p>Hola, soy <span className="name">Santillan Bruno Alejo</span></p>
-          <h1>Developer</h1>
+          <h1>Full Stack Developer</h1>
           <h1>Functional Analyst</h1>
-
           <div className="buttons">
             <a href="https://bsantillan.github.io/Portfolio/Curriculum_Santillan.pdf" download>
               <button className="btn">Descargar CV</button>
             </a>
+            <li>
+            <a href="mailto:brunosaantillan@gmail.com">
+              <button className="btn">Di hola</button>  
+            </a>          
+          </li>
           </div>
         </div>
         <div className="image">
-          <img src={logo} alt="Santillan Bruno Alejo" width={400} />
+          <img src={div} alt="Full Stack Developer - Functional Analyst" width={400} />
         </div>
       </div>
-
       <div className="about-me" id="about-me">
-      <p>
-        Actualmente, curso el 5to año de Ingeniería en Sistemas de Información en la UTN FRLP, 
-        con más del 80% de la carrera completada. <br></br>
-        Mi formación académica, combinada con mi experiencia en liderazgo y análisis funcional, 
-        me permite abordar desafíos desde una perspectiva integral, aportando soluciones estratégicas y eficientes. 
-      </p>
-      <p>
-        Soy un profesional apasionado por la tecnología y el aprendizaje continuo, con un enfoque 
-        basado en la innovación, la resolución de problemas y el trabajo en equipo. <br></br>
-        A lo largo de mi trayectoria, he desarrollado habilidades en la coordinación y liderazgo de equipos, 
-        fomentando la colaboración, la comunicación efectiva y la toma de decisiones estratégicas.
-      </p>
-      <p>
-        Mi capacidad de adaptación a entornos dinámicos me ha permitido enfrentar proyectos complejos 
-        con creatividad y eficiencia, siempre buscando aportar valor a cada desafío.
-      </p>
-      </div>
+    <div className="image">
+        <img src={yo} alt="Santillan Bruno Alejo" width={400} />
+    </div>
+    <div className="text">
+        <p>
+            Actualmente, curso el 5to año de Ingeniería en Sistemas de Información en la UTN FRLP, 
+            con más del 80% de la carrera completada. <br />
+            Mi formación académica, combinada con mi experiencia en liderazgo y análisis funcional, 
+            me permite abordar desafíos desde una perspectiva integral, aportando soluciones estratégicas y eficientes. 
+        </p>
+        <p>
+            Soy un profesional apasionado por la tecnología y el aprendizaje continuo, con un enfoque 
+            basado en la innovación, la resolución de problemas y el trabajo en equipo. <br />
+            A lo largo de mi trayectoria, he desarrollado habilidades en la coordinación y liderazgo de equipos, 
+            fomentando la colaboración, la comunicación efectiva y la toma de decisiones estratégicas.
+        </p>
+        <p>
+            Mi capacidad de adaptación a entornos dinámicos me ha permitido enfrentar proyectos complejos 
+            con creatividad y eficiencia, siempre buscando aportar valor a cada desafío.
+        </p>
+        
+        {/* Agregar los iconos sociales debajo del texto */}
+        <div className="social-icons">
+            <a href="https://github.com/bsantillan" target="_blank" rel="noopener noreferrer"><FaGithub size={50} /></a>
+            <a href="https://www.linkedin.com/in/bruno-santillan-50a91321a/" target="_blank" rel="noopener noreferrer"><FaLinkedin size={50} /></a>
+            <a href="mailto:brunosaantillan@gmail.com" target="_blank" rel="noopener noreferrer"><FaEnvelope size={50} /></a>
+        </div>
+    </div>
+</div>
 
       {/* Sección de Tecnologías */}
       <div className="technologies" id="technologies">
@@ -123,10 +139,9 @@ function App() {
         </div>
       </div>
       <div className="experience" id="experience">
-        <h2>Experiencia</h2>
-        <div className="experience-container">
-          <div className="left-container">
-            <div className="experience-card">
+        <h2 style={{color:"var(--text-secondary)", textTransform:"uppercase"}}>Experiencia</h2>
+        <div className="soft-container">
+            <div className="soft-card">
               <h2>Analista de Accesibilidad Web</h2>
               <h3>2024 - Laboratorio de Innovación Abierta (LINA) [UTN-FRLP]</h3>
               <p>
@@ -142,10 +157,20 @@ function App() {
                 <li>Pruebas con tecnologías de asistencia como lectores de pantalla y navegación por teclado.</li>
                 <li>Capacitación y concienciación sobre accesibilidad digital para equipos de desarrollo.</li>
               </ul>
-            </div>
           </div>
-          <div className="right-container">
-            <div className="experience-card">
+          <div className="soft-card">
+            <h2>Coordinador Regional - CNEISI 2024</h2>
+            <h3>2024 - Congreso Nacional de Estudiantes de Ingeniería en Sistemas de Información [UTN-FRLP]</h3>
+            <p>
+              Fui parte de la organización del Congreso Nacional de Estudiantes de Ingeniería en Sistemas de Información 2023 (CNEISI), 
+              desempeñándome como coordinador de una regional completa. <br></br>
+              Mi rol incluyó la planificación y gestión de actividades, asegurando una logística eficiente para la participación de los asistentes. <br></br>
+              Además, trabajé en la comunicación y coordinación con diferentes equipos, garantizando que todas las secciones del congreso 
+              se desarrollaran de manera fluida y organizada. <br></br>
+              También colaboré en la gestión de materiales, cronogramas y soporte a los disertantes, contribuyendo al éxito del evento a nivel nacional.
+            </p>
+          </div>
+            <div className="soft-card">
               <h2>Ayudante Ad-Honorem - Análisis Matemático II</h2>
               <h3>+2 años - Marzo 2023 - Actualmente [UTN-FRLP] [Ciencias Basicas]</h3>
               <p>En este rol, asisto a los estudiantes en la resolución de dudas y en la comprensión de los contenidos matemáticos,
@@ -156,7 +181,7 @@ function App() {
                 facilitar el aprendizaje de los estudiantes.
                 </p>
             </div>
-            <div className="experience-card">
+            <div className="soft-card">
               <h2>Analista Funcional - Desarrollador de Software</h2>
               <h3>2024 - Proyecto para el Club de Pádel Los Ciruelos [La Plata]</h3>
               <p>En colaboración con un equipo, desarrollé un sistema para el club de pádel Los Ciruelos, encargándome del análisis
@@ -168,7 +193,6 @@ function App() {
                 para asegurar que todos los objetivos y especificaciones se cumplieran de manera eficiente, brindando una solución
                 tecnológica efectiva y de calidad.
               </p>
-            </div>
           </div>
         </div>
       </div>
@@ -241,13 +265,10 @@ function App() {
         </div>
       </div>
       <div className="contact" id="contact">
-        <div className="email-container">
-          <img src={email} alt="Email" className="email-img" />
-          <span className="email-text">brunosaantillan@gmail.com</span>
-        </div>
         <div className="social-icons">
           <a href="https://github.com/bsantillan  " target="_blank" rel="noopener noreferrer"><FaGithub size={50} /></a>
           <a href="https://www.linkedin.com/in/bruno-santillan-50a91321a/" target="_blank" rel="noopener noreferrer"><FaLinkedin size={50} /></a>
+          <a href="mailto:brunosaantillan@gmail.com" target="_blank" rel="noopener noreferrer"><FaEnvelope size={50} /></a>
         </div>
       </div>
     </div>

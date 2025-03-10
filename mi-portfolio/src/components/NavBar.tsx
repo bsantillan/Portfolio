@@ -28,7 +28,7 @@ const NavBar: React.FC<NavBarProps> = ({ darkMode, setDarkMode }) => {
             <a href="#about-me">Sobre mí</a>
           </li>
           <li>
-            <a href="#technologies">Tecnologías</a>
+            <a href="#technologies">Skills</a>
           </li>
           <li>
             <a href="#experience">Experiencia</a>
@@ -39,9 +39,7 @@ const NavBar: React.FC<NavBarProps> = ({ darkMode, setDarkMode }) => {
           <li>
             <a href="#soft-skills">Habilidades blandas</a>
           </li>
-          <li>
-            <a href="#contact">Contacto</a>
-          </li>
+
         </ul>
 
         {/* Botón de tema oscuro */}
@@ -63,7 +61,6 @@ const NavBar: React.FC<NavBarProps> = ({ darkMode, setDarkMode }) => {
           <li><a href="#experience">Experiencia</a></li>
           <li><a href="#projects">Proyectos</a></li>
           <li><a href="#soft-skills">Habilidades blandas</a></li>
-          <li><a href="#contact">Contacto</a></li>
         </ul>
       </div>
     </nav>

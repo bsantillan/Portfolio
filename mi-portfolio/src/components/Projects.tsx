@@ -57,65 +57,41 @@ const projects = [
 ];
 
 const Projects = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const CustomPrevArrow = ({ onClick }: { onClick?: React.MouseEventHandler<HTMLButtonElement> }) => (
-    <button className="custom-arrow custom-prev" onClick={onClick}>
-      ❮
-    </button>
-  );
-  
-  const CustomNextArrow = ({ onClick }: { onClick?: React.MouseEventHandler<HTMLButtonElement> }) => (
-    <button className="custom-arrow custom-next" onClick={onClick}>
-      ❯
-    </button>
-  );
-
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        afterChange: (index: number) => setCurrentIndex(index),
-        prevArrow: <CustomPrevArrow />,
-        nextArrow: <CustomNextArrow />,
-    };  
-
   return (
     <div className="projects-section" id="projects">
-        <h2>Proyectos</h2>
-        <div className="projects-container">
-            {/* Carrusel a la izquierda */}
-            <div className="carousel-container">
-                <Slider {...settings}>
-                {projects.map((project, index) => (
-                    <div key={index} className="carousel-slide">
-                    <img src={project.image} alt={project.title} />
-                    </div>
-                ))}
-                </Slider>
-            </div>
-
-            {/* Descripción a la derecha */}
+      <h2>Proyectos</h2>
+      <div className="projects-container">
+        {/* Muestra los proyectos en dos columnas */}
+        {projects.map((project, index) => (
+          <div key={index} className="project-item">
+            <img src={project.image} alt={project.title} />
             <div className="project-description">
-                <h3>{projects[currentIndex].title}</h3>
-                <p>{projects[currentIndex].description}</p>
-                  <ul>
-                    {projects[currentIndex].technologies.map((tech, index) => (
-                      <li key={index}>{tech.icon}{tech.name}</li>
-                    ))}
-                  </ul>
-                  <div className="buttons">
-                    <a href={projects[currentIndex].codigo} target="_blank" rel="noopener noreferrer">
-                      <button className="btn">Material</button>
-                    </a>
-                  </div>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <ul>
+                {project.technologies.map((tech, index) => (
+                  <li key={index}>
+                    {tech.icon}
+                    {tech.name}
+                  </li>
+                ))}
+              </ul>
+              <div className="buttons">
+                <a
+                  href={project.codigo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="btn">Material</button>
+                </a>
+              </div>
             </div>
-            
-        </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
+
 
 export default Projects;
