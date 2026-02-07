@@ -11,30 +11,68 @@
   -moz-osx-font-smoothing: grayscale;
 
   --primary: #36619A;
-  --buttom:#0797AD;
-  --background: #F2EADF; 
+  --buttom: #0797AD;
+  --background: #F2EADF;
   --card: #36619A;
-  --card-secondary:#C6DFF9;
-  --text: #000000; 
-  --text-secondary: #FFFFFF; 
+  --card-secondary: #C6DFF9;
+  --text: #000000;
+  --text-secondary: #FFFFFF;
 }
 
 [data-theme="dark"] {
-  --primary: #C6DFF9; 
-  --buttom:#1FD7DB;
-  --background: #0D1721; 
+  --primary: #badcff;
+  --buttom: #1FD7DB;
+  --background: #35516d;
   --card: #C6DFF9;
-  --card-secondary:#36619A;
-  --text: #FFFFFF; 
-  --text-secondary: #000000; 
+  --card-secondary: #36619A;
+  --text: #FFFFFF;
+  --text-secondary: #000000;
 }
 
-body, html {
+/* Botones */
+.btn {
+  position: relative;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, var(--card-secondary), var(--buttom));
+  color: var(--text);
+}
+
+.btn.secondary {
+  color: var(--text-secondary);
+  border: 2px solid var(--background);
+}
+
+.btn.secondary:hover {
+  background: linear-gradient(135deg, var(--card-secondary), var(--buttom));
+  color: var(--text);
+  border: none;
+}
+
+body,
+html {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Evita scroll lateral innecesario */
+  overflow-x: hidden;
+  /* Evita scroll lateral innecesario */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  scroll-behavior: smooth; /* Desplazamiento suave */
+  scroll-behavior: smooth;
+
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--primary) 100%, black 5%),
+      var(--background));
 
 }
-

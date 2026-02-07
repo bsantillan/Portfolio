@@ -5,15 +5,13 @@
 }
 
 .projects-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px; /* Espacio entre los elementos */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
   padding: 20px;
 }
 
 .project-item {
-  width: calc(30% - 20px); /* Muestra tres elementos por fila, con un margen */
   box-sizing: border-box;
   background-color: var(--background);
   border-radius: 10px;
@@ -44,7 +42,8 @@
 
 .project-description h3 {
   color: var(--text);
-  font-size: 24px;
+  font-size: 24px;    
+  text-align: center;
   margin-bottom: 10px;
 }
 
@@ -61,19 +60,22 @@
 }
 
 .project-description li {
-  background-color: var(--buttom);
+  background: linear-gradient(135deg, var(--primary), var(--buttom));
   color: var(--text-secondary);
-  padding: 5px 10px;
+  padding: 6px 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 5px 5px;
-  border-radius: 5px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 6px 6px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
 }
 
 .project-description li:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
 }
 
 .project-description li svg {
@@ -89,7 +91,7 @@
 
 .buttons .btn {
   padding: 10px 20px;
-  background-color: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--buttom));
   color: var(--text-secondary);
   border: none;
   border-radius: 5px;
@@ -98,7 +100,7 @@
 }
 
 .buttons .btn:hover {
-  background-color: var(--buttom);
+  transform: translateY(-2px);
 }
 
 /* Media Queries */
@@ -118,4 +120,13 @@
   .project-description li {
     font-size: 12px;
   }
+}
+
+.private-label {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text);
+  opacity: 0.7;
+  text-align: center;
 }

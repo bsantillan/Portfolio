@@ -1,125 +1,206 @@
-/* Contenedor principal de cada sección */
-.container, .about-me, .technologies, .experience, .projects, .soft-skills {
-  height: auto; /* Cambio a auto para ajustarse al contenido */
+.about-me,
+.technologies,
+.projects,
+.soft-skills {
+  background: transparent;
 }
 
-/* Contenedor principal */
-.container {
-  display: flex; 
+/* Primera Seccion */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  height: 100vh; 
-  text-align: center;
-  padding: 0 200px; /* Cambié de 200px a 20px para mejorar la adaptabilidad */
-  background-color: var(--background);
-  flex-direction: row; /* En pantallas grandes, los elementos se alinean horizontalmente (imagen a la derecha y texto a la izquierda) */
-  gap: 50px; /* Agrega espacio entre el texto y la imagen */
+  padding: 7rem 1.5rem 4rem;
 }
 
-.container .buttons{
-  display: flex;
-  justify-content: left; /* Alinea los botones al centro */
-}
-
-/* Estilo para el contenedor de texto */
-.text {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-align: left; 
-  color: var(--text);
-}
-
-/* Estilo para el nombre azul */
-.name {
-  color: var(--primary);
-  font-weight: bold;
-}
-
-.text p {
-  font-size: 20px;
-}
-
-h1 {
-  font-size: 60px; /* Cambié el tamaño para que sea más amigable en pantallas pequeñas */
-  color: var(--primary);
-}
-
-h2 {
-  font-size: 30px; /* Reduje el tamaño de la fuente */
-  text-align: center;
-  color: var(--text);
-}
-
-h3 {
-  text-align: center;
-  font-size: 18px;
-}
-
-/* Botón */
-.btn {
-  position: relative;
-  background-color: var(--primary); 
-  color: var(--text-secondary);
-  font-weight: bold;
-  text-transform: uppercase;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 6px 6px 0px var(--buttom);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  background-color: var(--buttom);
-  box-shadow: 6px 6px 0px var(--primary);
-}
-
-/* Estilos para la sección about-me */
-.about-me {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 50px;
-  gap: 20px;
-  text-align: left;
-  background-color: var(--primary);
-}
-
-/* Contenedor de la imagen */
-.about-me .image {
-  flex: 1;
-  max-width: 400px;
-}
-
-.image img {
+.hero-content {
+  max-width: 1200px;
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
 }
 
-/* Contenedor de texto */
-.text {
-  color: var(--text-secondary);
-  flex: 2;
-}
-
-/* Estilos para los iconos sociales */
-.about-me .social-icons {
+.hero-text {
   display: flex;
-  gap: 20px; /* Espaciado entre los iconos */
-  justify-content: left;
-  margin-top: 20px; /* Espacio entre el texto y los iconos */
-}
-
-.social-icons a {
+  flex-direction: column;
+  gap: 1.2rem;
   color: var(--text-secondary);
-  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.social-icons a:hover {
-  transform: scale(1.1); /* Efecto de hover para agrandar los iconos */
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  line-height: 1.05;
+  margin: 0;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  max-width: 60ch;
+  line-height: 1.7;
+  opacity: .9;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.hero-social {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.hero-social a {
+  font-size: 2rem;
+  color: var(--text-secondary);
+  transition: transform .2s ease, color .2s ease;
+}
+
+.hero-social a:hover,
+.hero-social a:focus-visible {
+  transform: translateY(-2px);
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .15));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-description {
+    margin: 0 auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-social {
+    justify-content: center;
+  }
+}
+
+/* Segunda Seccion */
+
+.about-me {
+  padding: 100px 20px;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.about-image {
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary);
+}
+
+.about-content {
+  color: var(--text-secondary);
+}
+
+.about-content h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.about-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.about-stats {
+  margin-top: 25px;
+  display: flex;
+  gap: 30px;
+}
+
+.about-stats div {
+  background: var(--card-secondary);
+  padding: 15px 20px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 120px;
+}
+
+.about-stats h3 {
+  margin: 0;
+  font-size: 28px;
+  color: var(--primary);
+}
+
+.about-stats span {
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-stats {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .about-container .hero-image {
+    display: none;
+  }
 }
 
 /* Asegúrate de que la imagen y el texto se acomoden bien en pantallas más pequeñas */
@@ -129,128 +210,107 @@ h3 {
     text-align: center;
   }
 
-  .image {
-    margin-bottom: 20px; /* Espacio entre la imagen y el texto */
-  }
-
-  .social-icons {
-    justify-content: center; /* Centrar los iconos en pantallas pequeñas */
+  .about-container .hero-image {
+    display: none;
   }
 }
 
-/* Sección de tecnologías */
+/* Tercera Seccion */
+
 .technologies {
-  text-align: left; /* Cambié el texto de todo el contenedor a la izquierda */
+  text-align: left;
   padding: 50px 20px;
-  background-color: var(--background);
 }
 
 .technologies h2 {
-  text-transform: uppercase;
-  color: var(--text);
   margin-bottom: 20px;
-}
-
-.categories-container {
-  display: flex;
-  flex-direction: column; /* Organiza las categorías de arriba hacia abajo */
-  gap: 40px; /* Espacio entre las categorías */
-}
-
-.category {
-  margin-left: 2%;
-}
-
-.category h3 {
-  text-transform: uppercase;
-  font-size: 24px;
-  text-align: left; /* Alinea el texto de las tarjetas a la izquierda */
-  color: var(--text);
-  margin-bottom: 20px;
-}
-
-.tech-grid {
-  display: flex;
-  gap: 20px; /* Espacio entre las tarjetas de tecnología */
-  flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias líneas si es necesario */
-}
-
-.card {
-  background: var(--card);
+  text-align: center;
   color: var(--text-secondary);
-  padding: 10px;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 200px;
-  text-align: left; /* Alinea el texto de las tarjetas a la izquierda */
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.card:hover {
-  transform: translateY(-2px);
+.tech-cards {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
 }
 
-.icon {
-  font-size: 40px;
-  align-items: center;
-  display: flex;
+.tech-category-card {
+  background: color-mix(in srgb, var(--background) 25%, transparent);
+  border-radius: 22px;
+  padding: 25px 28px;
+  backdrop-filter: blur(6px);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
-.card:hover .icon {
-  transform: scale(1.1);
-}
-
-/* Sección de experiencia */
-.experience{
-  background: var(--primary);
-  padding: 50px 20px;
-}
-
-.experience .soft-card{
-  background: var(--card-secondary);
-}
-
-.experience li{
+.tech-category-card h3 {
   color: var(--text);
-  font-size: 15px;}
-
-.experience .soft-card h2 {
-  color: var(--text);
-}
-
-.experience h2 {
-  color: var(--text);
-  font-size: 20px;
-}
-
-.experience h3 {
-  color: var(--text);
-  font-size: 18px;
-}
-
-.experience p {
-  color: var(--text);
-  font-size: 15px;
-}
-
-/* Sección de proyectos */
-.projects {
-  background: var(--background);
-  padding: 50px 20px;
-}
-
-.projects h2 {
-  color: var(--text);
+  margin: 0 0 18px;
   text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: .08em;
 }
 
-/* Sección de soft skills */
+.tech-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 18px;
+}
+
+.tech-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 32px;
+  transition: transform .2s ease;
+}
+
+.tech-icon img {
+  width: 36px;
+  height: 36px;
+}
+
+.tech-icon span {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  opacity: .9;
+}
+
+.tech-icon:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .tech-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .tech-icons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .tech-icons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Cuarta Seccion */
+
 .soft-skills {
-  background: var(--background);
   padding: 50px 20px;
+}
+
+.soft-skills {
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--text);
 }
 
 .soft-container {
@@ -261,11 +321,12 @@ h3 {
 }
 
 .soft-card {
-  background: var(--card);
-  color: var(--text-secondary);
+  background: color-mix(in srgb, var(--background) 25%, transparent);
+  color: var(--text);
   padding: 20px;
   border-radius: 20px;
-  width: 100%; /* Ahora es el 100% en pantallas pequeñas */
+  width: 100%;
+  /* Ahora es el 100% en pantallas pequeñas */
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -285,8 +346,7 @@ h3 {
   object-fit: cover;
 }
 
-.soft-header h2 {
-  color: var(--text-secondary);
+.soft-header h3 {
   flex-grow: 1;
   text-align: center;
   font-size: 18px;
@@ -300,43 +360,50 @@ h3 {
   line-height: 1.5;
 }
 
-/* Sección de contacto */
+/* Quinta Seccion */
+
+.experience {
+  padding: 50px 20px;
+  text-align: center;
+  color: var(--text);
+}
+
+.soft-card {
+  color: var(--text-secondary);
+  background: var(--card);
+}
+
+.experience li {
+  font-size: 15px;
+}
+
+.experience p {
+  font-size: 15px;
+}
+
+/* Sexta Seccion */
+
+.projects {
+  padding: 50px 20px;
+}
+
+/* Septima Seccion */
+
 .contact {
   text-align: center;
   height: auto;
   padding: 40px 20px;
-  background: var(--primary);
-  color: var(--text);
+  background: color-mix(in srgb, var(--background) 90%, transparent);
   border-radius: 5px;
-}
-
-.email-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.email-text {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--background);
-  text-decoration: none;
-}
-
-.email-img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-}
-
-.social-icons {
-  color: var(--background);
-  margin-top: 50px;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(0, 0, 0, .08);
 }
 
 .social-icons a {
-  color: var(--background);
+  color: var(--text);
   margin: 0 10px;
 }
 
@@ -344,22 +411,6 @@ h3 {
 
 /* Para pantallas pequeñas (máximo 768px de ancho) */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
-    padding: 30% 50px;
-  }
-
-  .image img {
-    width: 80%;
-  }
-
-  h1 {
-    font-size: 40px;
-  }
-
-  h2 {
-    font-size: 30px;
-  }
 
   .about-me p {
     font-size: 18px;
@@ -410,25 +461,8 @@ h3 {
 
 /* Para pantallas muy pequeñas (máximo 480px de ancho) */
 @media (max-width: 480px) {
-  h1 {
-    font-size: 30px;
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-
-  h3 {
-    font-size: 18px;
-  }
-
   .btn {
     padding: 10px 20px;
     font-size: 14px;
-  }
-
-  .email-img {
-    width: 80px;
-    height: 80px;
   }
 }
