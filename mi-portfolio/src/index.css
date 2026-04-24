@@ -1,78 +1,165 @@
+/* ========================================
+   DESIGN SYSTEM – Bruno Santillán Portfolio
+   Tipografía: Syne (display) + DM Sans (body)
+   Paleta: Azul profundo + Slate frío + Accent cyan
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+/* ---- Variables ---- */
 :root {
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  --primary: #36619A;
-  --buttom: #0797AD;
-  --background: #F2EADF;
-  --card: #36619A;
-  --card-secondary: #C6DFF9;
-  --text: #000000;
-  --text-secondary: #FFFFFF;
+  --primary:        #1E6FFF;
+  --primary-soft:   #3D8BFF;
+  --accent:         #00D4C8;
+  --accent-dim:     #00A89F;
+  --bg:             #F4F6FA;
+  --bg-alt:         #EAECF4;
+  --surface:        #FFFFFF;
+  --surface-alt:    #F0F3FA;
+  --border:         rgba(30, 111, 255, 0.12);
+  --border-strong:  rgba(30, 111, 255, 0.25);
+  --text:           #0F1929;
+  --text-muted:     #4A5568;
+  --text-faint:     #8A94A6;
+  --heading:        #0A1628;
+  --card-shadow:    0 2px 16px rgba(15, 25, 41, 0.08), 0 0 0 1px rgba(30, 111, 255, 0.06);
+  --card-hover:     0 8px 32px rgba(30, 111, 255, 0.14), 0 0 0 1px rgba(30, 111, 255, 0.12);
+  --radius-sm:      8px;
+  --radius-md:      14px;
+  --radius-lg:      22px;
+  --radius-xl:      30px;
+  --transition:     all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme="dark"] {
-  --primary: #badcff;
-  --buttom: #1FD7DB;
-  --background: #35516d;
-  --card: #C6DFF9;
-  --card-secondary: #36619A;
-  --text: #FFFFFF;
-  --text-secondary: #000000;
+  --primary:        #4D9BFF;
+  --primary-soft:   #6DAFFF;
+  --accent:         #00E5D8;
+  --accent-dim:     #00BFB4;
+  --bg:             #0C1220;
+  --bg-alt:         #111827;
+  --surface:        #161F30;
+  --surface-alt:    #1C2840;
+  --border:         rgba(77, 155, 255, 0.14);
+  --border-strong:  rgba(77, 155, 255, 0.28);
+  --text:           #E8EDF5;
+  --text-muted:     #9EAFC4;
+  --text-faint:     #5C6D82;
+  --heading:        #F0F5FF;
+  --card-shadow:    0 2px 16px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(77, 155, 255, 0.08);
+  --card-hover:     0 8px 32px rgba(77, 155, 255, 0.18), 0 0 0 1px rgba(77, 155, 255, 0.2);
 }
 
-/* Botones */
-.btn {
-  position: relative;
-  font-weight: bold;
-  text-transform: uppercase;
-  border: none;
-  padding: 12px 24px;
+/* ---- Reset & Base ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  line-height: 1.7;
+  color: var(--text);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
+/* ---- Tipografía ---- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Syne', sans-serif;
+  color: var(--heading);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+p { color: var(--text); }
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+ul { list-style: none; padding: 0; }
+
+img { display: block; max-width: 100%; }
+
+/* ---- Botones ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  padding: 11px 26px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+  white-space: nowrap;
 }
 
 .btn.primary {
-  background: linear-gradient(135deg, var(--card-secondary), var(--buttom));
-  color: var(--text);
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(30, 111, 255, 0.35);
+}
+
+.btn.primary:hover {
+  background: var(--primary-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(30, 111, 255, 0.45);
 }
 
 .btn.secondary {
-  color: var(--text-secondary);
-  border: 2px solid var(--background);
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--border-strong);
 }
 
 .btn.secondary:hover {
-  background: linear-gradient(135deg, var(--card-secondary), var(--buttom));
-  color: var(--text);
-  border: none;
+  background: var(--surface-alt);
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
 }
 
-body,
-html {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  /* Evita scroll lateral innecesario */
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  scroll-behavior: smooth;
-
-  background: linear-gradient(180deg,
-      color-mix(in srgb, var(--primary) 100%, black 5%),
-      var(--background));
-
+/* ---- Section Label ---- */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 14px;
 }
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 6px; }
