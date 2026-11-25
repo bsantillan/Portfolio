@@ -17,6 +17,8 @@ No inventé experiencia, pero algunos detalles los deduje del sitio anterior o d
 | 7 | Analista Universitario de Sistemas: ¿también 2026? | `trayectoria.ts` | El brief dice "UTN FRLP, 2026" para ambos títulos. |
 | 8 | Stack sin caso asociado: React, HTML/CSS, PostgreSQL, Grafana, Git, Figma, UML/BPMN, Scrum/Kanban | `shared.ts` | Aparecen como "Fuera de estos casos". Si alguno se usó en un caso, agregá el id en `usedIn`. |
 | 9 | YPF: la lista "Qué construí" y el diagrama genérico | `cases.ts`, `Diagram.tsx` | Solo describe lo que entregaste, sin procesos ni datos. Confirmá que no rompe la confidencialidad. |
+| 10 | **Sistema de diseño accesible (DPID)**: hoy tiene solo lo que me contaste. Faltan tecnología, qué componentes hiciste, desde cuándo, si hay Storybook o documentación, decisiones técnicas y si se puede mostrar alguna captura | `cases.ts` | Lo que me contaste. El período "Desde 2025" sale de tu fecha de ingreso a la DPID. |
+| 11 | **Los Ciruelos**: el caso describe la versión del equipo, no tu reingeniería | `cases.ts` | Pendiente: pasá el prompt de `docs/PROMPT-resumen-proyecto.md` en el repo y mandame la respuesta y las capturas. |
 
 ## 2. Imágenes
 
@@ -44,10 +46,8 @@ El inglés está escrito para que suene natural, no traducido palabra por palabr
 | Práctica Profesional | Professional internship | |
 | «Desarrollo web accesible: fundamentos y buenas prácticas para equipos técnicos» | “Accessible web development: fundamentals and good practices for technical teams” | Si el curso tiene nombre oficial en inglés, usá ese. |
 | Construyo software accesible y herramientas de datos para operaciones reales. | I build accessible software and data tools for real-world operations. | Frase principal. |
-| Abierto a nuevas oportunidades · Disponible para relocalizarme a Neuquén | Open to new opportunities · Willing to relocate to Neuquén | |
-| Hecho a mano con React y Vite. Sin cookies ni rastreo. | Handmade with React and Vite. No cookies, no tracking. | |
 | Stack, con evidencia | Stack, with evidence | |
 
 ## 5. Accesibilidad: lo que falta probar a mano
 
-Lo automático está cubierto (axe, teclado, contraste, targets, movimiento reducido). No pude probar con un **lector de pantalla real**. Recomiendo una pasada con NVDA + Chrome y VoiceOver en iOS, sobre todo en el mapa del hero y en "Ver estructura accesible". Después agregala a la declaración (`a11y.statement.howTested` en `site.ts`).
+Lo automático está cubierto (axe, teclado, contraste, targets, movimiento reducido). No pude probar con un **lector de pantalla real**. Recomiendo una pasada con NVDA + Chrome y VoiceOver en iOS, sobre todo en el mapa del hero. Después agregala a la declaración (`a11y.statement.howTested` en `site.ts`).

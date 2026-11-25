@@ -1,9 +1,0 @@
-.now__inner { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 40px; align-items: start; }
-.now__log { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--text); }
-.now__log li { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 1.1875rem; }
-.now__when { color: var(--accent); font-weight: 700; font-size: 0.9375rem; padding-top: 3px; }
-@media (max-width: 900px) {
-  .now__inner { grid-template-columns: 1fr; }
-  .now__log li { grid-template-columns: 1fr; gap: 4px; }
-}
-      

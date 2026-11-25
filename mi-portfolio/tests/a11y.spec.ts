@@ -30,13 +30,6 @@ for (const lang of ['es', 'en'] as const) {
   }
 }
 
-test('axe sin violaciones con la estructura accesible visible', async ({ page }) => {
-  await page.goto('./');
-  await page.getByRole('button', { name: /ver estructura accesible/i }).first().click();
-  await expect(page.getByRole('complementary', { name: 'Estructura accesible' })).toBeVisible();
-  await scan(page);
-});
-
 test('axe sin violaciones con el menú mobile abierto', async ({ page, isMobile }) => {
   test.skip(!isMobile, 'solo mobile');
   await page.goto('./');

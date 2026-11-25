@@ -23,18 +23,6 @@ export const ui: Content['ui'] = {
   themeToDark: 'Switch to dark mode',
   langSwitch: 'ES',
   langSwitchLabel: 'Leer este sitio en español',
-  structureOn: 'Show accessible structure',
-  structureOff: 'Hide structure',
-  structurePanelTitle: 'Accessible structure',
-  structureIntro:
-    'This is how a screen reader reads this page. On top of the site I marked the landmarks, the headings and their levels, the alt text and the tab order.',
-  structureLandmarks: 'Landmarks',
-  structureHeadings: 'Headings',
-  structureImages: 'Images with alt text',
-  structureFocus: 'Focusable elements',
-  structureAnnounceOn: (l, h, f) => `Structure shown: ${l} landmarks, ${h} headings and ${f} focusable elements.`,
-  structureAnnounceOff: 'Structure hidden.',
-  structureClose: 'Close the structure panel',
   newTab: '(opens in a new tab)',
   privateCode: 'no public link',
 };
@@ -43,8 +31,6 @@ export const hero: Content['hero'] = {
   name: ['Bruno', 'Santillan'],
   role: 'Systems Engineer · Systems Analyst · UTN FRLP, Argentina',
   lede: 'I build accessible software and data tools for real-world operations.',
-  status: 'Open to new opportunities',
-  statusDetail: 'La Plata, Argentina · Remote · Willing to relocate to Neuquén',
   ctaCases: 'See case studies',
   ctaCv: 'Download CV (PDF)',
   mapLabel: 'Map of what I do',
@@ -66,13 +52,11 @@ export const nodes: Content['nodes'] = [
   { id: 'py', label: 'Python', info: 'Most of the power-usage dashboard: around 50 charts.', caseId: 'iot' },
   { id: 'mongo', label: 'MongoDB', info: 'Time series for the sensor readings.', caseId: 'iot' },
   { id: 'obs', label: 'Prometheus', info: 'Failure and downtime alerts, posted to Discord.', caseId: 'iot' },
+  { id: 'ds', label: 'Design system', info: 'The components of the province’s accessible design system, turned into code.', caseId: 'sistema-diseno' },
   { id: 'wcag', label: 'WCAG 2.2', info: 'The standard I audit against, and the one this site is built to.' },
-  { id: 'sr', label: 'Screen readers', info: 'I test sites the way blind people use them: with a screen reader and the keyboard only.' },
   { id: 'curso', label: 'Course I teach', info: '“Accessible web development: fundamentals and good practices for technical teams”.' },
   { id: 'ypf', label: 'YPF', info: 'Professional internship: an inspection system on Power Platform.', caseId: 'ypf' },
-  { id: 'dpid', label: 'DPID', info: 'Provincial Directorate of Digital Innovation: accessibility and power monitoring.', caseId: 'iot' },
-  { id: 'energia', label: 'Energy', info: 'The industry where I want to apply all of this.' },
-  { id: 'nilm', label: 'NILM', info: 'I am researching how to tell which appliance is running from the current waveform. No results yet.' },
+  { id: 'dpid', label: 'DPID', info: 'Provincial Directorate of Digital Innovation: accessibility, the design system and power monitoring.', caseId: 'iot' },
 ];
 
 export const a11y: Content['a11y'] = {
@@ -81,7 +65,7 @@ export const a11y: Content['a11y'] = {
   practice: [
     { title: 'Audits', body: 'I review websites and digital services against WCAG 2.1 AA and document every barrier with its criterion and its fix.' },
     { title: 'Assistive technology testing', body: 'I go through pages with a screen reader and with the keyboard only, the way the people who need them do.' },
-    { title: 'Accessible components', body: 'I build web components that work with the keyboard, screen readers and zoom.' },
+    { title: 'Accessible components', body: 'I turn the components of the province’s accessible design system into code that works with the keyboard, screen readers and zoom.' },
     { title: 'AI automation', body: 'I use AI to speed up accessibility analysis and its documentation.' },
   ],
   course: {
@@ -99,22 +83,13 @@ export const a11y: Content['a11y'] = {
       { tool: 'Lighthouse 12 (mobile)', result: 'Accessibility 100 · Performance 98 · Best practices 100 · SEO 100' },
     ],
     howTested: [
-      'Automated axe-core checks on every change (Spanish and English, light and dark mode, with the structure overlay on).',
+      'Automated axe-core checks on every change (Spanish and English, light and dark mode).',
       'Lighthouse on mobile.',
       'A full pass using only the keyboard.',
       'A review with reduced motion turned on.',
     ],
     contact: 'If you run into a barrier, email me and I will fix it.',
   },
-};
-
-export const now: Content['now'] = {
-  title: 'Now',
-  items: [
-    { when: '2026', text: 'Studying for a BSc in Artificial Intelligence at UTN FRLP.' },
-    { when: 'Ongoing', text: 'Researching non-intrusive load monitoring (NILM): breaking down power use from the waveform.' },
-    { when: 'Ongoing', text: 'Automating accessibility analysis and its documentation with AI.' },
-  ],
 };
 
 export const contact: Content['contact'] = {
@@ -125,5 +100,4 @@ export const contact: Content['contact'] = {
   github: 'GitHub',
   cv: 'CV (PDF)',
   location: 'La Plata, Buenos Aires, Argentina',
-  footer: 'Handmade with React and Vite. No cookies, no tracking.',
 };

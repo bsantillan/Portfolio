@@ -3,25 +3,25 @@
 }
 .hero__inner {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  column-gap: clamp(16px, 3vw, 48px);
-  min-height: calc(100svh - var(--header-h));
-  min-height: max(680px, calc(100svh - var(--header-h)));
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  column-gap: clamp(24px, 4vw, 72px);
   padding-top: clamp(28px, 5vw, 64px);
-  padding-bottom: clamp(32px, 5vw, 56px);
+  padding-bottom: clamp(32px, 5vw, 72px);
 }
 
 .hero__text {
   grid-column: 1;
-  grid-row: 1;
+  grid-row: 2;
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 2;
 }
 
-/* El nombre desborda su columna a propósito: se superpone al mapa. */
+/* El nombre ocupa su propia franja: el mapa ya no queda debajo de él. */
 .hero__name {
+  grid-column: 1 / -1;
+  grid-row: 1;
   margin: 0;
   font-family: var(--font-display);
   font-weight: 900;
@@ -44,15 +44,23 @@
   margin-top: 0.04em;
 }
 
+/* En escritorio el título va en el hueco a la derecha de "Santillan". */
 .hero__role {
-  font: 600 0.9375rem/1.5 var(--font-mono);
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  justify-self: end;
+  text-align: right;
+  font: 600 0.9375rem/1.6 var(--font-mono);
   color: var(--text-2);
-  margin: 28px 0 0;
-  max-width: 40ch;
+  margin: 0 0 0.4em;
+}
+.hero__role-line {
+  display: block;
 }
 .hero__lede {
-  margin: auto 0 0;
-  padding-top: 40px;
+  margin: 0;
+  padding-top: 36px;
   font-size: clamp(1.3rem, 2vw, 1.75rem);
   line-height: 1.32;
   letter-spacing: -0.005em;
@@ -64,42 +72,19 @@
   gap: 12px;
   margin-top: 28px;
 }
-.hero__status {
-  margin: 24px 0 0;
-  display: grid;
-  gap: 2px;
-  font-family: var(--font-mono);
-}
-.hero__status-main {
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-.hero__status-main::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 3px var(--tint);
-}
-.hero__status-detail {
-  color: var(--text-2);
-  font-size: 0.9375rem;
-}
 
 /* ───────── Mapa ───────── */
+/* El mapa ocupa la columna derecha; su leyenda baja a la izquierda, al lado de los nodos. */
 .map {
-  grid-column: 2;
-  grid-row: 1;
-  min-height: 720px;
-  position: relative;
-  z-index: 1;
+  display: contents;
 }
 .map__area {
-  position: absolute;
-  inset: 0 0 0 0;
+  grid-column: 2;
+  grid-row: 2 / span 2;
+  margin-top: 48px;
+  position: relative;
+  z-index: 1;
+  height: clamp(500px, 40vw, 620px);
 }
 .map__edges {
   position: absolute;
@@ -175,11 +160,11 @@
 }
 
 .map__legend {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  width: min(100%, 340px);
+  grid-column: 1;
+  grid-row: 3;
+  align-self: end;
+  position: relative;
+  margin-top: 40px;
   background: var(--surface);
   border-radius: 22px 22px 6px 22px;
   padding: 18px 20px;
@@ -230,15 +215,25 @@
     margin-top: 0;
     padding-top: 28px;
   }
-  .map {
+  .hero__role {
     grid-column: 1;
     grid-row: 2;
-    min-height: 0;
-    margin-top: 32px;
+    justify-self: start;
+    text-align: left;
+    margin: 28px 0 0;
+  }
+  .hero__text {
+    grid-row: 3;
+  }
+  .map {
+    display: block;
+    grid-column: 1;
+    grid-row: 4;
+    margin-top: 40px;
   }
   .map__area {
-    position: relative;
-    height: 620px;
+    margin-top: 0;
+    height: 640px;
   }
   .map__node {
     font-size: 0.875rem;
@@ -249,8 +244,6 @@
     padding: 11px 15px;
   }
   .map__legend {
-    position: static;
-    width: auto;
     margin-top: 24px;
   }
 }
@@ -260,20 +253,3 @@
   }
 }
 
-/* Pantallas medianas: la leyenda va debajo del mapa para no tapar nodos. */
-@media (min-width: 901px) and (max-width: 1439px) {
-  .map {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-  .map__area {
-    position: relative;
-    width: 100%;
-    height: 600px;
-  }
-  .map__legend {
-    position: static;
-    margin-top: 16px;
-  }
-}

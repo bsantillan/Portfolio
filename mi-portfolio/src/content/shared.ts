@@ -56,10 +56,8 @@ export function stackGroups(names: Record<GroupKey, string>): StackGroup[] {
 
 /** Conexiones del mapa del hero (ids de nodos). */
 export const edges: [string, string][] = [
-  ['sw', 'java'], ['sw', 'react'], ['sw', 'rn'], ['react', 'rn'], ['sw', 'ac'],
-  ['da', 'pp'], ['da', 'py'], ['da', 'mongo'], ['da', 'obs'], ['py', 'mongo'],
-  ['ac', 'wcag'], ['ac', 'sr'], ['ac', 'curso'], ['ac', 'dpid'],
-  ['ia', 'py'], ['ia', 'ac'], ['ia', 'da'], ['ia', 'nilm'],
-  ['pp', 'ypf'], ['ypf', 'energia'], ['dpid', 'energia'], ['nilm', 'energia'],
-  ['dpid', 'obs'], ['dpid', 'mongo'], ['sw', 'dpid'],
+  ['sw', 'java'], ['sw', 'react'], ['sw', 'rn'], ['react', 'rn'], ['sw', 'ds'],
+  ['ac', 'ds'], ['ac', 'wcag'], ['ac', 'curso'], ['ac', 'dpid'], ['dpid', 'ds'],
+  ['da', 'py'], ['da', 'mongo'], ['da', 'obs'], ['da', 'pp'], ['da', 'dpid'], ['pp', 'ypf'],
+  ['ia', 'da'], ['ia', 'ac'],
 ];

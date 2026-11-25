@@ -80,11 +80,6 @@
 .tool--icon {
   padding: 8px;
 }
-.tool--structure[aria-pressed='true'] {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--on-accent);
-}
 .tool--menu {
   display: none;
 }
@@ -122,19 +117,6 @@
   padding: 10px 0;
 }
 
-@media (max-width: 1100px) {
-  .tool--structure .tool__label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-  }
-  .tool--structure {
-    padding: 8px;
-  }
-}
 @media (max-width: 900px) {
   .nav-desktop {
     display: none;

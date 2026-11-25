@@ -1,6 +1,6 @@
 export type Lang = 'es' | 'en';
 
-export type CaseId = 'iot' | 'ypf' | 'pasa-la-pagina' | 'los-ciruelos';
+export type CaseId = 'iot' | 'sistema-diseno' | 'ypf' | 'pasa-la-pagina' | 'los-ciruelos';
 export type ArchiveId = 'menu-accesible' | 'estacionamiento';
 export type ImageKey = 'los-ciruelos' | 'pasa-la-pagina' | 'menu-accesible' | 'estacionamiento';
 export type DiagramKey = 'iot' | 'ypf';
@@ -75,17 +75,6 @@ export interface Content {
     themeToDark: string;
     langSwitch: string;
     langSwitchLabel: string;
-    structureOn: string;
-    structureOff: string;
-    structurePanelTitle: string;
-    structureIntro: string;
-    structureLandmarks: string;
-    structureHeadings: string;
-    structureImages: string;
-    structureFocus: string;
-    structureAnnounceOn: (landmarks: number, headings: number, focusables: number) => string;
-    structureAnnounceOff: string;
-    structureClose: string;
     newTab: string;
     privateCode: string;
   };
@@ -93,8 +82,6 @@ export interface Content {
     name: [string, string];
     role: string;
     lede: string;
-    status: string;
-    statusDetail: string;
     ctaCases: string;
     ctaCv: string;
     mapLabel: string;
@@ -129,6 +116,5 @@ export interface Content {
     };
   };
   stack: { title: string; intro: string; usedIn: string; noCase: string; groups: StackGroup[] };
-  now: { title: string; items: { when: string; text: string }[] };
-  contact: { title: string; body: string; email: string; linkedin: string; github: string; cv: string; location: string; footer: string };
+  contact: { title: string; body: string; email: string; linkedin: string; github: string; cv: string; location: string };
 }

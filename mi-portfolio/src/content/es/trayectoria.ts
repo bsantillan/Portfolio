@@ -13,7 +13,7 @@ export const timeline: Content['timeline'] = {
       when: 'Sep 2025 – hoy',
       title: 'Desarrollador y Analista de Accesibilidad',
       where: 'Dirección Provincial de Innovación Digital (PBA)',
-      detail: 'Auditorías WCAG, pruebas con tecnologías de asistencia, componentes web accesibles y el proyecto IoT de eficiencia energética.',
+      detail: 'Auditorías WCAG, pruebas con tecnologías de asistencia, los componentes en código del sistema de diseño accesible de la provincia y el proyecto IoT de eficiencia energética.',
       kind: 'trabajo',
       caseId: 'iot',
       ongoing: true,

@@ -2,7 +2,7 @@ import type { Content } from '../types';
 
 export const cases: Content['cases'] = {
   title: 'Casos',
-  intro: 'Cuatro proyectos contados igual: el contexto, lo que hice yo y lo que construí.',
+  intro: 'Cinco proyectos contados igual: el contexto, lo que hice yo y lo que construí.',
   labels: {
     context: 'Contexto',
     role: 'Mi rol',
@@ -42,6 +42,24 @@ export const cases: Content['cases'] = {
         title: 'Diagrama del flujo de datos: los sensores envían lecturas a MongoDB; de ahí salen el dashboard en Python, el panel de administración y las alertas, que avisan en Discord.',
         caption: 'Flujo de datos. Todo lo que está a la derecha de los sensores es mi parte.',
       },
+    },
+    {
+      id: 'sistema-diseno',
+      title: 'Sistema de diseño accesible',
+      org: 'Dirección Provincial de Innovación Digital (PBA)',
+      period: 'Desde 2025',
+      area: 'Accesibilidad y frontend',
+      context:
+        'La provincia tiene un sistema de diseño accesible para sus servicios digitales. El equipo de diseño definió los componentes; faltaba convertirlos en código que los equipos de desarrollo pudieran usar.',
+      role: 'Desarrollador. Llevé a código los componentes que diseñó el equipo de diseño.',
+      built: [
+        'Varios componentes del sistema, funcionales y listos para integrar.',
+        'Cada componente se usa con teclado, con lector de pantalla y con zoom.',
+      ],
+      decisions: [],
+      stack: [],
+      status: 'Funcional. Todavía no está en uso público.',
+      links: [{ label: 'Código privado (sector público)' }],
     },
     {
       id: 'ypf',

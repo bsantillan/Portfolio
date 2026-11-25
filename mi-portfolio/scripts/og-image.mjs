@@ -8,9 +8,9 @@ import { readFileSync } from 'node:fs';
 const font = (f) => `data:font/woff2;base64,${readFileSync(`public/fonts/${f}`).toString('base64')}`;
 const nodes = [
   ['Software', 800, 320, true], ['Datos', 960, 210, true], ['Accesibilidad', 700, 460, true], ['IA', 1090, 90, true],
-  ['React', 770, 150], ['Python', 1060, 440], ['WCAG 2.2', 880, 570], ['Power Platform', 1060, 560], ['NILM', 1110, 300],
+  ['React', 770, 150], ['Python', 1115, 455], ['WCAG 2.2', 905, 580], ['Power Platform', 1085, 570], ['Sistema de diseño', 905, 395],
 ];
-const edges = [[0, 4], [0, 2], [1, 3], [1, 5], [1, 7], [2, 6], [3, 8], [3, 2], [5, 8], [0, 1], [2, 1]];
+const edges = [[0, 4], [0, 2], [1, 3], [1, 5], [1, 7], [2, 6], [0, 8], [3, 2], [2, 8], [0, 1], [2, 1]];
 const curve = ([, ax, ay], [, bx, by]) => {
   const mx = (ax + bx) / 2 + (by - ay) * 0.16, my = (ay + by) / 2 - (bx - ax) * 0.16;
   return `M${ax} ${ay} Q${mx} ${my} ${bx} ${by}`;

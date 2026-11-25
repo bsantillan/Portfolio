@@ -13,7 +13,7 @@ export const timeline: Content['timeline'] = {
       when: 'Sep 2025 – now',
       title: 'Developer and Accessibility Analyst',
       where: 'Provincial Directorate of Digital Innovation (Buenos Aires)',
-      detail: 'WCAG audits, assistive technology testing, accessible web components and the IoT energy-efficiency project.',
+      detail: 'WCAG audits, assistive technology testing, the components of the province’s accessible design system in code, and the IoT energy-efficiency project.',
       kind: 'trabajo',
       caseId: 'iot',
       ongoing: true,

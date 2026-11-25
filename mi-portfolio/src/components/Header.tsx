@@ -17,17 +17,8 @@ function MoonIcon() {
     </svg>
   );
 }
-function StructureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-      <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3 2.5" />
-      <path d="M7 8h6M7 12h10M7 16h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
 export default function Header() {
-  const { t, lang, setLang, theme, toggleTheme, structure, setStructure } = useApp();
+  const { t, lang, setLang, theme, toggleTheme } = useApp();
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -71,15 +62,6 @@ export default function Header() {
         </nav>
 
         <div className="header-actions">
-          <button
-            type="button"
-            className="tool tool--structure"
-            aria-pressed={structure}
-            onClick={() => setStructure(!structure)}
-          >
-            <StructureIcon />
-            <span className="tool__label">{structure ? t.ui.structureOff : t.ui.structureOn}</span>
-          </button>
           <button type="button" className="tool" lang={other} onClick={() => setLang(other)}>
             {/* El nombre accesible contiene el texto visible (WCAG 2.5.3). */}
             {t.ui.langSwitch}

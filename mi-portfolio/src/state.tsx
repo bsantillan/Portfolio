@@ -11,8 +11,6 @@ interface AppState {
   setLang: (l: Lang) => void;
   theme: Theme;
   toggleTheme: () => void;
-  structure: boolean;
-  setStructure: (on: boolean) => void;
 }
 
 const Ctx = createContext<AppState | null>(null);
@@ -35,7 +33,6 @@ function store(key: string, value: string) {
 export function AppProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(initialLang);
   const [theme, setTheme] = useState<Theme>(initialTheme);
-  const [structure, setStructure] = useState(false);
   const t = dict[lang];
 
   useEffect(() => {
@@ -67,8 +64,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo(
-    () => ({ lang, t, setLang, theme, toggleTheme, structure, setStructure }),
-    [lang, t, setLang, theme, toggleTheme, structure],
+    () => ({ lang, t, setLang, theme, toggleTheme }),
+    [lang, t, setLang, theme, toggleTheme],
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

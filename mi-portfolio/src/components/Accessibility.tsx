@@ -3,7 +3,7 @@ import { useApp } from '../state';
 import './Accessibility.css';
 
 export default function Accessibility() {
-  const { t, structure, setStructure } = useApp();
+  const { t } = useApp();
   const a = t.a11y;
   const s = a.statement;
   return (
@@ -59,9 +59,6 @@ export default function Accessibility() {
           <p className="a11y__contact">
             {s.contact} <a href={`mailto:${links.email}`}>{links.email}</a>
           </p>
-          <button type="button" className="btn" aria-pressed={structure} onClick={() => setStructure(!structure)}>
-            {structure ? t.ui.structureOff : t.ui.structureOn}
-          </button>
         </div>
       </div>
     </section>

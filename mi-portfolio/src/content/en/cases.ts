@@ -2,7 +2,7 @@ import type { Content } from '../types';
 
 export const cases: Content['cases'] = {
   title: 'Case studies',
-  intro: 'Four projects, told the same way: the context, what I did and what I built.',
+  intro: 'Five projects, told the same way: the context, what I did and what I built.',
   labels: {
     context: 'Context',
     role: 'My role',
@@ -42,6 +42,24 @@ export const cases: Content['cases'] = {
         title: 'Data flow diagram: sensors send readings to MongoDB; from there come the Python dashboard, the admin panel and the alerts, which post to Discord.',
         caption: 'Data flow. Everything to the right of the sensors is my part.',
       },
+    },
+    {
+      id: 'sistema-diseno',
+      title: 'Accessible design system',
+      org: 'Provincial Directorate of Digital Innovation (Buenos Aires)',
+      period: 'Since 2025',
+      area: 'Accessibility & frontend',
+      context:
+        'The province has an accessible design system for its digital services. The design team defined the components; they still had to become code that development teams could use.',
+      role: 'Developer. I turned the components the design team created into code.',
+      built: [
+        'Several of the system’s components, working and ready to integrate.',
+        'Every component works with a keyboard, a screen reader and zoom.',
+      ],
+      decisions: [],
+      stack: [],
+      status: 'Working. Not in public use yet.',
+      links: [{ label: 'Private code (public sector)' }],
     },
     {
       id: 'ypf',

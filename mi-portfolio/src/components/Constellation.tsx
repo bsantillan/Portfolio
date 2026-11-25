@@ -1,26 +1,33 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useApp } from '../state';
 
-/** Posiciones relativas (0–1) del área del mapa: escritorio y mobile. */
+/**
+ * Posiciones relativas (0–1) del área del mapa: escritorio y mobile.
+ * Cada área es un grupo con sus tecnologías alrededor; DPID y el sistema de diseño
+ * quedan entre los grupos porque los conectan.
+ */
 const POS: Record<string, { d: [number, number]; m: [number, number] }> = {
-  java: { d: [0.55, 0.06], m: [0.22, 0.05] },
-  ia: { d: [0.9, 0.07], m: [0.8, 0.05] },
-  react: { d: [0.74, 0.15], m: [0.55, 0.14] },
-  pp: { d: [0.9, 0.24], m: [0.78, 0.24] },
-  sw: { d: [0.56, 0.26], m: [0.24, 0.24] },
-  rn: { d: [0.75, 0.34], m: [0.5, 0.34] },
-  ypf: { d: [0.97, 0.38], m: [0.86, 0.34] },
-  dpid: { d: [0.1, 0.46], m: [0.2, 0.44] },
-  da: { d: [0.82, 0.47], m: [0.7, 0.44] },
-  obs: { d: [0.45, 0.37], m: [0.42, 0.54] },
-  py: { d: [0.97, 0.54], m: [0.84, 0.54] },
-  ac: { d: [0.27, 0.58], m: [0.3, 0.64] },
-  energia: { d: [0.62, 0.47], m: [0.76, 0.64] },
-  curso: { d: [0.12, 0.69], m: [0.18, 0.74] },
-  mongo: { d: [0.7, 0.54], m: [0.58, 0.74] },
-  wcag: { d: [0.06, 0.8], m: [0.14, 0.84] },
-  sr: { d: [0.3, 0.88], m: [0.5, 0.94] },
-  nilm: { d: [0.45, 0.96], m: [0.86, 0.84] },
+  // Software
+  sw: { d: [0.2, 0.22], m: [0.3, 0.16] },
+  java: { d: [0.08, 0.05], m: [0.22, 0.04] },
+  react: { d: [0.36, 0.05], m: [0.72, 0.04] },
+  rn: { d: [0.09, 0.42], m: [0.76, 0.16] },
+  // Puentes
+  ds: { d: [0.42, 0.44], m: [0.5, 0.29] },
+  dpid: { d: [0.6, 0.62], m: [0.74, 0.42] },
+  // Accesibilidad
+  ac: { d: [0.22, 0.7], m: [0.26, 0.42] },
+  wcag: { d: [0.07, 0.93], m: [0.18, 0.55] },
+  curso: { d: [0.38, 0.93], m: [0.66, 0.55] },
+  // Datos
+  da: { d: [0.76, 0.28], m: [0.78, 0.7] },
+  py: { d: [0.58, 0.07], m: [0.17, 0.83] },
+  mongo: { d: [0.9, 0.07], m: [0.47, 0.83] },
+  obs: { d: [0.93, 0.3], m: [0.8, 0.83] },
+  pp: { d: [0.9, 0.52], m: [0.3, 0.96] },
+  ypf: { d: [0.95, 0.72], m: [0.74, 0.96] },
+  // IA
+  ia: { d: [0.75, 0.9], m: [0.42, 0.7] },
 };
 
 interface Pt {

@@ -36,7 +36,7 @@ export default function Contact() {
         <div className="contact__foot">
           <p>{c.location}</p>
           <p>
-            © {new Date().getFullYear()} Bruno Santillan · {c.footer}
+            © {new Date().getFullYear()} Bruno Santillan
           </p>
         </div>
       </div>

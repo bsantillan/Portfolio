@@ -39,31 +39,11 @@ test('menú mobile: aria-expanded, nombre dinámico y Escape', async ({ page, is
   await expect(page.locator('#menu-mobile')).toBeHidden();
 });
 
-test('"Ver estructura accesible": operable con teclado y anunciado', async ({ page }) => {
-  await page.goto('./');
-  const toggle = page.locator('.tool--structure');
-  await toggle.focus();
-  await expect(toggle).toHaveAttribute('aria-pressed', 'false');
-  await page.keyboard.press('Enter');
-  await expect(toggle).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.getByRole('status')).toContainText(/Estructura visible: \d+ regiones, \d+ encabezados y \d+ elementos enfocables/);
-  const panel = page.getByRole('complementary', { name: 'Estructura accesible' });
-  await expect(panel).toBeVisible();
-  await expect(panel.getByRole('link', { name: 'Casos' })).toBeVisible();
-  expect(await page.locator('.so-mark--heading').count()).toBeGreaterThan(10);
-  expect(await page.locator('.so-mark--focus').count()).toBeGreaterThan(20);
-  // cerrar desde el panel devuelve el foco al interruptor
-  await panel.getByRole('button', { name: 'Cerrar el panel de estructura' }).click();
-  await expect(toggle).toBeFocused();
-  await expect(toggle).toHaveAttribute('aria-pressed', 'false');
-  await expect(page.getByRole('status')).toHaveText('Estructura oculta.');
-});
-
 test('mapa del hero: nodos operables con teclado y descriptos', async ({ page }) => {
   await page.goto('./');
   const node = page.getByRole('button', { name: 'Python' });
   await node.focus();
-  await expect(node).toHaveAccessibleDescription(/dashboard.*Se conecta con: .*MongoDB/);
+  await expect(node).toHaveAccessibleDescription(/dashboard.*Se conecta con: Datos/);
   await page.keyboard.press('Enter');
   await expect(node).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('.map__legend')).toContainText('Python');

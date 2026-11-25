@@ -5,8 +5,7 @@ En línea en **https://bsantillan.github.io/Portfolio/** · español (por defect
 
 Lo que lo hace distinto:
 
-- **Mapa interactivo** en el hero: las áreas de trabajo (software, datos, accesibilidad, IA) y cómo se conectan. Se usa con mouse o teclado.
-- **"Ver estructura accesible"**: un interruptor que superpone sobre el sitio cómo lo interpreta un lector de pantalla (regiones, encabezados con su nivel, textos alternativos y orden de tabulación) y lista el esquema en un panel.
+- **Mapa interactivo** en el hero: las áreas de trabajo (software, datos, accesibilidad, IA), las tecnologías de cada una y dónde las usé. Se usa con mouse o teclado.
 - **Accesibilidad verificada en CI**: axe-core (WCAG 2.2 AA + contraste AAA), recorrido por teclado, tamaño de targets, movimiento reducido y contraste de la paleta.
 
 ## Stack
@@ -26,7 +25,7 @@ mi-portfolio/
 │  │  └─ en/
 │  ├─ components/         ← un componente (y su CSS) por sección
 │  ├─ styles/base.css     ← fuentes, tokens de color, foco, utilidades
-│  └─ state.tsx           ← idioma, tema y estado del overlay
+│  └─ state.tsx           ← idioma y tema
 ├─ public/                ← CV, fuentes, favicon, og-image, robots, sitemap
 ├─ tests/                 ← a11y (axe), interacción/teclado, contraste
 └─ scripts/               ← deploy, imágenes, imagen OG, capturas
