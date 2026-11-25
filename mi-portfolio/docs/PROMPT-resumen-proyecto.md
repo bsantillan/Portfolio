@@ -6,7 +6,7 @@ Pegalo en una IA que tenga acceso al repositorio (por ejemplo, Claude Code abier
 
 Analizá este repositorio y escribí un resumen del proyecto para un caso de estudio de mi portfolio. Basate solo en lo que puedas comprobar en el código, la configuración, la documentación y el historial de git. Si algo no se puede saber desde el repo, escribí "No consta" en lugar de suponerlo.
 
-Contexto: el proyecto empezó como un trabajo en equipo (reservas de canchas de pádel para el club Los Ciruelos) y después lo continué solo con una reingeniería grande. Mi usuario de git es el que aparece como autor de los commits más recientes; confirmalo con `git log`.
+Contexto: el proyecto es un sistema de reservas de canchas de pádel para el club Los Ciruelos. Describí solo la versión actual. Mi usuario de git es el que aparece como autor de los commits más recientes; confirmalo con `git log`.
 
 Respondé en español, en Markdown, con estas secciones:
 

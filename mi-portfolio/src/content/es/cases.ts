@@ -63,7 +63,7 @@ export const cases: Content['cases'] = {
         'Un catálogo para copiar el código de cada componente: cada equipo toma solo lo que necesita.',
       ],
       stack: ['HTML', 'CSS', 'Sass', 'Bootstrap'],
-      status: 'Funcional. Todavía no está en uso público, así que no puedo mostrar capturas.',
+      status: 'Funcional. Se difundió internamente y ya lo usan distintas secretarías provinciales. Todavía no es público, así que no puedo mostrar capturas.',
       links: [{ label: 'Código privado (sector público)' }],
     },
     {
@@ -129,11 +129,11 @@ export const cases: Content['cases'] = {
       id: 'los-ciruelos',
       title: 'Los Ciruelos: reservas y gestión de un club de pádel',
       org: 'Proyecto propio',
-      period: 'Reescrito desde cero en 2026',
+      period: '2026',
       area: 'Full stack',
       context:
-        'Un club de pádel necesitaba que sus socios reservaran y pagaran canchas online, y que el personal cobrara, vendiera y llevara la caja en un solo sistema. Empezó como un proyecto en equipo; en 2026 lo reescribí desde cero por mi cuenta.',
-      role: 'Único desarrollador de la versión actual: backend, frontend, base de datos e integraciones. Uso IA (Claude) como asistente de código y reviso y pruebo lo que propone.',
+        'Un club de pádel necesitaba que sus socios reservaran y pagaran canchas online, y que el personal cobrara, vendiera y llevara la caja en un solo sistema.',
+      role: 'Único desarrollador: backend, frontend, base de datos e integraciones. Uso IA (Claude) como asistente de código y reviso y pruebo lo que propone.',
       built: [
         'Reserva online para socios: eligen cancha, horario y duración, suman productos y pagan la seña o el total con Mercado Pago.',
         'Panel del personal: grilla de reservas por cancha, cobro en efectivo, QR y posnet de Mercado Pago, transferencia o Cuenta DNI, ventas sueltas, caja del día y stock.',
@@ -152,12 +152,11 @@ export const cases: Content['cases'] = {
       status: 'En desarrollo. Falta el despliegue a producción.',
       links: [
         { label: 'Backend en GitHub', href: 'https://github.com/bsantillan/LosCiruelos-Backend' },
-        { label: 'Versión original del equipo', href: 'https://github.com/KaterinaMariescurren/Proyecto-los-ciruelos' },
       ],
       diagram: {
         key: 'ciruelos',
         title: 'Arquitectura: una app web en React se comunica con el backend en Spring Boot, que guarda los datos en PostgreSQL y se integra con Mercado Pago, WhatsApp, el correo y el inicio de sesión de Google.',
-        caption: 'Arquitectura de la versión actual.',
+        caption: 'Arquitectura.',
       },
     },
   ],

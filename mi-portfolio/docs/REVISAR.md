@@ -10,10 +10,9 @@ Diferencias entre el CV y el portfolio que conviene corregir en el CV:
 
 | # | En el CV | En el portfolio | Por qué |
 |---|---|---|---|
-| 1 | Los Ciruelos: "dockerización para despliegue" | No lo menciona | El repo no tiene Dockerfile; el docker-compose solo levanta PostgreSQL para desarrollo. |
-| 2 | Componentes "utilizados por distintas secretarías provinciales" | "Todavía no está en uso público" | Me dijiste que todavía no está en uso público. Aclaralo en uno de los dos. |
-| 3 | No figura el curso que dictás | Aparece en Trayectoria y Accesibilidad | Si lo dictás, sumalo al CV. |
-| 4 | No figura Sass | Aparece en Habilidades | Sale del sistema de diseño. |
+| 1 | Los Ciruelos: "dockerización para despliegue" | No lo menciona | Era de la versión vieja del equipo. Sacalo del CV. |
+| 2 | No figura el curso que dictás | Aparece en Trayectoria y Accesibilidad | Si lo dictás, sumalo al CV. |
+| 3 | No figura Sass | Aparece en Habilidades | Sale del sistema de diseño. |
 
 ## 2. Datos para confirmar
 

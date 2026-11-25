@@ -63,7 +63,7 @@ export const cases: Content['cases'] = {
         'A catalogue to copy each component’s code: every team takes only what it needs.',
       ],
       stack: ['HTML', 'CSS', 'Sass', 'Bootstrap'],
-      status: 'Working. Not in public use yet, so I can’t show screenshots.',
+      status: 'Working. It was shared internally and several provincial departments already use it. It is not public yet, so I can’t show screenshots.',
       links: [{ label: 'Private code (public sector)' }],
     },
     {
@@ -129,11 +129,11 @@ export const cases: Content['cases'] = {
       id: 'los-ciruelos',
       title: 'Los Ciruelos: bookings and management for a padel club',
       org: 'Personal project',
-      period: 'Rewritten from scratch in 2026',
+      period: '2026',
       area: 'Full stack',
       context:
-        'A padel club needed members to book and pay for courts online, and staff to take payments, sell and run the till in a single system. It started as a team project; in 2026 I rewrote it from scratch on my own.',
-      role: 'Sole developer of the current version: backend, frontend, database and integrations. I use AI (Claude) as a coding assistant, and I review and test what it suggests.',
+        'A padel club needed members to book and pay for courts online, and staff to take payments, sell and run the till in a single system.',
+      role: 'Sole developer: backend, frontend, database and integrations. I use AI (Claude) as a coding assistant, and I review and test what it suggests.',
       built: [
         'Online booking for members: they pick a court, time and length, add products and pay the deposit or the full price with Mercado Pago.',
         'A staff panel: a booking grid per court, payments in cash, by Mercado Pago QR or card reader, bank transfer or Cuenta DNI, walk-in sales, the daily till and stock.',
@@ -152,12 +152,11 @@ export const cases: Content['cases'] = {
       status: 'In development. Not deployed to production yet.',
       links: [
         { label: 'Backend on GitHub', href: 'https://github.com/bsantillan/LosCiruelos-Backend' },
-        { label: 'The team’s original version', href: 'https://github.com/KaterinaMariescurren/Proyecto-los-ciruelos' },
       ],
       diagram: {
         key: 'ciruelos',
         title: 'Architecture: a React web app talks to the Spring Boot backend, which stores data in PostgreSQL and integrates with Mercado Pago, WhatsApp, email and Google sign-in.',
-        caption: 'Architecture of the current version.',
+        caption: 'Architecture.',
       },
     },
   ],

@@ -2,7 +2,7 @@ export type Lang = 'es' | 'en';
 
 export type CaseId = 'iot' | 'sistema-diseno' | 'ypf' | 'pasa-la-pagina' | 'los-ciruelos';
 export type ArchiveId = 'menu-accesible' | 'estacionamiento';
-export type ImageKey = 'los-ciruelos' | 'pasa-la-pagina' | 'menu-accesible' | 'estacionamiento';
+export type ImageKey = 'pasa-la-pagina' | 'menu-accesible' | 'estacionamiento';
 export type DiagramKey = 'iot' | 'ypf' | 'ciruelos';
 
 /** Un link siempre dice a dónde lleva. Sin href = no hay recurso público. */
