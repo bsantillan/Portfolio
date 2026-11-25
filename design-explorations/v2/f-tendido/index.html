@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>F · Tendido — Bruno Santillán</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&family=Atkinson+Hyperlegible+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../paleta.css">
+<style>
+  body { font: 400 1.125rem/1.65 "Atkinson Hyperlegible Next", sans-serif; }
+  .mono { font-family: "Atkinson Hyperlegible Mono", monospace; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+
+  header.nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; gap: 16px; }
+  header.nav .who { font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: -.01em; }
+  header.nav nav { display: flex; gap: 6px; background: var(--surface); padding: 4px; border-radius: 10px; }
+  header.nav nav a { color: var(--text); text-decoration: none; padding: 8px 14px; border-radius: 7px; font-weight: 600; font-size: 1rem; }
+  header.nav nav a[aria-current] { background: var(--bg); }
+  .tools { display: flex; gap: 8px; }
+  .tools button { font: 600 .9375rem/1 "Atkinson Hyperlegible Next"; color: var(--text); background: var(--surface); border: 1.5px solid transparent; border-radius: 8px; padding: 9px 12px; min-height: 36px; }
+
+  .hero { padding: clamp(48px, 8vw, 110px) 0 0; text-align: left; }
+  h1 { font: 800 clamp(3rem, 9vw, 7.75rem)/.95 "Atkinson Hyperlegible Next"; letter-spacing: -.045em; margin: 0; }
+  .lede { font-size: clamp(1.25rem, 2.1vw, 1.625rem); line-height: 1.45; max-width: 36ch; margin: 26px 0 0; }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 30px; }
+  .btn { display: inline-flex; align-items: center; font-weight: 800; text-decoration: none; padding: 14px 22px; border-radius: 10px; min-height: 48px; color: var(--text); background: var(--surface); }
+  .btn.primary { background: var(--accent); color: var(--on-accent); }
+  .avail { font: 400 1rem/1.4 "Atkinson Hyperlegible Mono"; color: var(--text-2); }
+  .avail b { color: var(--text); font-weight: 600; }
+
+  /* Tendido La Plata → Neuquén: la trayectoria como línea de transmisión */
+  .line-wrap { margin-top: clamp(48px, 8vw, 96px); position: relative; }
+  .line-head { display: flex; justify-content: space-between; font: 600 .9375rem/1.3 "Atkinson Hyperlegible Mono"; }
+  .line-head span:last-child { text-align: right; }
+  .line-head small { display: block; font-weight: 400; color: var(--text-2); }
+  .scroller { overflow-x: auto; }
+  svg.tendido { display: block; width: 100%; min-width: 760px; height: auto; }
+  .milestones { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; min-width: 760px; }
+  .milestones li { font-size: .9375rem; line-height: 1.35; }
+  .milestones .y { display: block; font: 600 .8125rem/1.6 "Atkinson Hyperlegible Mono"; color: var(--accent); }
+  .milestones li.next .y { color: var(--text-2); }
+
+  /* Caso: título fijo a la izquierda, contenido a la derecha */
+  .case { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; padding: clamp(80px, 11vw, 150px) 0 120px; border-top: 0; }
+  .case-title { position: sticky; top: 24px; align-self: start; }
+  .case-title .k { font: 600 .875rem/1 "Atkinson Hyperlegible Mono"; color: var(--accent); margin: 0; }
+  .case-title h2 { font: 800 clamp(2.25rem, 4.6vw, 3.5rem)/1 "Atkinson Hyperlegible Next"; letter-spacing: -.035em; margin: 14px 0 14px; }
+  .case-title p { color: var(--text-2); margin: 0; font-size: 1rem; }
+  .step { padding: 0 0 30px 28px; border-left: 2px solid var(--surface); position: relative; }
+  .step::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+  .step h3 { font: 800 1.125rem/1.3 "Atkinson Hyperlegible Next"; margin: 0 0 6px; }
+  .step p { margin: 0; max-width: 56ch; }
+  .step ul { margin: 0; padding-left: 1.1em; }
+  .step li { margin-bottom: 8px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0 !important; }
+  .tags li { background: var(--surface); padding: 5px 10px; border-radius: 6px; font: .875rem "Atkinson Hyperlegible Mono"; margin: 0; }
+
+  @media (max-width: 860px) {
+    header.nav nav { display: none; }
+    .case { grid-template-columns: 1fr; gap: 28px; }
+    .case-title { position: static; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="wrap">
+  <header class="nav">
+    <a class="who" href="#">Bruno Santillán</a>
+    <nav aria-label="Principal"><a href="#" aria-current="page">Inicio</a><a href="#">Casos</a><a href="#">Accesibilidad</a><a href="#">Contacto</a></nav>
+    <div class="tools"><button aria-pressed="false">Ver estructura</button><button lang="en">EN</button></div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="t">
+      <h1 id="t">Bruno<br>Santillán</h1>
+      <p class="lede">Construyo software accesible y herramientas de datos para operaciones reales: de un sistema de inspecciones en YPF a monitoreo eléctrico IoT.</p>
+      <div class="row">
+        <a class="btn primary" href="#">Ver casos</a><a class="btn" href="#">Descargar CV (PDF)</a>
+        <p class="avail"><b>Buscando rol junior</b><br>Remoto o presencial</p>
+      </div>
+
+      <div class="line-wrap">
+        <h2 class="mono" style="font-size:.875rem;font-weight:400;color:var(--text-2);margin:0 0 10px">Trayectoria</h2>
+        <div class="line-head"><span>La Plata<small>hoy</small></span><span>Neuquén<small>disponible para relocalizar · ~1.150 km</small></span></div>
+        <div class="scroller" tabindex="0" aria-label="Trayectoria, desplazable horizontalmente">
+          <svg class="tendido" viewBox="0 0 1100 150" aria-hidden="true">
+            <g id="towers" stroke="var(--text)" stroke-width="2" fill="none"></g>
+            <path id="wire" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+            <path id="wire2" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+            <path id="pulse" fill="none" stroke="var(--accent)" stroke-width="3"/>
+            <path d="M1060 60 l0 80" stroke="var(--line)" stroke-dasharray="3 4"/>
+          </svg>
+          <ol class="milestones">
+            <li><span class="y">UTN FRLP</span>Ingeniería en Sistemas y Analista Universitario</li>
+            <li><span class="y">2023–2025</span>Ayudante de Análisis Matemático II</li>
+            <li><span class="y">2025</span>Pasá la Página, freelance full stack</li>
+            <li><span class="y">2025</span>YPF, práctica: sistema de inspecciones</li>
+            <li><span class="y">sep 2025–hoy</span>DPID: accesibilidad e IoT. Dicto un curso</li>
+            <li class="next"><span class="y">2026 →</span>Lic. en IA en curso · próximo tramo</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <article class="case" aria-labelledby="c1">
+      <div class="case-title">
+        <p class="k">Caso 01 · Energía</p>
+        <h2 id="c1">Monitoreo eléctrico IoT</h2>
+        <p>Dirección Provincial de Innovación Digital (PBA)<br>Desde 2025 · código privado</p>
+      </div>
+      <div>
+        <div class="step"><h3>Contexto</h3><p>Un proyecto de eficiencia energética mide el consumo de edificios públicos con sensores por circuito. Los sensores son de otro equipo; los datos quedaban en un buffer local, sin alertas ni forma simple de consultarlos.</p></div>
+        <div class="step"><h3>Mi rol</h3><p>Desarrollador: persistencia, operación y visualización de los datos.</p></div>
+        <div class="step"><h3>Qué construí</h3><ul>
+          <li>Migración del buffer local a MongoDB con series de tiempo y backups automáticos.</li>
+          <li>Panel de administración de sensores, pisos y circuitos.</li>
+          <li>Alertas de fallas y caídas con node_exporter, Prometheus, Alertmanager y Uptime Kuma, con aviso en Discord.</li>
+          <li>Gran parte del dashboard en Python: unos 50 gráficos y métricas.</li>
+        </ul></div>
+        <div class="step"><h3>Stack</h3><ul class="tags"><li>Python</li><li>MongoDB</li><li>Prometheus</li><li>Alertmanager</li><li>Uptime Kuma</li><li>node_exporter</li></ul></div>
+        <div class="step" style="padding-bottom:0"><h3>Estado</h3><p>En uso interno. Investigación de desagregación de consumo (NILM) en curso, sin resultados todavía.</p></div>
+      </div>
+    </article>
+  </main>
+</div>
+<script>
+  // Torres de alta tensión + catenarias; un pulso de onda viaja por el cable.
+  const xs = [40, 240, 440, 640, 840, 1060], TOP = 34, ns = 'http://www.w3.org/2000/svg';
+  const g = document.getElementById('towers');
+  xs.forEach((x, i) => {
+    const p = document.createElementNS(ns, 'path');
+    p.setAttribute('d', `M${x - 16} 140 L${x} ${TOP} L${x + 16} 140 M${x - 22} ${TOP + 8} h44 M${x - 16} ${TOP + 30} h32 M${x - 11} 84 l22 22 M${x + 11} 84 l-22 22`);
+    if (i === xs.length - 1) p.setAttribute('stroke-dasharray', '4 4');
+    g.appendChild(p);
+  });
+  function cat(dy) { let d = `M${xs[0]} ${TOP + 8 + dy}`; for (let i = 1; i < xs.length; i++) { const a = xs[i - 1], b = xs[i]; d += ` Q${(a + b) / 2} ${TOP + 46 + dy} ${b} ${TOP + 8 + dy}`; } return d; }
+  document.getElementById('wire').setAttribute('d', cat(0));
+  document.getElementById('wire2').setAttribute('d', cat(22));
+  // Pulso: tramo de onda que se desplaza sobre la catenaria
+  const pulse = document.getElementById('pulse');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function sag(x) { for (let i = 1; i < xs.length; i++) if (x <= xs[i]) { const a = xs[i - 1], b = xs[i], t = (x - a) / (b - a); return TOP + 8 + 4 * 38 * t * (1 - t) * .5; } return TOP + 8; }
+  function draw(pos) { let d = ''; for (let x = pos - 90; x <= pos + 90; x += 2) { if (x < xs[0] || x > xs[4]) continue; const env = Math.cos((x - pos) / 90 * Math.PI / 2) ** 2; const y = sag(x) - env * (Math.sin(x / 7) + .3 * Math.sin(3 * x / 7)) * 10; d += (d ? 'L' : 'M') + x + ' ' + y.toFixed(1); } pulse.setAttribute('d', d); }
+  let pos = 520; draw(pos);
+  if (!reduce) (function l() { pos += 1.4; if (pos > 940) pos = -60; draw(pos); requestAnimationFrame(l); })();
+</script>
+</body>
+</html>

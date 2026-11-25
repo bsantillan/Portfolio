@@ -1,0 +1,19 @@
+/* Paleta 3 · Acero y verde señal — todo texto ≥ 7:1 (AAA), UI ≥ 3:1 */
+:root {
+  color-scheme: light dark;
+  --bg: #eef1f4; --surface: #dfe4ea; --text: #12161b; --text-2: #3e4651;
+  --accent: #0c5331; --on-accent: #ffffff; --line: #5f6b78; --tint: #d4eadd;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131619; --surface: #1d2125; --text: #e9edf1; --text-2: #a9b2bc;
+    --accent: #5fe0a0; --on-accent: #06231a; --line: #7b8692; --tint: #173b2a;
+  }
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); color: var(--text); }
+body { margin: 0; }
+a { color: var(--accent); text-underline-offset: .2em; text-decoration-thickness: 1.5px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.skip { position: absolute; left: 12px; top: -60px; background: var(--accent); color: var(--on-accent); padding: 10px 14px; z-index: 10; }
+.skip:focus { top: 12px; }
