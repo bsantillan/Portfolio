@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B · Tablero — Bruno Santillán</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Atkinson+Hyperlegible+Next:wght@400;600&family=Atkinson+Hyperlegible+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* claro = chapa gris de tablero, rótulos negros, señal amarilla */
+    --bg: #d6d4cc;
+    --plate: #e6e4dd;
+    --ink: #121210;
+    --ink-2: #3c3b37;
+    --line: #121210;
+    --sig: #f2c300;
+    --sig-ink: #121210;
+    --live: #121210;
+    --display: "Archivo", sans-serif;
+    --mono: "Atkinson Hyperlegible Mono", monospace;
+    --body: "Atkinson Hyperlegible Next", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* oscuro = interior de tablero con la tapa abierta: grafito cálido, cobre, amarillo */
+      --bg: #1a1916;
+      --plate: #24231f;
+      --ink: #f1efe7;
+      --ink-2: #c3c0b4;
+      --line: #6b675c;
+      --sig: #ffd21f;
+      --sig-ink: #1a1916;
+      --live: #e8a36a; /* cobre */
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.125rem/1.6 var(--body); }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 56px); }
+
+  /* barra: rótulos atornillados */
+  .bar { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; gap: 16px; }
+  .label { font: 800 .8125rem/1 var(--display); font-stretch: 80%; text-transform: uppercase; letter-spacing: .1em;
+    background: var(--ink); color: var(--bg); padding: 8px 12px 7px; position: relative; display: inline-block; }
+  .label.sig { background: var(--sig); color: var(--sig-ink); }
+  .screws::before, .screws::after { content: ""; position: absolute; top: 50%; width: 5px; height: 5px; border-radius: 50%; background: currentColor; opacity: .55; transform: translateY(-50%); }
+  .screws { padding-inline: 20px; }
+  .screws::before { left: 7px; } .screws::after { right: 7px; }
+  .bar nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  .bar nav a { font: 600 .875rem/1 var(--mono); color: var(--ink); text-decoration: none; padding: 9px 10px; border: 1.5px solid transparent; }
+  .bar nav a:hover { border-color: var(--ink); }
+  .bar nav a b { color: var(--ink-2); font-weight: 400; margin-right: 4px; }
+  .switch { display: inline-flex; align-items: center; gap: 10px; font: 600 .875rem/1 var(--mono); background: none; color: var(--ink); border: 0; padding: 6px; }
+  .switch .track { width: 22px; height: 38px; border: 2px solid var(--ink); position: relative; background: var(--plate); }
+  .switch .track::after { content: ""; position: absolute; left: 2px; right: 2px; bottom: 2px; height: 14px; background: var(--ink); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--sig); outline-offset: 2px; box-shadow: 0 0 0 6px var(--ink); }
+
+  /* HERO = tablero general con diagrama unifilar */
+  .board { background: var(--plate); border: 2px solid var(--line); margin-top: 8px; position: relative; }
+  .board-head { display: grid; grid-template-columns: 1fr auto; border-bottom: 2px solid var(--line); }
+  .board-head .id { padding: 14px 18px; font: 600 .875rem/1.3 var(--mono); color: var(--ink-2); }
+  .board-head .lamp { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-left: 2px solid var(--line); font: 600 .875rem/1 var(--mono); }
+  .lamp i { width: 14px; height: 14px; border-radius: 50%; background: var(--sig); box-shadow: 0 0 0 3px var(--plate), 0 0 0 4.5px var(--ink); }
+  h1 { margin: 0; padding: clamp(24px, 4vw, 48px) 18px 0; font: 900 clamp(3.5rem, 11vw, 10.5rem)/.85 var(--display); font-stretch: 62%; text-transform: uppercase; letter-spacing: -.005em; }
+  h1 span { display: block; font-stretch: 125%; font-weight: 500; font-size: .19em; letter-spacing: .14em; margin-top: 14px; color: var(--ink-2); }
+  .lede { padding: 22px 18px 0; max-width: 44ch; font-size: clamp(1.2rem, 1.8vw, 1.5rem); line-height: 1.4; }
+
+  .feed { position: relative; margin-top: 34px; border-top: 2px solid var(--line); }
+  .feed svg { display: block; width: 100%; height: 120px; }
+  .feed .tag { position: absolute; left: 18px; top: -13px; }
+
+  .circuits { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--line); }
+  .circuit { padding: 0 18px 22px; border-right: 2px solid var(--line); position: relative; }
+  .circuit:last-child { border-right: 0; }
+  .circuit svg { display: block; height: 70px; margin: 0 0 6px 6px; }
+  .circuit h2 { margin: 10px 0 6px; font: 800 1.5rem/1 var(--display); font-stretch: 75%; text-transform: uppercase; }
+  .circuit p { margin: 0; color: var(--ink-2); font-size: 1rem; }
+  .board-foot { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 18px; border-top: 2px solid var(--line); }
+  .status { font: 600 .9375rem/1.4 var(--mono); }
+  .status b { background: var(--sig); color: var(--sig-ink); padding: 1px 6px; }
+  .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn { font: 800 1rem/1 var(--display); font-stretch: 85%; text-transform: uppercase; letter-spacing: .08em; text-decoration: none; color: var(--ink); border: 2px solid var(--ink); padding: 14px 18px; min-height: 48px; display: inline-flex; align-items: center; }
+  .btn.primary { background: var(--ink); color: var(--plate); }
+
+  /* CASO: circuito C1 */
+  .case { margin: 72px 0 120px; display: grid; grid-template-columns: 64px 1fr; }
+  .bus { position: relative; }
+  .bus::before { content: ""; position: absolute; left: 30px; top: 0; bottom: 0; width: 4px; background: var(--live); }
+  .bus .node { position: absolute; left: 20px; top: 20px; width: 24px; height: 24px; background: var(--sig); border: 3px solid var(--ink); transform: rotate(45deg); }
+  .case-head { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 18px; }
+  .case h2 { font: 900 clamp(2.5rem, 6vw, 5rem)/.9 var(--display); font-stretch: 62%; text-transform: uppercase; margin: 18px 0 4px; }
+  .case .org { font: 600 1rem/1.4 var(--mono); color: var(--ink-2); margin: 0 0 30px; }
+  .rows { border-top: 2px solid var(--line); }
+  .row { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .row h3 { margin: 0; font: 800 1.0625rem/1.2 var(--display); font-stretch: 90%; text-transform: uppercase; letter-spacing: .06em; }
+  .row h3 small { display: block; font: 600 .8125rem/1.4 var(--mono); color: var(--ink-2); letter-spacing: 0; text-transform: none; }
+  .row p, .row ul { margin: 0; max-width: 64ch; }
+  .row ul { padding-left: 1.1em; }
+  .row li { margin-bottom: 6px; }
+  .row li::marker { content: "■  "; color: var(--ink-2); font-size: .7em; }
+  .stack { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0 !important; }
+  .stack li { font: 600 .875rem/1 var(--mono); border: 2px solid var(--ink); padding: 7px 10px; margin: 0; }
+  .stack li::marker { content: ""; }
+
+  @media (max-width: 860px) {
+    .bar nav { display: none; }
+    .circuits { grid-template-columns: 1fr; }
+    .circuit { border-right: 0; border-bottom: 2px solid var(--line); }
+    .circuit:last-child { border-bottom: 0; }
+    .case { grid-template-columns: 28px 1fr; }
+    .bus::before { left: 8px; } .bus .node { left: 0; }
+    .row { grid-template-columns: 1fr; gap: 6px; }
+    .board-head { grid-template-columns: 1fr; }
+    .board-head .lamp { border-left: 0; border-top: 2px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="bar">
+    <span class="label sig screws">TG · B. Santillán</span>
+    <nav aria-label="Principal"><a href="#"><b>C1</b>Casos</a><a href="#"><b>C2</b>Trayectoria</a><a href="#"><b>C3</b>Accesibilidad</a><a href="#"><b>C4</b>Stack</a><a href="#"><b>C5</b>Contacto</a></nav>
+    <div style="display:flex;gap:6px;align-items:center">
+      <button class="switch" aria-pressed="false"><span class="track" aria-hidden="true"></span>Estructura</button>
+      <button class="switch">ES / EN</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="board" aria-labelledby="t">
+      <div class="board-head">
+        <span class="id">Tablero general · Ingeniero en Sistemas (UTN FRLP, 2026) · Lic. en IA en curso</span>
+        <span class="lamp"><i aria-hidden="true"></i>Disponible</span>
+      </div>
+      <h1 id="t">Bruno Santillán<span>Software · Energía · Accesibilidad</span></h1>
+      <p class="lede">Construyo software accesible y herramientas de datos para operaciones reales: de un sistema de inspecciones en YPF a monitoreo eléctrico IoT.</p>
+
+      <div class="feed" aria-hidden="true">
+        <span class="label screws tag">Acometida · señal en vivo</span>
+        <svg viewBox="0 0 1320 120" preserveAspectRatio="none"><path id="w" fill="none" stroke="var(--live)" stroke-width="3"/></svg>
+      </div>
+
+      <div class="circuits">
+        <div class="circuit">
+          <svg viewBox="0 0 60 70" aria-hidden="true"><path d="M30 0v22M30 22l14 -12M30 48v22" stroke="currentColor" stroke-width="3" fill="none"/><circle cx="30" cy="48" r="4" fill="currentColor"/></svg>
+          <span class="label">C1</span>
+          <h2>Software</h2>
+          <p>Full stack con Java/Spring, React y React Native. Apps en producción y en equipo.</p>
+        </div>
+        <div class="circuit">
+          <svg viewBox="0 0 60 70" aria-hidden="true"><path d="M30 0v22M30 22l14 -12M30 48v22" stroke="currentColor" stroke-width="3" fill="none"/><circle cx="30" cy="48" r="4" fill="currentColor"/></svg>
+          <span class="label">C2</span>
+          <h2>Datos y energía</h2>
+          <p>Power Platform en YPF, series de tiempo y monitoreo de consumo eléctrico.</p>
+        </div>
+        <div class="circuit">
+          <svg viewBox="0 0 60 70" aria-hidden="true"><path d="M30 0v22M30 22l14 -12M30 48v22" stroke="currentColor" stroke-width="3" fill="none"/><circle cx="30" cy="48" r="4" fill="currentColor"/></svg>
+          <span class="label">C3</span>
+          <h2>Accesibilidad</h2>
+          <p>Auditorías WCAG, pruebas con lector de pantalla y un curso que dicto a equipos técnicos.</p>
+        </div>
+      </div>
+
+      <div class="board-foot">
+        <p class="status"><b>Buscando rol junior</b> · La Plata · Remoto · Relocalizable a Neuquén</p>
+        <div class="btns"><a class="btn primary" href="#">Ver casos</a><a class="btn" href="#">Descargar CV</a></div>
+      </div>
+    </section>
+
+    <article class="case" aria-labelledby="c1">
+      <div class="bus" aria-hidden="true"><span class="node"></span></div>
+      <div>
+        <div class="case-head"><span class="label sig screws">C1.1</span><span class="label">Energía</span></div>
+        <h2 id="c1">Monitoreo eléctrico IoT</h2>
+        <p class="org">Dirección Provincial de Innovación Digital (PBA) · desde 2025</p>
+        <div class="rows">
+          <div class="row"><h3>Contexto</h3><p>Un proyecto de eficiencia energética mide el consumo de edificios públicos con sensores por circuito. Los sensores los desarrolló otro equipo; los datos quedaban en un buffer local, sin alertas ni forma simple de consultarlos.</p></div>
+          <div class="row"><h3>Mi rol</h3><p>Desarrollador: persistencia, operación y visualización de los datos.</p></div>
+          <div class="row"><h3>Qué construí</h3><ul>
+            <li>Migración del buffer local a MongoDB con series de tiempo y backups automáticos.</li>
+            <li>Panel de administración de sensores, pisos y circuitos.</li>
+            <li>Alertas de fallas y caídas con node_exporter, Prometheus, Alertmanager y Uptime Kuma, con aviso en Discord.</li>
+            <li>Gran parte del dashboard en Python: unos 50 gráficos y métricas.</li>
+          </ul></div>
+          <div class="row"><h3>Stack<small>solo tecnologías</small></h3><ul class="stack"><li>Python</li><li>MongoDB</li><li>Prometheus</li><li>Alertmanager</li><li>Uptime Kuma</li><li>node_exporter</li></ul></div>
+          <div class="row"><h3>Estado</h3><p>En uso interno. Código privado. Investigación de desagregación de consumo (NILM) abierta.</p></div>
+        </div>
+      </div>
+    </article>
+  </main>
+</div>
+<script>
+  const p = document.getElementById('w'); const W = 1320, mid = 60;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ph = 0, scrollAmp = 0;
+  function draw() {
+    let d = '';
+    for (let x = 0; x <= W; x += 3) {
+      const t = x / W * Math.PI * 2 * 9 + ph;
+      // tren de pulsos tipo fuente conmutada: picos de corriente cerca del máximo de tensión
+      const v = Math.sin(t);
+      const i = Math.sign(v) * Math.pow(Math.abs(v), 6 + scrollAmp * 10);
+      d += (x ? 'L' : 'M') + x + ' ' + (mid - i * 46).toFixed(1);
+    }
+    p.setAttribute('d', d);
+  }
+  draw();
+  if (!reduce) {
+    addEventListener('scroll', () => { scrollAmp = Math.min(1, scrollY / 900); }, { passive: true });
+    (function loop() { ph += .025; draw(); requestAnimationFrame(loop); })();
+  }
+</script>
+</body>
+</html>

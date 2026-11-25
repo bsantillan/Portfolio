@@ -21,7 +21,9 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.1",
     "@eslint/js": "^9.19.0",
+    "@playwright/test": "^1.65.1",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@types/react-slick": "^0.23.13",

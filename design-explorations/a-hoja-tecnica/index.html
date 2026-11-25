@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A · Hoja técnica — Bruno Santillán</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f1ede3;
+    --ink: #16171a;
+    --ink-2: #45464b;
+    --rule: #16171a;
+    --grid: rgba(22, 23, 26, .07);
+    --grid-major: rgba(22, 23, 26, .13);
+    --signal: #e2520a;        /* naranja de seguridad: solo marcas, nunca texto chico */
+    --signal-ink: #16171a;    /* texto sobre señal */
+    --display: "Barlow Condensed", sans-serif;
+    --mono: "IBM Plex Mono", monospace;
+    --body: "Source Serif 4", Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* oscuro = "cianotipo invertido": tinta grafito, líneas tiza, señal ámbar */
+      --paper: #191a17;
+      --ink: #ece8dc;
+      --ink-2: #b4b0a4;
+      --rule: #ece8dc;
+      --grid: rgba(236, 232, 220, .05);
+      --grid-major: rgba(236, 232, 220, .10);
+      --signal: #ff8a3d;
+      --signal-ink: #191a17;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--paper); color: var(--ink); }
+  body {
+    margin: 0; font: 400 1.125rem/1.6 var(--body);
+    background-image:
+      linear-gradient(var(--grid-major) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+  }
+  .sheet { max-width: 1280px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
+
+  /* Barra superior tipo encabezado de plano */
+  .topbar { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center;
+    border-bottom: 2px solid var(--rule); padding: 14px 0; font: 500 .8125rem/1 var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+  .topbar nav { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; }
+  .topbar a { color: inherit; text-decoration: none; padding: 6px 0; }
+  .topbar a:hover { text-decoration: underline; text-decoration-color: var(--signal); text-decoration-thickness: 3px; text-underline-offset: 6px; }
+  .toggles { display: flex; gap: 8px; }
+  .toggles button { font: inherit; background: none; color: inherit; border: 1.5px solid var(--rule); padding: 7px 10px; min-height: 32px; }
+  .toggles button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+  /* HERO */
+  .hero { position: relative; padding: clamp(40px, 7vw, 96px) 0 0; }
+  .hero-meta { display: flex; justify-content: space-between; font: 400 .8125rem/1.4 var(--mono); color: var(--ink-2); }
+  h1 { font: 700 clamp(4rem, 13.5vw, 12.5rem)/.82 var(--display); text-transform: uppercase; letter-spacing: -.01em; margin: 20px 0 0; }
+  h1 .acc { position: relative; }
+  .dim { font: 400 .75rem/1 var(--mono); color: var(--ink-2); display: flex; align-items: center; gap: 8px; margin: 10px 0 0; }
+  .dim::before, .dim::after { content: ""; height: 1px; background: var(--ink-2); flex: 1; }
+  .dim span { white-space: nowrap; }
+
+  .wave-wrap { position: relative; margin: 28px calc(-1 * clamp(16px, 4vw, 48px)) 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .wave-wrap svg { display: block; width: 100%; height: clamp(110px, 14vw, 170px); }
+  .wave-label { position: absolute; left: clamp(16px, 4vw, 48px); top: 8px; font: 400 .75rem/1 var(--mono); color: var(--ink-2); background: var(--paper); padding: 2px 4px; }
+  .wave-label b { color: var(--ink); font-weight: 500; }
+
+  .hero-grid { display: grid; grid-template-columns: 7fr 5fr; gap: 0; border-bottom: 2px solid var(--rule); }
+  .lede { padding: 36px 40px 40px 0; border-right: 1px solid var(--rule); }
+  .lede p { font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.4; margin: 0; max-width: 32ch; }
+  .lede p mark { background: none; color: inherit; box-shadow: inset 0 -.32em 0 var(--signal); }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .btn { font: 600 1.25rem/1 var(--display); text-transform: uppercase; letter-spacing: .04em; text-decoration: none; padding: 14px 20px; border: 2px solid var(--ink); color: var(--ink); display: inline-flex; gap: 10px; align-items: center; min-height: 48px; }
+  .btn.primary { background: var(--signal); color: var(--signal-ink); border-color: var(--signal); }
+  .btn:focus-visible, .toggles button:focus-visible, .topbar a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; box-shadow: 0 0 0 6px var(--signal); }
+
+  /* Rótulo (title block) */
+  .titleblock { display: grid; grid-template-columns: 1fr 1fr; font: 400 .8125rem/1.35 var(--mono); }
+  .titleblock div { padding: 12px 14px; border-bottom: 1px solid var(--rule); border-left: 0; }
+  .titleblock div:nth-child(odd) { border-right: 1px solid var(--rule); }
+  .titleblock dt { color: var(--ink-2); text-transform: uppercase; letter-spacing: .06em; font-size: .6875rem; }
+  .titleblock dd { margin: 2px 0 0; color: var(--ink); }
+  .titleblock .wide { grid-column: 1 / -1; border-right: 0 !important; }
+  .status { display: inline-flex; align-items: center; gap: 8px; }
+  .status::before { content: ""; width: 10px; height: 10px; background: var(--signal); border: 1.5px solid var(--ink); }
+
+  /* CASO */
+  .case { padding: 88px 0 120px; }
+  .sec-head { display: grid; grid-template-columns: 120px 1fr auto; align-items: end; border-bottom: 2px solid var(--rule); padding-bottom: 10px; gap: 16px; }
+  .sec-num { font: 700 4.5rem/.8 var(--display); }
+  .sec-head h2 { font: 700 clamp(2.25rem, 5vw, 4rem)/.9 var(--display); text-transform: uppercase; margin: 0; }
+  .sec-head .ref { font: .75rem/1.3 var(--mono); color: var(--ink-2); text-align: right; }
+  .case-body { display: grid; grid-template-columns: 120px 1fr 300px; gap: 0 32px; padding-top: 28px; }
+  .case-body .margin { font: .75rem/1.5 var(--mono); color: var(--ink-2); }
+  .case-body h3 { font: 600 1.5rem/1.05 var(--display); text-transform: uppercase; letter-spacing: .02em; margin: 0 0 8px; display: flex; gap: 12px; align-items: baseline; }
+  .case-body h3 small { font: 500 .75rem/1 var(--mono); color: var(--ink-2); }
+  .block { margin-bottom: 30px; max-width: 62ch; }
+  .block p { margin: 0; }
+  .block ul { margin: 0; padding: 0; list-style: none; }
+  .block li { padding: 8px 0 8px 28px; border-top: 1px dashed var(--grid-major); position: relative; }
+  .block li::before { content: attr(data-n); position: absolute; left: 0; font: .75rem/1.9 var(--mono); color: var(--ink-2); }
+  aside.spec { border: 2px solid var(--rule); align-self: start; position: sticky; top: 20px; background: var(--paper); }
+  aside.spec h3 { font: 600 1rem/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; padding: 12px 14px; margin: 0; border-bottom: 2px solid var(--rule); background: var(--ink); color: var(--paper); }
+  aside.spec dl { margin: 0; font: .8125rem/1.4 var(--mono); }
+  aside.spec dl > div { padding: 10px 14px; border-bottom: 1px solid var(--rule); }
+  aside.spec dl > div:last-child { border-bottom: 0; }
+  aside.spec dt { font-size: .6875rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); }
+  aside.spec dd { margin: 3px 0 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .tags span { border: 1px solid var(--ink); padding: 2px 7px; }
+  .fig { border: 1px solid var(--rule); margin: 0 0 30px; max-width: 62ch; }
+  .fig svg { display: block; width: 100%; height: auto; }
+  .fig figcaption { font: .75rem/1.4 var(--mono); color: var(--ink-2); padding: 8px 10px; border-top: 1px solid var(--rule); }
+
+  @media (max-width: 900px) {
+    .topbar { grid-template-columns: 1fr auto; }
+    .topbar nav { display: none; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .lede { border-right: 0; padding-right: 0; border-bottom: 1px solid var(--rule); }
+    .titleblock div:nth-child(odd) { border-right: 1px solid var(--rule); }
+    .sec-head { grid-template-columns: 1fr; }
+    .sec-head .ref { text-align: left; }
+    .sec-num { font-size: 3rem; }
+    .case-body { grid-template-columns: 1fr; }
+    .case-body .margin { display: none; }
+    aside.spec { position: static; margin-bottom: 32px; order: -1; }
+  }
+</style>
+</head>
+<body>
+<a href="#main" style="position:absolute;left:-9999px">Saltar al contenido</a>
+<div class="sheet">
+  <header class="topbar">
+    <span>B. Santillán / Hoja 01 de 07</span>
+    <nav aria-label="Principal">
+      <a href="#">01 Casos</a><a href="#">02 Trayectoria</a><a href="#">03 Accesibilidad</a><a href="#">04 Stack</a><a href="#">05 Contacto</a>
+    </nav>
+    <div class="toggles">
+      <button aria-pressed="false">Ver estructura</button>
+      <button>EN</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="t">
+      <div class="hero-meta"><span>DOC. PORTFOLIO — REV. 2026.11</span><span>ESC. 1:1</span></div>
+      <h1 id="t">Bruno<br>Santillán</h1>
+      <p class="dim"><span>Ingeniero en Sistemas · UTN FRLP · 2026</span></p>
+
+      <div class="wave-wrap" aria-hidden="true">
+        <span class="wave-label"><b>FIG. 0</b> — corriente de una carga no lineal · 50 Hz · el cursor modifica la 3.ª armónica</span>
+        <svg id="wave" viewBox="0 0 1440 170" preserveAspectRatio="none">
+          <line x1="0" y1="85" x2="1440" y2="85" stroke="currentColor" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
+          <path id="wave-ghost" fill="none" stroke="currentColor" stroke-width="1" opacity=".35"/>
+          <path id="wave-main" fill="none" stroke="var(--signal)" stroke-width="3"/>
+        </svg>
+      </div>
+
+      <div class="hero-grid">
+        <div class="lede">
+          <p>Construyo software accesible y herramientas de datos para operaciones reales: de un <mark>sistema de inspecciones en YPF</mark> a <mark>monitoreo eléctrico IoT</mark> en el sector público.</p>
+          <div class="cta">
+            <a class="btn primary" href="#">Ver casos ↓</a>
+            <a class="btn" href="#">Descargar CV (PDF)</a>
+          </div>
+        </div>
+        <dl class="titleblock">
+          <div><dt>Estado</dt><dd class="status">Buscando rol junior</dd></div>
+          <div><dt>Base</dt><dd>La Plata, AR</dd></div>
+          <div><dt>Modalidad</dt><dd>Remoto / presencial</dd></div>
+          <div><dt>Relocalización</dt><dd>Neuquén: sí</dd></div>
+          <div class="wide"><dt>Áreas</dt><dd>Full stack · Power Platform y datos · Análisis funcional · Accesibilidad</dd></div>
+          <div class="wide"><dt>En curso</dt><dd>Licenciatura en Inteligencia Artificial — UTN FRLP</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="case" aria-labelledby="c1">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">01.1</span>
+        <h2 id="c1">Monitoreo eléctrico IoT</h2>
+        <span class="ref">Dirección Provincial de<br>Innovación Digital · 2025 —</span>
+      </div>
+      <div class="case-body">
+        <div class="margin">
+          <p>↳ contexto</p><p style="margin-top:90px">↳ rol</p><p style="margin-top:80px">↳ construí</p>
+        </div>
+        <div>
+          <div class="block"><h3><small>A</small>Contexto</h3><p>Un proyecto de eficiencia energética mide el consumo de edificios públicos con sensores por circuito. Los sensores y su firmware los desarrolló otro equipo; los datos quedaban en un buffer local, sin alertas ni una forma clara de consultarlos.</p></div>
+          <div class="block"><h3><small>B</small>Mi rol</h3><p>Desarrollador. Me ocupé de todo lo que pasa después de la lectura del sensor: persistencia, operación y visualización.</p></div>
+          <figure class="fig">
+            <svg viewBox="0 0 620 150" role="img" aria-labelledby="f1t">
+              <title id="f1t">Diagrama: sensores, buffer, MongoDB, dashboard en Python y alertas a Discord</title>
+              <g font-family="IBM Plex Mono" font-size="11" fill="currentColor">
+                <rect x="10" y="55" width="90" height="40" fill="none" stroke="currentColor"/><text x="22" y="79">sensores</text>
+                <rect x="140" y="55" width="110" height="40" fill="none" stroke="currentColor" stroke-dasharray="4 3"/><text x="152" y="79">buffer local</text>
+                <rect x="290" y="55" width="130" height="40" fill="var(--signal)" stroke="currentColor"/><text x="300" y="79" fill="var(--signal-ink)">MongoDB · t-series</text>
+                <rect x="470" y="10" width="140" height="36" fill="none" stroke="currentColor"/><text x="480" y="32">dashboard Python</text>
+                <rect x="470" y="104" width="140" height="36" fill="none" stroke="currentColor"/><text x="480" y="126">alertas → Discord</text>
+                <path d="M100 75h40M250 75h40M420 70l50-42M420 80l50 42" stroke="currentColor" fill="none"/>
+              </g>
+            </svg>
+            <figcaption>FIG. 1 — flujo de datos. En naranja, la pieza que migré.</figcaption>
+          </figure>
+          <div class="block"><h3><small>C</small>Qué construí</h3>
+            <ul>
+              <li data-n="C.1">Migración del buffer local a MongoDB con colecciones de series de tiempo y backups automáticos.</li>
+              <li data-n="C.2">Panel de administración de sensores, pisos y circuitos.</li>
+              <li data-n="C.3">Alertas de fallas y caídas: node_exporter, Prometheus, Alertmanager y Uptime Kuma, con aviso en Discord.</li>
+              <li data-n="C.4">Gran parte del dashboard en Python: unos 50 gráficos y métricas.</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="spec" aria-labelledby="s1">
+          <h3 id="s1">Ficha</h3>
+          <dl>
+            <div><dt>Stack</dt><dd class="tags"><span>Python</span><span>MongoDB</span><span>Prometheus</span><span>Alertmanager</span><span>Uptime Kuma</span><span>node_exporter</span></dd></div>
+            <div><dt>Equipo</dt><dd>DPID · multidisciplinario</dd></div>
+            <div><dt>Estado</dt><dd>En uso interno · NILM en investigación</dd></div>
+            <div><dt>Código</dt><dd>Privado (sector público)</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+  // Onda: fundamental + 3.ª y 5.ª armónica. El cursor (x) cambia la 3.ª armónica.
+  const main = document.getElementById('wave-main');
+  const ghost = document.getElementById('wave-ghost');
+  const W = 1440, H = 170, mid = 85;
+  let h3 = .28, target = .28, phase = 0;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function path(a3, ph, amp = 62) {
+    let d = '';
+    for (let x = 0; x <= W; x += 4) {
+      const t = (x / W) * Math.PI * 2 * 6 + ph;
+      const y = Math.sin(t) + a3 * Math.sin(3 * t) + .12 * Math.sin(5 * t);
+      d += (x ? 'L' : 'M') + x + ' ' + (mid - y * amp / (1 + a3 * .6)).toFixed(1);
+    }
+    return d;
+  }
+  ghost.setAttribute('d', path(0, 0));
+  function draw() { main.setAttribute('d', path(h3, phase)); }
+  draw();
+  if (!reduce) {
+    addEventListener('pointermove', e => { target = (e.clientX / innerWidth) * .6; });
+    (function loop() { h3 += (target - h3) * .06; phase += .01; draw(); requestAnimationFrame(loop); })();
+  }
+</script>
+</body>
+</html>
