@@ -3,7 +3,7 @@ import type { Content } from '../types';
 // Fuente: CV general (public/CV_Bruno_Santillan.pdf). Sass sale del sistema de diseño.
 export const skills: Content['skills'] = {
   title: 'Habilidades',
-  intro: 'Lo que sé hacer y dónde lo apliqué. Cuando un caso lo muestra, lo enlazo.',
+  intro: 'Lo que sé hacer y dónde lo apliqué.',
   usedIn: 'Se ve en',
   technicalTitle: 'Técnicas',
   groups: [

@@ -21,7 +21,7 @@ const html = `<!doctype html><html><head><style>
 @font-face{font-family:M;src:url(${font('atkinson-mono.woff2')});font-weight:200 800}
 body{margin:0;width:1200px;height:630px;background:#eef1f4;color:#12161b;font-family:K;position:relative;overflow:hidden}
 h1{position:absolute;left:64px;top:70px;margin:0;font:900 118px/.8 A;letter-spacing:-.03em;z-index:2}
-h1 b{display:block;font-stretch:150%}h1 i{display:block;font-style:normal;font-stretch:58%;font-size:128px;margin-left:70px;color:transparent;-webkit-text-stroke:3px #12161b}
+h1 b{display:block;font-stretch:150%}h1 i{display:block;font-style:normal;font-stretch:58%;font-size:128px;margin-left:70px;color:#eef1f4;-webkit-text-stroke:6px #12161b;paint-order:stroke fill;letter-spacing:.02em}
 p{position:absolute;left:64px;bottom:96px;margin:0;font-size:34px;line-height:1.25;max-width:470px;z-index:2}
 small{position:absolute;left:64px;bottom:48px;font:700 22px M;color:#3e4651}
 svg{position:absolute;inset:0}

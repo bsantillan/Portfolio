@@ -40,6 +40,7 @@
   display: block;
   font-size: clamp(3.6rem, 11vw, 10.5rem);
   font-stretch: 58%;
+  letter-spacing: 0.02em; /* que las letras caladas no se toquen */
   margin-left: 0.9em;
   margin-top: 0.04em;
 }

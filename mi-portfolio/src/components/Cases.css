@@ -35,7 +35,7 @@
   top: clamp(40px, 6vw, 80px);
   font: 900 clamp(11rem, 30vw, 28rem) / 0.8 var(--font-display);
   font-stretch: 50%;
-  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-width: 4px;
   -webkit-text-stroke-color: var(--line);
   user-select: none;
   pointer-events: none;

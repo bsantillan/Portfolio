@@ -217,9 +217,13 @@ h4 {
 }
 
 /* Texto calado: con más contraste pedido, se rellena. */
+/* Letra calada. La fuente es variable y sus trazos se superponen: un contorno simple dibuja
+   esas uniones internas. Por eso el contorno va al doble de grosor y DEBAJO de un relleno del
+   color del fondo, que tapa las uniones y deja visible solo la mitad exterior (2 px). */
 .outline {
-  color: transparent;
-  -webkit-text-stroke: 2px var(--text);
+  color: var(--bg);
+  -webkit-text-stroke: 4px var(--text);
+  paint-order: stroke fill;
 }
 @media (prefers-contrast: more), (forced-colors: active) {
   .outline {
