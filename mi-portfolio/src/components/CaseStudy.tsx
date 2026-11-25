@@ -71,7 +71,8 @@ export default function CaseStudy({ item, index }: { item: Case; index: number }
 
       {(item.diagram || item.image) && (
         <figure className="case__media">
-          {item.diagram ? (
+          {item.image && <Picture image={item.image} sizes="(max-width: 900px) 100vw, 720px" />}
+          {item.diagram && (
             // En pantallas chicas el diagrama se desplaza en horizontal para mantener el texto legible.
             <div
               ref={scrollRef}
@@ -82,9 +83,7 @@ export default function CaseStudy({ item, index }: { item: Case; index: number }
             >
               <Diagram kind={item.diagram.key} title={item.diagram.title} labels={lang === 'en' ? diagramLabelsEn : undefined} />
             </div>
-          ) : item.image ? (
-            <Picture image={item.image} sizes="(max-width: 900px) 100vw, 640px" />
-          ) : null}
+          )}
           {item.diagram && <figcaption id={`${item.id}-fig`}>{item.diagram.caption}</figcaption>}
         </figure>
       )}

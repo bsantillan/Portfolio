@@ -153,6 +153,12 @@ export const cases: Content['cases'] = {
       links: [
         { label: 'Backend en GitHub', href: 'https://github.com/bsantillan/LosCiruelos-Backend' },
       ],
+      image: {
+        key: 'los-ciruelos',
+        width: 1200,
+        height: 1308,
+        alt: 'Dos pantallas con datos de prueba. Arriba, la reserva del socio: elige la cancha 1, el miércoles de 19:00 a 20:30, y el resumen muestra el alquiler de paletas, la venta de pelotas y el total de 15.000 pesos antes de pagar. Abajo, el resumen del panel del club: saldo de caja, monto por cobrar, reservas, ventas, ingresos y ocupación comparados con el período anterior, y lo asegurado para los próximos días.',
+      },
       diagram: {
         key: 'ciruelos',
         title: 'Arquitectura: una app web en React se comunica con el backend en Spring Boot, que guarda los datos en PostgreSQL y se integra con Mercado Pago, WhatsApp, el correo y el inicio de sesión de Google.',

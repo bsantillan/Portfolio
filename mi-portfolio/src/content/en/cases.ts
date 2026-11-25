@@ -153,6 +153,12 @@ export const cases: Content['cases'] = {
       links: [
         { label: 'Backend on GitHub', href: 'https://github.com/bsantillan/LosCiruelos-Backend' },
       ],
+      image: {
+        key: 'los-ciruelos',
+        width: 1200,
+        height: 1308,
+        alt: 'Two screens with test data. Top: a member’s booking, court 1 on Wednesday from 19:00 to 20:30, with a summary showing paddle rental, ball sales and a total of 15,000 pesos before payment. Bottom: the club dashboard, with till balance, amount owed, bookings, sales, income and occupancy compared with the previous period, and what is already secured for the coming days.',
+      },
       diagram: {
         key: 'ciruelos',
         title: 'Architecture: a React web app talks to the Spring Boot backend, which stores data in PostgreSQL and integrates with Mercado Pago, WhatsApp, email and Google sign-in.',

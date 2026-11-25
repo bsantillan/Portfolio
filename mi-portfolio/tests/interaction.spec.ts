@@ -12,9 +12,9 @@ test('el skip link es el primer foco y lleva al contenido', async ({ page }) => 
 
 test('jerarquía de títulos: un solo h1 y sin saltos de nivel', async ({ page }) => {
   await page.goto('./');
-  const levels = await page.locator('h1, h2, h3, h4, h5, h6').evaluateAll((els) =>
-    els.filter((e) => (e as HTMLElement).offsetParent !== null).map((e) => Number(e.tagName[1])),
-  );
+  const levels = await page
+    .locator('h1, h2, h3, h4, h5, h6')
+    .evaluateAll((els) => els.filter((e) => (e as HTMLElement).offsetParent !== null).map((e) => Number(e.tagName[1])));
   expect(levels.filter((l) => l === 1)).toHaveLength(1);
   for (let i = 1; i < levels.length; i++) expect(levels[i] - levels[i - 1]).toBeLessThanOrEqual(1);
 });
@@ -79,15 +79,17 @@ test('recorrido completo con teclado: todo foco es visible y nada queda tapado',
   await page.goto('./');
   const total = await page.locator('a[href], button:not([disabled])').evaluateAll((els) => els.filter((e) => (e as HTMLElement).offsetParent !== null).length);
   const seen = new Set<string>();
-  for (let i = 0; i < total + 2; i++) {
-    await page.keyboard.press('Tab');
-    const info = await page.evaluate((step) => {
+  const measure = (step: number) =>
+    page.evaluate((step) => {
       const el = document.activeElement as HTMLElement | null;
       if (!el || el === document.body) return null;
       const cs = getComputedStyle(el);
       const r = el.getBoundingClientRect();
       // ¿Lo que se ve en el centro del elemento es el propio elemento? (WCAG 2.4.11)
-      const top = document.elementFromPoint(Math.min(Math.max(r.left + r.width / 2, 0), innerWidth - 1), Math.min(Math.max(r.top + r.height / 2, 0), innerHeight - 1));
+      const top = document.elementFromPoint(
+        Math.min(Math.max(r.left + r.width / 2, 0), innerWidth - 1),
+        Math.min(Math.max(r.top + r.height / 2, 0), innerHeight - 1),
+      );
       const coveredByHeader = !!top && !el.contains(top) && !top.contains(el) && !!top.closest('.site-header');
       return {
         key: `${step}:${el.outerHTML.slice(0, 80)}`,
@@ -95,7 +97,12 @@ test('recorrido completo con teclado: todo foco es visible y nada queda tapado',
         inView: r.bottom > 0 && r.top < innerHeight,
         coveredByHeader,
       };
-    }, i);
+    }, step);
+  for (let i = 0; i < total + 2; i++) {
+    await page.keyboard.press('Tab');
+    // Espera a que el foco se asiente (en CI el primer foco a veces se mide antes del repintado).
+    await expect.poll(async () => (await measure(i))?.inView ?? true, { timeout: 3000 }).toBe(true);
+    const info = await measure(i);
     if (!info) continue;
     seen.add(info.key);
     expect(info.indicator, `sin indicador de foco: ${info.key}`).toBe(true);
@@ -120,7 +127,10 @@ test('targets táctiles de al menos 24×24 px', async ({ page }) => {
 test('prefers-reduced-motion: sin transiciones ni scroll suave', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('./');
-  const d = await page.locator('.map__item').first().evaluate((e) => getComputedStyle(e).transitionDuration);
+  const d = await page
+    .locator('.map__item')
+    .first()
+    .evaluate((e) => getComputedStyle(e).transitionDuration);
   expect(d.split(',').every((x) => parseFloat(x) <= 0.001)).toBe(true);
   expect(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior)).toBe('auto');
 });

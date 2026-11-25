@@ -110,6 +110,9 @@
 .case__media .diagram {
   padding: 16px;
 }
+.case__media picture + .diagram-scroll {
+  margin-top: 20px;
+}
 .case__media figcaption {
   font: 400 0.9375rem/1.4 var(--font-mono);
   color: var(--text-2);

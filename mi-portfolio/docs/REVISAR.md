@@ -27,7 +27,7 @@ Diferencias entre el CV y el portfolio que conviene corregir en el CV:
 ## 3. Imágenes
 
 - **Pasá la Página**: la captura muestra nombres de personas en reseñas y chat. Si no tenés su permiso, mandame una con datos de prueba o los difumino.
-- **Los Ciruelos**: hoy lleva un diagrama de arquitectura. Si mandás capturas (reserva del socio, grilla del panel, caja, configuración) sin datos reales, las sumo.
+- **Los Ciruelos**: capturas sacadas de la app con los usuarios de prueba (reserva del socio y resumen del panel), más el diagrama de arquitectura. Fuente en `src/assets/source/los-ciruelos.png`; si cambiás la app, volvé a sacarlas y corré `node scripts/optimize-images.mjs`.
 - **Sistema de diseño e IoT**: sin capturas, por confidencialidad.
 
 ## 4. Inglés
