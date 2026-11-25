@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I · Tipografía viva — Bruno Santillán</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../v2/paleta.css">
+<style>
+  /* Recursive: una sola familia que va de "código" (MONO 1) a "humano" (CASL 1). */
+  body { font: 400 1.125rem/1.6 "Recursive", sans-serif; font-variation-settings: "MONO" 0, "CASL" 0; overflow-x: hidden; }
+  .code { font-variation-settings: "MONO" 1, "CASL" 0; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+
+  header.nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; gap: 12px; }
+  header.nav .brand { font-weight: 800; font-variation-settings: "MONO" 1; color: var(--text); text-decoration: none; }
+  header.nav nav { display: flex; gap: 24px; }
+  header.nav nav a { color: var(--text); text-decoration: none; font-weight: 500; }
+  header.nav nav a:hover { font-variation-settings: "CASL" 1; color: var(--accent); }
+  header.nav button { font: 600 .9375rem/1 "Recursive"; font-variation-settings: "MONO" 1; color: var(--text); background: none; border: 1.5px solid var(--text); padding: 9px 12px; border-radius: 4px; }
+
+  .hero { position: relative; padding: clamp(40px, 7vw, 90px) 0 60px; }
+  h1 { margin: 0; font-size: clamp(4rem, 15vw, 14rem); line-height: .82; letter-spacing: -.04em; font-weight: 900; }
+  h1 .line { display: block; white-space: nowrap; }
+  h1 .line + .line { padding-left: 12vw; }
+  h1 .ch { display: inline-block; transition: font-variation-settings .25s, color .25s; font-variation-settings: "MONO" 0, "CASL" 0, "slnt" 0, "wght" 900; }
+  .hint { font-size: .9375rem; color: var(--text-2); margin: 14px 0 0 12vw; }
+  .hint code { font: inherit; font-variation-settings: "MONO" 1; color: var(--text); background: var(--surface); padding: 1px 6px; border-radius: 3px; }
+
+  .hero-low { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; margin-top: 56px; }
+  .lede { font-size: clamp(1.3rem, 2.2vw, 1.85rem); line-height: 1.35; margin: 0; max-width: 30ch; font-variation-settings: "CASL" .3; }
+  .lede .code { color: var(--accent); font-weight: 600; }
+  .act { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .btn { font-weight: 700; text-decoration: none; padding: 14px 22px; min-height: 48px; display: inline-flex; align-items: center; color: var(--text); border: 2px solid var(--text); border-radius: 4px; font-variation-settings: "MONO" 1; }
+  .btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .btn:hover { font-variation-settings: "MONO" 0, "CASL" 1; }
+  .status { font-variation-settings: "MONO" 1; font-size: .9375rem; color: var(--text-2); margin-top: 18px; }
+  .status b { color: var(--text); }
+
+  /* Sello giratorio, con pausa (WCAG 2.2.2) */
+  .seal { position: relative; width: 210px; height: 210px; }
+  .seal svg { width: 100%; height: 100%; animation: spin 22s linear infinite; }
+  .seal.paused svg { animation-play-state: paused; }
+  .seal text { font: 600 15px "Recursive"; font-variation-settings: "MONO" 1; letter-spacing: 2.5px; fill: var(--text); text-transform: uppercase; }
+  .seal button { position: absolute; inset: 0; margin: auto; width: 96px; height: 96px; border-radius: 50%; border: 0; background: var(--accent); color: var(--on-accent); font: 700 .875rem/1.1 "Recursive"; font-variation-settings: "CASL" 1; cursor: pointer; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .seal svg { animation: none; } h1 .ch { transition: none; } }
+
+  /* Casos: tarjetas que se apilan al scrollear */
+  .cases { padding: 80px 0 40vh; }
+  .cases > h2 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: .9; letter-spacing: -.035em; margin: 0 0 40px; font-weight: 900; font-variation-settings: "CASL" 1, "slnt" -12; }
+  .card { position: sticky; background: var(--bg); border: 2px solid var(--text); border-radius: 22px; padding: clamp(24px, 4vw, 48px); margin-bottom: 60px; display: grid; grid-template-columns: 1fr 1.25fr; gap: 40px; min-height: 520px; }
+  .card:nth-of-type(1) { top: 24px; transform: rotate(-1.2deg); }
+  .card:nth-of-type(2) { top: 44px; transform: rotate(.8deg); background: var(--surface); }
+  .card .num { font: 900 7rem/.8 "Recursive"; font-variation-settings: "MONO" 1; color: var(--accent); }
+  .card h3 { font-size: clamp(2rem, 4vw, 3.25rem); line-height: .95; letter-spacing: -.03em; margin: 18px 0 8px; font-weight: 900; }
+  .card .org { font-variation-settings: "MONO" 1; font-size: .9375rem; color: var(--text-2); margin: 0; }
+  .card h4 { font-size: 1rem; margin: 0 0 4px; font-weight: 800; font-variation-settings: "CASL" 1; color: var(--accent); }
+  .card p, .card ul { margin: 0 0 18px; }
+  .card ul { padding-left: 1.1em; }
+  .card li { margin-bottom: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0 !important; }
+  .tags li { font-variation-settings: "MONO" 1; font-size: .875rem; background: var(--text); color: var(--bg); padding: 5px 9px; border-radius: 3px; margin: 0; }
+
+  @media (max-width: 860px) {
+    header.nav nav { display: none; }
+    h1 .line + .line { padding-left: 0; }
+    .hint { margin-left: 0; }
+    .hero-low { grid-template-columns: 1fr; }
+    .seal { width: 160px; height: 160px; }
+    .card { grid-template-columns: 1fr; min-height: 0; position: relative; top: 0 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="wrap">
+  <header class="nav">
+    <a class="brand" href="#">bs/</a>
+    <nav aria-label="Principal"><a href="#">Casos</a><a href="#">Trayectoria</a><a href="#">Accesibilidad</a><a href="#">Contacto</a></nav>
+    <div style="display:flex;gap:8px"><button aria-pressed="false">Ver estructura</button><button lang="en">EN</button></div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="t">
+      <h1 id="t" aria-label="Bruno Santillán"><span class="line" aria-hidden="true" data-split>Bruno</span><span class="line" aria-hidden="true" data-split>Santillán</span></h1>
+      <p class="hint">Mové el cursor sobre mi nombre: pasa de <code>código</code> a escritura humana. Las dos cosas que hago.</p>
+      <div class="hero-low">
+        <div>
+          <p class="lede">Construyo <span class="code">software accesible</span> y <span class="code">herramientas de datos</span> para operaciones reales: de un sistema de inspecciones en YPF a monitoreo eléctrico IoT.</p>
+          <div class="act"><a class="btn primary" href="#">Ver casos</a><a class="btn" href="#">CV.pdf</a></div>
+          <p class="status"><b>Buscando rol junior</b> · La Plata · remoto · relocalizable a Neuquén</p>
+        </div>
+        <div class="seal" id="seal">
+          <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="circ" d="M100 100 m-78 0 a78 78 0 1 1 156 0 a78 78 0 1 1 -156 0"/></defs><text><textPath href="#circ">software · datos · accesibilidad · IA · </textPath></text></svg>
+          <button type="button" aria-pressed="false" id="pause">Pausar giro</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="cases" aria-labelledby="cs">
+      <h2 id="cs">Casos</h2>
+      <article class="card" aria-labelledby="c1">
+        <div><span class="num" aria-hidden="true">01</span><h3 id="c1">Monitoreo eléctrico IoT</h3><p class="org">DPID · 2025–hoy · código privado</p></div>
+        <div>
+          <h4>Contexto</h4><p>Sensores midiendo el consumo por circuito en edificios públicos. Los datos quedaban en un buffer local, sin alertas. Los sensores son de otro equipo.</p>
+          <h4>Mi rol</h4><p>Desarrollador: persistencia, operación y visualización.</p>
+          <h4>Qué construí</h4><ul><li>Migración a MongoDB con series de tiempo y backups automáticos.</li><li>Panel de administración de sensores, pisos y circuitos.</li><li>Alertas con Prometheus, Alertmanager y Uptime Kuma, avisando en Discord.</li><li>Gran parte del dashboard en Python: unos 50 gráficos.</li></ul>
+          <ul class="tags" aria-label="Stack"><li>Python</li><li>MongoDB</li><li>Prometheus</li><li>Alertmanager</li><li>Uptime Kuma</li><li>node_exporter</li></ul>
+        </div>
+      </article>
+      <article class="card" aria-labelledby="c2">
+        <div><span class="num" aria-hidden="true">02</span><h3 id="c2">Sistema de inspecciones</h3><p class="org">YPF · práctica profesional · 2025</p></div>
+        <div>
+          <h4>Contexto</h4><p>Un flujo basado en Excel y Teams que había que reemplazar por un sistema con trazabilidad.</p>
+          <h4>Mi rol</h4><p>Lo construí de punta a punta.</p>
+          <ul class="tags" aria-label="Stack"><li>Power Apps</li><li>Power Automate</li><li>Power BI</li><li>Dataverse</li></ul>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>
+<script>
+  document.querySelectorAll('[data-split]').forEach(el => { el.innerHTML = [...el.textContent].map(c => `<span class="ch">${c}</span>`).join(''); });
+  const chars = [...document.querySelectorAll('h1 .ch')];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) addEventListener('pointermove', e => {
+    chars.forEach(c => { const r = c.getBoundingClientRect(); const d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2)); const k = Math.max(0, 1 - d / 260);
+      c.style.fontVariationSettings = `"MONO" ${k.toFixed(2)}, "CASL" ${(1 - k).toFixed(2) * 0 + (k > .5 ? 0 : k * 2).toFixed(2)}, "slnt" ${(-15 * k).toFixed(1)}, "wght" ${Math.round(900 - 500 * k)}`;
+      c.style.color = k > .55 ? 'var(--accent)' : ''; });
+  });
+  const seal = document.getElementById('seal'), btn = document.getElementById('pause');
+  if (reduce) { seal.classList.add('paused'); btn.setAttribute('aria-pressed', 'true'); btn.textContent = 'Girar sello'; }
+  btn.addEventListener('click', () => { const p = seal.classList.toggle('paused'); btn.setAttribute('aria-pressed', p); btn.textContent = p ? 'Girar sello' : 'Pausar giro'; });
+</script>
+</body>
+</html>
