@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paletas frías accesibles — Bruno Santillán</title>
+<style>
+  body { margin: 0; font: 16px/1.5 system-ui, sans-serif; background: #e9ecef; color: #111; }
+  header { padding: 28px 32px 8px; max-width: 1400px; margin: 0 auto; }
+  header h1 { margin: 0 0 6px; font-size: 1.6rem; }
+  header p { margin: 0; max-width: 80ch; }
+  .pal { max-width: 1400px; margin: 24px auto; padding: 0 32px; }
+  .pal > h2 { font-size: 1.25rem; margin: 0 0 4px; }
+  .pal > p { margin: 0 0 12px; max-width: 90ch; }
+  .modes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .mode { background: var(--bg); color: var(--text); padding: 24px; border: 1px solid #0003; }
+  .mode .tag { font: 600 .75rem/1 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; color: var(--text2); }
+  .mode h3 { font-size: 2.6rem; line-height: 1; margin: 10px 0 8px; letter-spacing: -.02em; }
+  .mode p { margin: 0 0 12px; color: var(--text); max-width: 52ch; }
+  .mode .muted { color: var(--text2); font-size: .9rem; }
+  .mode a { color: var(--accent); font-weight: 600; text-underline-offset: 3px; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 14px 0; }
+  .btn { background: var(--accent); color: var(--onaccent); border: 0; padding: 12px 16px; font-weight: 700; }
+  .btn2 { background: transparent; color: var(--text); border: 2px solid var(--text); padding: 10px 14px; font-weight: 700; }
+  .chip { border: 1.5px solid var(--line); padding: 3px 8px; font: .8rem ui-monospace, monospace; }
+  .hl { background: var(--tint); color: var(--text); padding: 2px 6px; }
+  .focus { outline: 3px solid var(--focus); outline-offset: 3px; }
+  .surface { background: var(--surface); padding: 12px; margin-top: 8px; border: 1px solid var(--line); }
+  svg { display: block; width: 100%; height: 60px; }
+  .swatches { display: flex; gap: 0; margin: 12px 0; border: 1px solid var(--line); }
+  .swatches span { flex: 1; height: 26px; }
+  table { width: 100%; border-collapse: collapse; font: .8rem/1.3 ui-monospace, monospace; margin-top: 12px; }
+  td, th { text-align: left; padding: 4px 6px; border-top: 1px solid var(--line); }
+  .ok { font-weight: 700; }
+  @media (max-width: 900px) { .modes { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Paletas frías: contraste verificado</h1>
+  <p>Cada paleta tiene modo claro y oscuro. La tabla de cada panel calcula el contraste WCAG 2.x en vivo. Objetivo: AAA (≥ 7) en todo texto, incluidos links y botones. Umbrales: texto ≥ 4.5 (AA) y ≥ 7 (AAA); elementos no textuales (bordes de chips, foco, onda) ≥ 3.</p>
+</header>
+<main id="root"></main>
+
+<script>
+const palettes = [
+  {
+    id: 'cianotipo', name: '1 · Cianotipo',
+    note: 'Azul de Prusia sobre papel frío, como una copia heliográfica de un plano. Un solo color de señal: el mismo azul. El modo oscuro es grafito neutro (no navy), con el azul aclarado.',
+    light: { bg: '#f3f5f7', surface: '#e6ebf0', text: '#0e1a2b', text2: '#3d4a5c', accent: '#1841b3', onaccent: '#ffffff', line: '#5b6b80', tint: '#dbe6fb', focus: '#1841b3', wave: '#1841b3' },
+    dark:  { bg: '#121416', surface: '#1c2024', text: '#e8edf2', text2: '#aab4bf', accent: '#8ab4ff', onaccent: '#0b1320', line: '#7d8894', tint: '#1e2a40', focus: '#8ab4ff', wave: '#8ab4ff' },
+  },
+  {
+    id: 'petroleo', name: '2 · Verde petróleo',
+    note: 'Teal profundo: frío, pero lejos del azul de los templates. Remite a agua, energía y señalización de servicios. El modo oscuro es casi negro con un tinte verde.',
+    light: { bg: '#f2f6f5', surface: '#e2ebe9', text: '#0c1f1d', text2: '#3b4f4c', accent: '#09554e', onaccent: '#ffffff', line: '#587370', tint: '#d3ebe7', focus: '#09554e', wave: '#09554e' },
+    dark:  { bg: '#0f1514', surface: '#18201f', text: '#e4efed', text2: '#a8bab7', accent: '#5fd3c3', onaccent: '#08201d', line: '#76908c', tint: '#173a36', focus: '#5fd3c3', wave: '#5fd3c3' },
+  },
+  {
+    id: 'acero', name: '3 · Acero y verde señal',
+    note: 'Gris acero frío como base y un verde de señalización de seguridad (el de "salida" o "equipo seguro") como único acento. Es la opción más industrial.',
+    light: { bg: '#eef1f4', surface: '#dfe4ea', text: '#12161b', text2: '#3e4651', accent: '#0c5331', onaccent: '#ffffff', line: '#5f6b78', tint: '#d4eadd', focus: '#0c5331', wave: '#0c5331' },
+    dark:  { bg: '#131619', surface: '#1d2125', text: '#e9edf1', text2: '#a9b2bc', accent: '#5fe0a0', onaccent: '#06231a', line: '#7b8692', tint: '#173b2a', focus: '#5fe0a0', wave: '#5fe0a0' },
+  },
+  {
+    id: 'glaciar', name: '4 · Glaciar',
+    note: 'Blanco hielo, tinta casi negra y un azul verdoso glaciar. Es la más sobria y "editorial"; el color aparece muy poco.',
+    light: { bg: '#f7f9fa', surface: '#e9eff2', text: '#111719', text2: '#3f4b50', accent: '#0d556e', onaccent: '#ffffff', line: '#5e6f76', tint: '#d6e9f0', focus: '#0d556e', wave: '#0d556e' },
+    dark:  { bg: '#101415', surface: '#192022', text: '#e6eef0', text2: '#a6b6bb', accent: '#7cc8e0', onaccent: '#06191f', line: '#788b91', tint: '#16323b', focus: '#7cc8e0', wave: '#7cc8e0' },
+  },
+];
+
+function lum(hex) {
+  const c = hex.replace('#', '').match(/../g).map(h => parseInt(h, 16) / 255)
+    .map(v => v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+}
+function ratio(a, b) { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); }
+
+const checks = [
+  ['Texto / fondo', 'text', 'bg', 'text'],
+  ['Texto secundario / fondo', 'text2', 'bg', 'text'],
+  ['Texto secundario / superficie', 'text2', 'surface', 'text'],
+  ['Link (acento) / fondo', 'accent', 'bg', 'text'],
+  ['Link (acento) / superficie', 'accent', 'surface', 'text'],
+  ['Texto botón / acento', 'onaccent', 'accent', 'text'],
+  ['Texto / resaltado', 'text', 'tint', 'text'],
+  ['Borde de chips / fondo', 'line', 'bg', 'ui'],
+  ['Anillo de foco / fondo', 'focus', 'bg', 'ui'],
+  ['Onda / fondo', 'wave', 'bg', 'ui'],
+];
+function badge(r, kind) {
+  if (kind === 'ui') return r >= 3 ? '✓ AA (≥3)' : '✗ falla';
+  return r >= 7 ? '✓ AAA' : r >= 4.5 ? '✓ AA' : '✗ falla';
+}
+
+const wavePath = (() => { let d = ''; for (let x = 0; x <= 600; x += 3) { const t = x / 600 * Math.PI * 8; const s = Math.sin(t); d += (x ? 'L' : 'M') + x + ' ' + (30 - (s + .3 * Math.sin(3 * t)) * 20).toFixed(1); } return d; })();
+
+const root = document.getElementById('root');
+const report = [];
+for (const p of palettes) {
+  const sec = document.createElement('section');
+  sec.className = 'pal'; sec.id = p.id;
+  sec.innerHTML = `<h2>${p.name}</h2><p>${p.note}</p><div class="modes"></div>`;
+  for (const [mode, c] of [['Claro', p.light], ['Oscuro', p.dark]]) {
+    const vars = Object.entries(c).map(([k, v]) => `--${k}:${v}`).join(';');
+    const rows = checks.map(([label, a, b, kind]) => {
+      const r = ratio(c[a], c[b]); report.push({ pal: p.id, mode, label, r: +r.toFixed(2), ok: badge(r, kind)[0] === '✓' });
+      return `<tr><td>${label}</td><td>${c[a]} / ${c[b]}</td><td>${r.toFixed(2)}:1</td><td class="ok">${badge(r, kind)}</td></tr>`;
+    }).join('');
+    sec.querySelector('.modes').insertAdjacentHTML('beforeend', `
+      <div class="mode" style="${vars}">
+        <span class="tag">Modo ${mode.toLowerCase()}</span>
+        <h3>Bruno Santillán</h3>
+        <p>Construyo software accesible y herramientas de datos para operaciones reales: de un <span class="hl">sistema de inspecciones en YPF</span> a monitoreo eléctrico IoT.</p>
+        <p class="muted">Buscando rol junior · La Plata · Remoto · Relocalizable a Neuquén</p>
+        <svg viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><path d="${wavePath}" fill="none" stroke="var(--wave)" stroke-width="2.5"/></svg>
+        <div class="row"><button class="btn">Ver casos</button><button class="btn2">Descargar CV</button><a href="#">Código en GitHub</a><span class="btn2 focus">Foco visible</span></div>
+        <div class="row"><span class="chip">Python</span><span class="chip">MongoDB</span><span class="chip">Prometheus</span></div>
+        <div class="surface"><span class="muted">Superficie secundaria · </span><a href="#">Prototipo en Figma</a></div>
+        <div class="swatches">${['bg','surface','text','text2','accent','tint','line'].map(k => `<span style="background:${c[k]}" title="${k} ${c[k]}"></span>`).join('')}</div>
+        <table><thead><tr><th>Par</th><th>Colores</th><th>Ratio</th><th>WCAG</th></tr></thead><tbody>${rows}</tbody></table>
+      </div>`);
+  }
+  root.appendChild(sec);
+}
+window.__report = report;
+</script>
+</body>
+</html>
