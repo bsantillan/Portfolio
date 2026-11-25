@@ -1,6 +1,6 @@
 # Portfolio · Bruno Santillan
 
-Sitio personal de Bruno Santillan, Ingeniero en Sistemas (UTN FRLP).
+Sitio personal de Bruno Santillan, Ingeniero en Sistemas de Información (UTN FRLP).
 En línea en **https://bsantillan.github.io/Portfolio/** · español (por defecto) e inglés (`?lang=en`).
 
 Lo que lo hace distinto:
@@ -20,8 +20,8 @@ mi-portfolio/
 ├─ src/
 │  ├─ content/            ← TODO el texto del sitio, tipado
 │  │  ├─ types.ts
-│  │  ├─ shared.ts        ← links, stack por evidencia, conexiones del mapa
-│  │  ├─ es/              ← site.ts, cases.ts, trayectoria.ts, stack.ts
+│  │  ├─ shared.ts        ← links y conexiones del mapa
+│  │  ├─ es/              ← site.ts, cases.ts, trayectoria.ts, skills.ts
 │  │  └─ en/
 │  ├─ components/         ← un componente (y su CSS) por sección
 │  ├─ styles/base.css     ← fuentes, tokens de color, foco, utilidades

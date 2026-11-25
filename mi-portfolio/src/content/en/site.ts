@@ -1,10 +1,10 @@
 import type { Content } from '../types';
 
 export const meta: Content['meta'] = {
-  title: 'Bruno Santillan · Systems Engineer',
+  title: 'Bruno Santillan · Information Systems Engineer',
   description:
-    'Systems Engineer (UTN FRLP, Argentina). I build accessible software and data tools for real-world operations. Case studies, background and contact.',
-  ogAlt: 'Bruno Santillan, Systems Engineer. Software, data, accessibility and AI.',
+    'Information Systems Engineer (UTN FRLP, Argentina). Full-stack development and functional analysis. I build accessible software and data tools for real-world operations. Case studies, background and contact.',
+  ogAlt: 'Bruno Santillan, Information Systems Engineer. Software, data, accessibility and AI.',
 };
 
 export const ui: Content['ui'] = {
@@ -14,7 +14,7 @@ export const ui: Content['ui'] = {
     { id: 'casos', label: 'Cases' },
     { id: 'trayectoria', label: 'Background' },
     { id: 'accesibilidad', label: 'Accessibility' },
-    { id: 'stack', label: 'Stack' },
+    { id: 'habilidades', label: 'Skills' },
     { id: 'contacto', label: 'Contact' },
   ],
   menuOpen: 'Open menu',
@@ -29,7 +29,7 @@ export const ui: Content['ui'] = {
 
 export const hero: Content['hero'] = {
   name: ['Bruno', 'Santillan'],
-  role: 'Systems Engineer · Systems Analyst · UTN FRLP, Argentina',
+  role: 'Information Systems Engineer · Full-stack development & functional analysis · UTN FRLP, Argentina',
   lede: 'I build accessible software and data tools for real-world operations.',
   ctaCases: 'See case studies',
   ctaCv: 'Download CV (PDF)',
@@ -42,17 +42,18 @@ export const hero: Content['hero'] = {
 
 export const nodes: Content['nodes'] = [
   { id: 'sw', label: 'Software', hub: true, info: 'Full stack: Java and Spring Boot on the backend; React, React Native and Angular on the front end.' },
-  { id: 'da', label: 'Data', hub: true, info: 'Time series, dashboards in Python and Power BI, and data models in Dataverse.' },
+  { id: 'da', label: 'Data', hub: true, info: 'Time series, dashboards in Python, Power BI, Grafana and Tableau, and data modelling in PostgreSQL, MongoDB and Dataverse.' },
   { id: 'ac', label: 'Accessibility', hub: true, info: 'I audit sites against WCAG, test with screen readers and keyboard only, and teach a course for technical teams.' },
   { id: 'ia', label: 'AI', hub: true, info: 'I am studying for a BSc in AI and use AI to automate accessibility analysis and its documentation.' },
-  { id: 'java', label: 'Java · Spring', info: 'Backends with Spring Boot and Spring Security.', caseId: 'pasa-la-pagina' },
-  { id: 'react', label: 'React', info: 'Web interfaces, like this site.' },
+  { id: 'af', label: 'Functional analysis', hub: true, info: 'Requirements gathering with users, functional analysis, UML and BPMN, testing, documentation and training. At YPF I covered the whole cycle.', caseId: 'ypf' },
+  { id: 'java', label: 'Java · Spring', info: 'REST APIs with Spring Boot, Spring Security and JPA/Hibernate.', caseId: 'los-ciruelos' },
+  { id: 'react', label: 'React', info: 'The Los Ciruelos front end, and this site.', caseId: 'los-ciruelos' },
   { id: 'rn', label: 'React Native', info: 'The Pasá la Página mobile app.', caseId: 'pasa-la-pagina' },
   { id: 'pp', label: 'Power Platform', info: 'Power Apps, Power Automate, Power BI and Dataverse.', caseId: 'ypf' },
   { id: 'py', label: 'Python', info: 'Most of the power-usage dashboard: around 50 charts.', caseId: 'iot' },
   { id: 'mongo', label: 'MongoDB', info: 'Time series for the sensor readings.', caseId: 'iot' },
   { id: 'obs', label: 'Prometheus', info: 'Failure and downtime alerts, posted to Discord.', caseId: 'iot' },
-  { id: 'ds', label: 'Design system', info: 'The components of the province’s accessible design system, turned into code.', caseId: 'sistema-diseno' },
+  { id: 'ds', label: 'Design system', info: 'Around 60 components for the province’s accessible design system, in HTML, CSS and Sass.', caseId: 'sistema-diseno' },
   { id: 'wcag', label: 'WCAG 2.2', info: 'The standard I audit against, and the one this site is built to.' },
   { id: 'curso', label: 'Course I teach', info: '“Accessible web development: fundamentals and good practices for technical teams”.' },
   { id: 'ypf', label: 'YPF', info: 'Professional internship: an inspection system on Power Platform.', caseId: 'ypf' },

@@ -3,7 +3,7 @@ export type Lang = 'es' | 'en';
 export type CaseId = 'iot' | 'sistema-diseno' | 'ypf' | 'pasa-la-pagina' | 'los-ciruelos';
 export type ArchiveId = 'menu-accesible' | 'estacionamiento';
 export type ImageKey = 'los-ciruelos' | 'pasa-la-pagina' | 'menu-accesible' | 'estacionamiento';
-export type DiagramKey = 'iot' | 'ypf';
+export type DiagramKey = 'iot' | 'ypf' | 'ciruelos';
 
 /** Un link siempre dice a dónde lleva. Sin href = no hay recurso público. */
 export interface ResourceLink {
@@ -50,9 +50,10 @@ export interface TimelineEntry {
   ongoing?: boolean;
 }
 
-export interface StackGroup {
+export interface SkillGroup {
   area: string;
-  items: { name: string; usedIn: CaseId[] }[];
+  /** usedIn: casos donde se ve; vacío si no hay un caso que lo muestre. */
+  items: { name: string; usedIn?: CaseId[] }[];
 }
 
 export interface MapNode {
@@ -115,6 +116,16 @@ export interface Content {
       contact: string;
     };
   };
-  stack: { title: string; intro: string; usedIn: string; noCase: string; groups: StackGroup[] };
+  skills: {
+    title: string;
+    intro: string;
+    usedIn: string;
+    technicalTitle: string;
+    groups: SkillGroup[];
+    softTitle: string;
+    soft: { name: string; evidence: string }[];
+    languagesTitle: string;
+    languages: { name: string; level: string }[];
+  };
   contact: { title: string; body: string; email: string; linkedin: string; github: string; cv: string; location: string };
 }

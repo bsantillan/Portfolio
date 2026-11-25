@@ -1,5 +1,3 @@
-import type { CaseId, StackGroup } from './types';
-
 /** Datos que no dependen del idioma. */
 export const links = {
   email: 'brunosaantillan@gmail.com',
@@ -9,55 +7,11 @@ export const links = {
   site: 'https://bsantillan.github.io/Portfolio/',
 };
 
-type GroupKey = 'backend' | 'front' | 'data' | 'auto' | 'ops' | 'process';
-
-const groups: Record<GroupKey, { name: string; usedIn: CaseId[] }[]> = {
-  backend: [
-    { name: 'Java', usedIn: ['pasa-la-pagina', 'los-ciruelos'] },
-    { name: 'Spring Boot', usedIn: ['pasa-la-pagina', 'los-ciruelos'] },
-    { name: 'Spring Security · JWT', usedIn: ['pasa-la-pagina'] },
-    { name: 'WebSockets', usedIn: ['pasa-la-pagina'] },
-  ],
-  front: [
-    { name: 'React', usedIn: [] },
-    { name: 'React Native', usedIn: ['pasa-la-pagina'] },
-    { name: 'Angular', usedIn: ['los-ciruelos'] },
-    { name: 'TypeScript', usedIn: ['los-ciruelos'] },
-    { name: 'HTML · CSS', usedIn: [] },
-  ],
-  data: [
-    { name: 'Python', usedIn: ['iot'] },
-    { name: 'MongoDB', usedIn: ['iot'] },
-    { name: 'MySQL', usedIn: ['pasa-la-pagina', 'los-ciruelos'] },
-    { name: 'PostgreSQL', usedIn: [] },
-    { name: 'Power BI · DAX · Power Query', usedIn: ['ypf'] },
-    { name: 'Dataverse', usedIn: ['ypf'] },
-  ],
-  auto: [
-    { name: 'Power Apps', usedIn: ['ypf'] },
-    { name: 'Power Automate', usedIn: ['ypf'] },
-  ],
-  ops: [
-    { name: 'Docker', usedIn: ['pasa-la-pagina', 'los-ciruelos'] },
-    { name: 'Prometheus · Alertmanager', usedIn: ['iot'] },
-    { name: 'Grafana', usedIn: [] },
-    { name: 'Git', usedIn: [] },
-  ],
-  process: [
-    { name: 'Figma', usedIn: [] },
-    { name: 'UML · BPMN', usedIn: [] },
-    { name: 'Scrum · Kanban', usedIn: [] },
-  ],
-};
-
-export function stackGroups(names: Record<GroupKey, string>): StackGroup[] {
-  return (Object.keys(groups) as GroupKey[]).map((k) => ({ area: names[k], items: groups[k] }));
-}
-
 /** Conexiones del mapa del hero (ids de nodos). */
 export const edges: [string, string][] = [
   ['sw', 'java'], ['sw', 'react'], ['sw', 'rn'], ['react', 'rn'], ['sw', 'ds'],
   ['ac', 'ds'], ['ac', 'wcag'], ['ac', 'curso'], ['ac', 'dpid'], ['dpid', 'ds'],
   ['da', 'py'], ['da', 'mongo'], ['da', 'obs'], ['da', 'pp'], ['da', 'dpid'], ['pp', 'ypf'],
   ['ia', 'da'], ['ia', 'ac'],
+  ['af', 'ypf'], ['af', 'dpid'], ['af', 'sw'],
 ];

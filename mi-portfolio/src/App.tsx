@@ -3,7 +3,7 @@ import Hero from './components/Hero';
 import Cases from './components/Cases';
 import Timeline from './components/Timeline';
 import Accessibility from './components/Accessibility';
-import Stack from './components/Stack';
+import Skills from './components/Skills';
 import Contact from './components/Contact';
 import { useApp } from './state';
 
@@ -20,7 +20,7 @@ export default function App() {
         <Cases />
         <Timeline />
         <Accessibility />
-        <Stack />
+        <Skills />
       </main>
       <Contact />
     </>

@@ -1,24 +1,22 @@
-import { useEffect, useRef, useState } from "react";
-import type { CaseStudy as Case } from "../content/types";
-import { useApp } from "../state";
-import Diagram from "./Diagram";
-import Picture from "./Picture";
-import ResourceLinks from "./ResourceLinks";
+import { useEffect, useRef, useState } from 'react';
+import type { CaseStudy as Case } from '../content/types';
+import { useApp } from '../state';
+import Diagram from './Diagram';
+import Picture from './Picture';
+import ResourceLinks from './ResourceLinks';
 
 const diagramLabelsEn: Record<string, string> = {
-  sensores: "sensors",
-  "panel de administración": "admin panel",
-  "dashboard Python": "Python dashboard",
-  "MongoDB · series": "MongoDB · time series",
+  sensores: 'sensors',
+  'panel de administración': 'admin panel',
+  'dashboard Python': 'Python dashboard',
+  'MongoDB · series': 'MongoDB · time series',
+  'app web React': 'React web app',
+  'API Spring Boot': 'Spring Boot API',
+  'WhatsApp · mail': 'WhatsApp · email',
+  'Google (inicio de sesión)': 'Google (sign-in)',
 };
 
-export default function CaseStudy({
-  item,
-  index,
-}: {
-  item: Case;
-  index: number;
-}) {
+export default function CaseStudy({ item, index }: { item: Case; index: number }) {
   const { t, lang } = useApp();
   const L = t.cases.labels;
   const n = index + 1;
@@ -36,13 +34,9 @@ export default function CaseStudy({
     return () => ro.disconnect();
   }, []);
   return (
-    <article
-      id={`caso-${item.id}`}
-      className={`case ${index % 2 ? "case--even" : "case--odd"}`}
-      aria-labelledby={titleId}
-    >
+    <article id={`caso-${item.id}`} className={`case ${index % 2 ? 'case--even' : 'case--odd'}`} aria-labelledby={titleId}>
       <span className="case__bignum outline" aria-hidden="true">
-        {String(n).padStart(2, "0")}
+        {String(n).padStart(2, '0')}
       </span>
 
       <header className="case__head">
@@ -83,26 +77,15 @@ export default function CaseStudy({
               ref={scrollRef}
               className="diagram-scroll"
               tabIndex={scrollable ? 0 : undefined}
-              role={scrollable ? "group" : undefined}
+              role={scrollable ? 'group' : undefined}
               aria-labelledby={scrollable ? `${item.id}-fig` : undefined}
             >
-              <Diagram
-                kind={item.diagram.key}
-                title={item.diagram.title}
-                labels={lang === "en" ? diagramLabelsEn : undefined}
-              />
+              <Diagram kind={item.diagram.key} title={item.diagram.title} labels={lang === 'en' ? diagramLabelsEn : undefined} />
             </div>
           ) : item.image ? (
-            <Picture
-              image={item.image}
-              sizes="(max-width: 900px) 100vw, 640px"
-            />
+            <Picture image={item.image} sizes="(max-width: 900px) 100vw, 640px" />
           ) : null}
-          {item.diagram && (
-            <figcaption id={`${item.id}-fig`}>
-              {item.diagram.caption}
-            </figcaption>
-          )}
+          {item.diagram && <figcaption id={`${item.id}-fig`}>{item.diagram.caption}</figcaption>}
         </figure>
       )}
 

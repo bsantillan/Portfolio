@@ -1,10 +1,10 @@
 import type { Content } from '../types';
 
 export const meta: Content['meta'] = {
-  title: 'Bruno Santillan · Ingeniero en Sistemas',
+  title: 'Bruno Santillan · Ingeniero en Sistemas de Información',
   description:
-    'Ingeniero en Sistemas (UTN FRLP). Construyo software accesible y herramientas de datos para operaciones reales. Casos, trayectoria y contacto.',
-  ogAlt: 'Bruno Santillan, Ingeniero en Sistemas. Software, datos, accesibilidad e IA.',
+    'Ingeniero en Sistemas de Información (UTN FRLP). Desarrollo full stack y análisis funcional. Construyo software accesible y herramientas de datos para operaciones reales. Casos, trayectoria y contacto.',
+  ogAlt: 'Bruno Santillan, Ingeniero en Sistemas de Información. Software, datos, accesibilidad e IA.',
 };
 
 export const ui: Content['ui'] = {
@@ -14,7 +14,7 @@ export const ui: Content['ui'] = {
     { id: 'casos', label: 'Casos' },
     { id: 'trayectoria', label: 'Trayectoria' },
     { id: 'accesibilidad', label: 'Accesibilidad' },
-    { id: 'stack', label: 'Stack' },
+    { id: 'habilidades', label: 'Habilidades' },
     { id: 'contacto', label: 'Contacto' },
   ],
   menuOpen: 'Abrir menú',
@@ -29,7 +29,7 @@ export const ui: Content['ui'] = {
 
 export const hero: Content['hero'] = {
   name: ['Bruno', 'Santillan'],
-  role: 'Ingeniero en Sistemas · Analista Universitario de Sistemas · UTN FRLP',
+  role: 'Ingeniero en Sistemas de Información · Desarrollo full stack y análisis funcional · UTN FRLP',
   lede: 'Construyo software accesible y herramientas de datos para operaciones reales.',
   ctaCases: 'Ver casos',
   ctaCv: 'Descargar CV (PDF)',
@@ -42,17 +42,18 @@ export const hero: Content['hero'] = {
 
 export const nodes: Content['nodes'] = [
   { id: 'sw', label: 'Software', hub: true, info: 'Full stack: Java y Spring Boot en el backend; React, React Native y Angular en el frente.' },
-  { id: 'da', label: 'Datos', hub: true, info: 'Series de tiempo, dashboards en Python y Power BI, y modelos en Dataverse.' },
+  { id: 'da', label: 'Datos', hub: true, info: 'Series de tiempo, dashboards en Python, Power BI, Grafana y Tableau, y modelado de datos en PostgreSQL, MongoDB y Dataverse.' },
   { id: 'ac', label: 'Accesibilidad', hub: true, info: 'Audito sitios con WCAG, pruebo con lector de pantalla y teclado, y dicto un curso para equipos técnicos.' },
   { id: 'ia', label: 'IA', hub: true, info: 'Curso la Licenciatura en IA y uso IA para automatizar análisis de accesibilidad y su documentación.' },
-  { id: 'java', label: 'Java · Spring', info: 'Backends con Spring Boot y Spring Security.', caseId: 'pasa-la-pagina' },
-  { id: 'react', label: 'React', info: 'Interfaces web, como este sitio.' },
+  { id: 'af', label: 'Análisis funcional', hub: true, info: 'Relevamiento con usuarios, análisis funcional, UML y BPMN, pruebas, documentación y capacitación. En YPF hice el ciclo completo.', caseId: 'ypf' },
+  { id: 'java', label: 'Java · Spring', info: 'APIs REST con Spring Boot, Spring Security y JPA/Hibernate.', caseId: 'los-ciruelos' },
+  { id: 'react', label: 'React', info: 'El frontend de Los Ciruelos y este sitio.', caseId: 'los-ciruelos' },
   { id: 'rn', label: 'React Native', info: 'La app móvil de Pasá la Página.', caseId: 'pasa-la-pagina' },
   { id: 'pp', label: 'Power Platform', info: 'Power Apps, Power Automate, Power BI y Dataverse.', caseId: 'ypf' },
   { id: 'py', label: 'Python', info: 'Gran parte del dashboard de consumo eléctrico: alrededor de 50 gráficos.', caseId: 'iot' },
   { id: 'mongo', label: 'MongoDB', info: 'Series de tiempo para las lecturas de los sensores.', caseId: 'iot' },
   { id: 'obs', label: 'Prometheus', info: 'Alertas de fallas y caídas, con avisos en Discord.', caseId: 'iot' },
-  { id: 'ds', label: 'Sistema de diseño', info: 'Los componentes del sistema de diseño accesible de la provincia, llevados a código.', caseId: 'sistema-diseno' },
+  { id: 'ds', label: 'Sistema de diseño', info: 'Unos 60 componentes del sistema de diseño accesible de la provincia, en HTML, CSS y Sass.', caseId: 'sistema-diseno' },
   { id: 'wcag', label: 'WCAG 2.2', info: 'La norma con la que audito y con la que está hecho este sitio.' },
   { id: 'curso', label: 'Curso que dicto', info: '«Desarrollo web accesible: fundamentos y buenas prácticas para equipos técnicos».' },
   { id: 'ypf', label: 'YPF', info: 'Práctica profesional: un sistema de inspecciones con Power Platform.', caseId: 'ypf' },

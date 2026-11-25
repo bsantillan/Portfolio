@@ -45,6 +45,24 @@ const diagrams: Record<DiagramKey, { boxes: Box[]; links: [number, number][]; vb
       [1, 3],
     ],
   },
+  ciruelos: {
+    vb: [640, 300],
+    boxes: [
+      { x: 12, y: 126, w: 148, label: 'app web React', mine: true },
+      { x: 196, y: 126, w: 176, label: 'API Spring Boot', mine: true },
+      { x: 412, y: 20, w: 216, label: 'PostgreSQL', mine: true },
+      { x: 412, y: 92, w: 216, label: 'Mercado Pago', shape: 'rect' },
+      { x: 412, y: 164, w: 216, label: 'WhatsApp · mail', shape: 'rect' },
+      { x: 412, y: 236, w: 216, label: 'Google (inicio de sesión)', shape: 'rect' },
+    ],
+    links: [
+      [0, 1],
+      [1, 2],
+      [1, 3],
+      [1, 4],
+      [1, 5],
+    ],
+  },
 };
 
 function anchor(a: Box, b: Box): [number, number, number, number] {
