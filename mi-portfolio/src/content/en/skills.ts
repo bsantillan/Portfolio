@@ -3,7 +3,7 @@ import type { Content } from '../types';
 // Source: the general CV (public/CV_Bruno_Santillan.pdf). Sass comes from the design system.
 export const skills: Content['skills'] = {
   title: 'Skills',
-  intro: 'The same ones as in my CV. When a case shows one, I link to it.',
+  intro: 'What I can do and where I have applied it. When a case shows it, I link to it.',
   usedIn: 'Shown in',
   technicalTitle: 'Technical',
   groups: [
