@@ -1,13 +1,66 @@
 <!doctype html>
-<html lang="en">
+<html lang="es" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/b-logo.svg" type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Santillan Bruno</title>
+    <title>Bruno Santillan · Ingeniero en Sistemas</title>
+    <meta name="description" content="Ingeniero en Sistemas (UTN FRLP). Construyo software accesible y herramientas de datos para operaciones reales. Casos, trayectoria y contacto." />
+    <meta name="author" content="Bruno Santillan" />
+    <link rel="canonical" href="https://bsantillan.github.io/Portfolio/" />
+    <link rel="alternate" hreflang="es" href="https://bsantillan.github.io/Portfolio/" />
+    <link rel="alternate" hreflang="en" href="https://bsantillan.github.io/Portfolio/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://bsantillan.github.io/Portfolio/" />
+
+    <meta name="theme-color" content="#eef1f4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#131619" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Bruno Santillan" />
+    <meta property="og:title" content="Bruno Santillan · Ingeniero en Sistemas" />
+    <meta property="og:description" content="Construyo software accesible y herramientas de datos para operaciones reales." />
+    <meta property="og:url" content="https://bsantillan.github.io/Portfolio/" />
+    <meta property="og:image" content="https://bsantillan.github.io/Portfolio/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Bruno Santillan, Ingeniero en Sistemas. Software, datos, accesibilidad e IA." />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bruno Santillan · Ingeniero en Sistemas" />
+    <meta name="twitter:description" content="Construyo software accesible y herramientas de datos para operaciones reales." />
+    <meta name="twitter:image" content="https://bsantillan.github.io/Portfolio/og-image.png" />
+    <meta name="twitter:image:alt" content="Bruno Santillan, Ingeniero en Sistemas. Software, datos, accesibilidad e IA." />
+
+    <link rel="preload" href="/fonts/anybody.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/atkinson-next.woff2" as="font" type="font/woff2" crossorigin />
+
+    <script>
+      // Antes de pintar: tema e idioma guardados, para evitar parpadeos.
+      (function () {
+        var d = document.documentElement;
+        try {
+          var t = localStorage.getItem('theme');
+          if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          d.setAttribute('data-theme', t);
+          var q = new URLSearchParams(location.search).get('lang');
+          var l = q === 'en' || q === 'es' ? q : localStorage.getItem('lang');
+          if (l === 'en') d.setAttribute('lang', 'en');
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <p style="padding:24px;font:18px/1.5 system-ui,sans-serif">
+        Bruno Santillan · Ingeniero en Sistemas. Este sitio necesita JavaScript. Escribime a
+        <a href="mailto:brunosaantillan@gmail.com">brunosaantillan@gmail.com</a> o descargá mi
+        <a href="/Portfolio/CV_Bruno_Santillan.pdf">CV en PDF</a>.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

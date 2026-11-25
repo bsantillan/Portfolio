@@ -1,0 +1,275 @@
+.hero {
+  position: relative;
+}
+.hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: clamp(16px, 3vw, 48px);
+  min-height: calc(100svh - var(--header-h));
+  min-height: max(680px, calc(100svh - var(--header-h)));
+  padding-top: clamp(28px, 5vw, 64px);
+  padding-bottom: clamp(32px, 5vw, 56px);
+}
+
+.hero__text {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+/* El nombre desborda su columna a propósito: se superpone al mapa. */
+.hero__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.82;
+  width: max-content;
+  max-width: 100vw;
+  pointer-events: none;
+}
+.hero__first {
+  display: block;
+  font-size: clamp(3.4rem, 10.5vw, 10rem);
+  font-stretch: 150%;
+}
+.hero__last {
+  display: block;
+  font-size: clamp(3.6rem, 11vw, 10.5rem);
+  font-stretch: 58%;
+  margin-left: 0.9em;
+  margin-top: 0.04em;
+}
+
+.hero__role {
+  font: 600 0.9375rem/1.5 var(--font-mono);
+  color: var(--text-2);
+  margin: 28px 0 0;
+  max-width: 40ch;
+}
+.hero__lede {
+  margin: auto 0 0;
+  padding-top: 40px;
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  line-height: 1.32;
+  letter-spacing: -0.005em;
+  max-width: 24ch;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.hero__status {
+  margin: 24px 0 0;
+  display: grid;
+  gap: 2px;
+  font-family: var(--font-mono);
+}
+.hero__status-main {
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero__status-main::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--tint);
+}
+.hero__status-detail {
+  color: var(--text-2);
+  font-size: 0.9375rem;
+}
+
+/* ───────── Mapa ───────── */
+.map {
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 720px;
+  position: relative;
+  z-index: 1;
+}
+.map__area {
+  position: absolute;
+  inset: 0 0 0 0;
+}
+.map__edges {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+.map__edge {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.25;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.3s, stroke 0.2s, stroke-width 0.2s;
+}
+.map__edge.is-ready {
+  opacity: 0.7;
+}
+.map__edge.is-on {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  opacity: 1;
+}
+
+.map__nodes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  inset: 0;
+}
+.map__item {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: left 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), top 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.map__node {
+  font: 600 0.9375rem/1 var(--font-body);
+  white-space: nowrap;
+  color: var(--text);
+  background: var(--bg);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 9px 14px;
+  min-height: 36px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.map__node--hub {
+  font: 800 1.125rem/1 var(--font-display);
+  font-stretch: 120%;
+  padding: 14px 20px;
+  border: 2px solid var(--text);
+}
+.map__node.is-active,
+.map__node:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+.map__node.is-linked {
+  border-color: var(--accent);
+  border-width: 2px;
+}
+.map__node.is-dim {
+  border-style: dashed;
+  color: var(--text-2);
+}
+.map__node[aria-pressed='true']:not(.is-active) {
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent);
+}
+
+.map__legend {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: min(100%, 340px);
+  background: var(--surface);
+  border-radius: 22px 22px 6px 22px;
+  padding: 18px 20px;
+  font-size: 1rem;
+}
+.map__legend p {
+  margin: 0;
+}
+.map__legend-title {
+  font: 800 1.25rem/1.2 var(--font-display);
+  font-stretch: 115%;
+  margin-bottom: 6px !important;
+}
+.map__legend-links {
+  margin-top: 8px !important;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+}
+.map__legend-label {
+  font-weight: 700;
+}
+.map__legend-case {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 700;
+  padding: 4px 0;
+}
+.map__legend-hint {
+  margin-top: 12px !important;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--text-2);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 900px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .hero__name {
+    width: auto;
+  }
+  .hero__last {
+    margin-left: 0.5em;
+  }
+  .hero__lede {
+    margin-top: 0;
+    padding-top: 28px;
+  }
+  .map {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 0;
+    margin-top: 32px;
+  }
+  .map__area {
+    position: relative;
+    height: 620px;
+  }
+  .map__node {
+    font-size: 0.875rem;
+    padding: 8px 11px;
+  }
+  .map__node--hub {
+    font-size: 1rem;
+    padding: 11px 15px;
+  }
+  .map__legend {
+    position: static;
+    width: auto;
+    margin-top: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .map__item {
+    transition: none;
+  }
+}
+
+/* Pantallas medianas: la leyenda va debajo del mapa para no tapar nodos. */
+@media (min-width: 901px) and (max-width: 1439px) {
+  .map {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .map__area {
+    position: relative;
+    width: 100%;
+    height: 600px;
+  }
+  .map__legend {
+    position: static;
+    margin-top: 16px;
+  }
+}

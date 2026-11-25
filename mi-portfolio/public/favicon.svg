@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .bg{fill:#eef1f4}.ln{stroke:#12161b}.nd{fill:#eef1f4;stroke:#12161b}.hub{fill:#0c5331}
+    @media (prefers-color-scheme: dark){.bg{fill:#131619}.ln{stroke:#e9edf1}.nd{fill:#131619;stroke:#e9edf1}.hub{fill:#5fe0a0}}
+  </style>
+  <rect class="bg" width="64" height="64" rx="14"/>
+  <path class="ln" d="M18 18 Q30 22 34 34 M34 34 Q44 26 48 16 M34 34 Q30 46 20 48" fill="none" stroke-width="3"/>
+  <circle class="nd" cx="18" cy="18" r="6" stroke-width="3"/>
+  <circle class="nd" cx="48" cy="16" r="5" stroke-width="3"/>
+  <circle class="nd" cx="20" cy="48" r="5" stroke-width="3"/>
+  <circle class="hub" cx="34" cy="34" r="9"/>
+</svg>
