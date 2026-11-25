@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import type { CaseStudy as Case } from '../content/types';
 import { useApp } from '../state';
 import Diagram from './Diagram';
@@ -16,6 +17,18 @@ export default function CaseStudy({ item, index }: { item: Case; index: number }
   const L = t.cases.labels;
   const n = index + 1;
   const titleId = `caso-${item.id}-titulo`;
+  // El contenedor del diagrama solo entra en el orden de tabulación cuando tiene scroll.
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollable, setScrollable] = useState(false);
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const check = () => setScrollable(el.scrollWidth > el.clientWidth + 1);
+    check();
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
   return (
     <article id={`caso-${item.id}`} className={`case ${index % 2 ? 'case--even' : 'case--odd'}`} aria-labelledby={titleId}>
       <span className="case__bignum outline" aria-hidden="true">
@@ -54,11 +67,20 @@ export default function CaseStudy({ item, index }: { item: Case; index: number }
 
       <figure className="case__media">
         {item.diagram ? (
-          <Diagram kind={item.diagram.key} title={item.diagram.title} labels={lang === 'en' ? diagramLabelsEn : undefined} />
+          // En pantallas chicas el diagrama se desplaza en horizontal para mantener el texto legible.
+          <div
+            ref={scrollRef}
+            className="diagram-scroll"
+            tabIndex={scrollable ? 0 : undefined}
+            role={scrollable ? 'group' : undefined}
+            aria-labelledby={scrollable ? `${item.id}-fig` : undefined}
+          >
+            <Diagram kind={item.diagram.key} title={item.diagram.title} labels={lang === 'en' ? diagramLabelsEn : undefined} />
+          </div>
         ) : item.image ? (
           <Picture image={item.image} sizes="(max-width: 900px) 100vw, 640px" />
         ) : null}
-        {item.diagram && <figcaption>{item.diagram.caption}</figcaption>}
+        {item.diagram && <figcaption id={`${item.id}-fig`}>{item.diagram.caption}</figcaption>}
       </figure>
 
       <div className="case__decisions">

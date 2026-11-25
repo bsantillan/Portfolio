@@ -123,16 +123,20 @@
 }
 
 .map__nodes {
+  visibility: hidden; /* hasta tener posiciones */
   list-style: none;
   margin: 0;
   padding: 0;
   position: absolute;
   inset: 0;
 }
+.map__nodes.is-placed {
+  visibility: visible;
+}
 .map__item {
   position: absolute;
   transform: translate(-50%, -50%);
-  transition: left 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), top 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .map__node {
   font: 600 0.9375rem/1 var(--font-body);

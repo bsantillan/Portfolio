@@ -28,7 +28,8 @@ const ROLE_NAMES: Record<Lang, Record<string, string>> = {
 };
 
 function isVisible(el: Element) {
-  if (el.closest('[hidden], .so-layer')) return false;
+  // El panel no se describe a sí mismo: el esquema es el de la página.
+  if (el.closest('[hidden], .so-layer, .so-panel')) return false;
   const r = el.getBoundingClientRect();
   if (r.width === 0 && r.height === 0) return false;
   const cs = getComputedStyle(el);
@@ -64,14 +65,12 @@ function landmarkRole(el: Element): string | null {
 
 const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
 
-export default function StructureOverlay() {
+export default function StructureOverlay({ announce }: { announce: (msg: string) => void }) {
   const { t, lang, structure, setStructure } = useApp();
   const [marks, setMarks] = useState<Mark[]>([]);
   const [outline, setOutline] = useState<OutlineItem[]>([]);
   const [landmarks, setLandmarks] = useState<LandmarkItem[]>([]);
   const [counts, setCounts] = useState({ l: 0, h: 0, i: 0, f: 0 });
-  const [announce, setAnnounce] = useState('');
-  const first = useRef(true);
   const panelRef = useRef<HTMLElement>(null);
 
   const compute = useCallback(() => {
@@ -121,17 +120,14 @@ export default function StructureOverlay() {
   }, [lang]);
 
   // Anuncio y cálculo al prender/apagar
+  // Se monta al primer encendido; desde ahí anuncia cada cambio.
   useLayoutEffect(() => {
-    if (first.current) {
-      first.current = false;
-      return;
-    }
     if (structure) {
       const c = compute();
-      setAnnounce(t.ui.structureAnnounceOn(c.l, c.h, c.f));
+      announce(t.ui.structureAnnounceOn(c.l, c.h, c.f));
     } else {
       setMarks([]);
-      setAnnounce(t.ui.structureAnnounceOff);
+      announce(t.ui.structureAnnounceOff);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [structure]);
@@ -162,9 +158,6 @@ export default function StructureOverlay() {
 
   return (
     <>
-      <div role="status" className="visually-hidden">
-        {announce}
-      </div>
       {structure && (
         <>
           <aside ref={panelRef} className="so-panel" aria-labelledby="so-title">
@@ -208,9 +201,7 @@ export default function StructureOverlay() {
                 <div>
                   <h3>{t.ui.structureHeadings}</h3>
                   <ul className="so-outline">
-                    {outline
-                      .filter((o) => !o.id || o.id !== 'so-title')
-                      .map((o, i) => (
+                    {outline.map((o, i) => (
                         <li key={i} style={{ paddingInlineStart: `${(o.level - 1) * 18}px` }}>
                           <span className="so-tag">H{o.level}</span>{' '}
                           {o.id ? <a href={`#${o.id}`}>{o.text}</a> : o.text}

@@ -1,50 +1,82 @@
-# React + TypeScript + Vite
+# Portfolio · Bruno Santillan
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio personal de Bruno Santillan, Ingeniero en Sistemas (UTN FRLP).
+En línea en **https://bsantillan.github.io/Portfolio/** · español (por defecto) e inglés (`?lang=en`).
 
-Currently, two official plugins are available:
+Lo que lo hace distinto:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Mapa interactivo** en el hero: las áreas de trabajo (software, datos, accesibilidad, IA) y cómo se conectan. Se usa con mouse o teclado.
+- **"Ver estructura accesible"**: un interruptor que superpone sobre el sitio cómo lo interpreta un lector de pantalla (regiones, encabezados con su nivel, textos alternativos y orden de tabulación) y lista el esquema en un panel.
+- **Accesibilidad verificada en CI**: axe-core (WCAG 2.2 AA + contraste AAA), recorrido por teclado, tamaño de targets, movimiento reducido y contraste de la paleta.
 
-## Expanding the ESLint configuration
+## Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+React 19 · TypeScript · Vite 6 · CSS sin frameworks · Playwright + @axe-core/playwright.
+Fuentes self-hosted (Anybody, Atkinson Hyperlegible Next y Mono, subset latín). Sin librerías de animación, sin cookies ni rastreo.
 
-- Configure the top-level `parserOptions` property like this:
+## Estructura
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+mi-portfolio/
+├─ src/
+│  ├─ content/            ← TODO el texto del sitio, tipado
+│  │  ├─ types.ts
+│  │  ├─ shared.ts        ← links, stack por evidencia, conexiones del mapa
+│  │  ├─ es/              ← site.ts, cases.ts, trayectoria.ts, stack.ts
+│  │  └─ en/
+│  ├─ components/         ← un componente (y su CSS) por sección
+│  ├─ styles/base.css     ← fuentes, tokens de color, foco, utilidades
+│  └─ state.tsx           ← idioma, tema y estado del overlay
+├─ public/                ← CV, fuentes, favicon, og-image, robots, sitemap
+├─ tests/                 ← a11y (axe), interacción/teclado, contraste
+└─ scripts/               ← deploy, imágenes, imagen OG, capturas
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Para cambiar un texto, editá `src/content/es/*.ts` y su par en `src/content/en/*.ts`. TypeScript avisa si falta una clave en algún idioma.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Desarrollo
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Requisitos: Node 20 o superior.
+
+```bash
+cd mi-portfolio
+npm install
+npm run dev          # http://localhost:5173/Portfolio/
 ```
+
+| Comando | Qué hace |
+|---|---|
+| `npm run build` | Build de producción en `dist/` (con base `/Portfolio/`). |
+| `npm run preview` | Sirve `dist/` como en GitHub Pages. |
+| `npm run lint` / `npm run typecheck` | ESLint y TypeScript. |
+| `npm test` | Toda la suite de Playwright (desktop y mobile). La primera vez: `npx playwright install chromium`. |
+| `npm run test:a11y` | Solo axe-core. |
+| `npm run images` | Regenera AVIF/WebP desde `src/assets/source/`. |
+| `npm run og` | Regenera `public/og-image.png` y `apple-touch-icon.png`. |
+| `npm run screenshots -- <url> <carpeta> [anchos]` | Capturas en claro y oscuro. |
+
+## Deploy
+
+GitHub Pages sirve la rama **`gh-pages`**. El deploy es un solo comando, desde `main` y con el árbol limpio:
+
+```powershell
+.\deploy.ps1            # Windows, desde la raíz del repo
+.\deploy.ps1 -DryRun    # todo menos publicar
+```
+
+```bash
+./deploy.sh             # macOS / Linux / Git Bash
+cd mi-portfolio && npm run deploy   # equivalente
+```
+
+El script corre lint, typecheck, build y todos los tests, y recién después publica `dist/` en `gh-pages` con un mensaje que incluye el commit. Si algo falla, no publica.
+
+La CI (`.github/workflows/ci.yml`) corre lo mismo en cada push a `main` o `redesign` y en cada pull request.
+
+## Accesibilidad
+
+Objetivo: WCAG 2.2 AA, con contraste AAA en todo el texto. Detalles y resultados en la sección "Declaración de accesibilidad" del sitio. Si encontrás una barrera: brunosaantillan@gmail.com.
+
+## Licencias
+
+Código: del autor. Fuentes: SIL Open Font License (ver `public/fonts/`).

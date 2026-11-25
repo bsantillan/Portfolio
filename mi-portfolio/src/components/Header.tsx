@@ -80,14 +80,10 @@ export default function Header() {
             <StructureIcon />
             <span className="tool__label">{structure ? t.ui.structureOff : t.ui.structureOn}</span>
           </button>
-          <button
-            type="button"
-            className="tool"
-            lang={other}
-            aria-label={t.ui.langSwitchLabel}
-            onClick={() => setLang(other)}
-          >
+          <button type="button" className="tool" lang={other} onClick={() => setLang(other)}>
+            {/* El nombre accesible contiene el texto visible (WCAG 2.5.3). */}
             {t.ui.langSwitch}
+            <span className="visually-hidden"> · {t.ui.langSwitchLabel}</span>
           </button>
           <button
             type="button"

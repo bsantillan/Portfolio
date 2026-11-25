@@ -107,10 +107,6 @@ h3,
 h4 {
   text-wrap: balance;
 }
-p,
-li {
-  text-wrap: pretty;
-}
 
 /* Foco propio: anillo doble, visible sobre cualquier fondo. */
 :focus-visible {
@@ -133,7 +129,7 @@ li {
 }
 
 .skip-link {
-  position: absolute;
+  position: fixed; /* visible al enfocarlo aunque la página esté scrolleada */
   left: 12px;
   top: -100px;
   z-index: 100;
@@ -243,4 +239,10 @@ li {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* El foco programático del skip link no necesita anillo sobre todo el <main>. */
+main:focus {
+  outline: none;
+  box-shadow: none;
 }

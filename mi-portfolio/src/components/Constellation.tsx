@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useApp } from '../state';
 
 /** Posiciones relativas (0–1) del área del mapa: escritorio y mobile. */
@@ -133,20 +133,42 @@ export default function Constellation() {
     setSize({ w, h });
   }, [nodes]);
 
-  useLayoutEffect(() => {
-    layout();
-    const ro = new ResizeObserver(layout);
-    if (boxRef.current) ro.observe(boxRef.current);
+  // El cálculo corre fuera del render inicial, en tareas cortas, y solo si cambió el tamaño
+  // (evita bloquear el hilo principal mientras carga la página).
+  useEffect(() => {
+    const box = boxRef.current;
+    if (!box) return;
+    let raf = 0;
+    let timer = 0;
+    let last = '';
+    const schedule = (force = false) => {
+      const key = `${box.clientWidth}x${box.clientHeight}`;
+      if (!force && key === last) return;
+      last = key;
+      cancelAnimationFrame(raf);
+      clearTimeout(timer);
+      raf = requestAnimationFrame(() => {
+        timer = window.setTimeout(layout, 0);
+      });
+    };
+    schedule(true);
+    const ro = new ResizeObserver(() => schedule());
+    ro.observe(box);
     // las fuentes cambian el ancho de los nodos
-    document.fonts?.ready.then(layout);
-    return () => ro.disconnect();
+    document.fonts?.ready.then(() => schedule(true));
+    return () => {
+      ro.disconnect();
+      cancelAnimationFrame(raf);
+      clearTimeout(timer);
+    };
   }, [layout]);
 
   useEffect(() => {
-    // entrada única (menos de 1 s); sin movimiento continuo → WCAG 2.2.2
+    // Entrada única (menos de 1 s) cuando ya hay posiciones; sin movimiento continuo → WCAG 2.2.2
+    if (ready || Object.keys(pts).length === 0) return;
     const id = requestAnimationFrame(() => setReady(true));
     return () => cancelAnimationFrame(id);
-  }, []);
+  }, [pts, ready]);
 
   const active = hot ?? pinned;
   const linked = new Set(active ? [active, ...(neighbours[active] ?? [])] : []);
@@ -173,13 +195,14 @@ export default function Constellation() {
             return <path key={`${a}-${b}`} d={curve(A, B)} className={`map__edge${on ? ' is-on' : ''}${ready ? ' is-ready' : ''}`} />;
           })}
         </svg>
-        <ul className="map__nodes" aria-label={hero.mapLabel}>
+        <ul className={`map__nodes${Object.keys(pts).length ? ' is-placed' : ''}`} aria-label={hero.mapLabel}>
           {nodes.map((n) => {
             const p = pts[n.id] ?? center;
-            const pos = ready ? p : center;
+            // Posición final fija; la entrada se anima con transform (sin recalcular layout).
+            const offset = ready ? 'translate(-50%, -50%)' : `translate(calc(-50% + ${center.x - p.x}px), calc(-50% + ${center.y - p.y}px))`;
             const state = !active ? '' : n.id === active ? ' is-active' : linked.has(n.id) ? ' is-linked' : ' is-dim';
             return (
-              <li key={n.id} className="map__item" style={{ left: pos.x, top: pos.y }}>
+              <li key={n.id} className="map__item" style={{ left: p.x, top: p.y, transform: offset }}>
                 <button
                   ref={(el) => {
                     btnRefs.current[n.id] = el;

@@ -255,8 +255,22 @@
     margin-top: 32px;
   }
   .case__bignum {
-    font-size: 10rem;
-    top: 40px;
+    position: relative;
+    display: block;
+    top: 0;
+    font-size: 7rem;
+    line-height: 0.85;
+    margin: 0 0 12px;
+  }
+  .case__head {
+    margin-top: 0 !important;
+  }
+  .case__media .diagram-scroll {
+    overflow-x: auto;
+    border-radius: 18px;
+  }
+  .case__media .diagram-scroll .diagram {
+    min-width: 600px;
   }
   .case__built {
     border-radius: 28px;

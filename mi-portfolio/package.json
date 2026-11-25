@@ -1,7 +1,7 @@
 {
-  "name": "mi-portfolio",
+  "name": "portfolio-bruno-santillan",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
   "type": "module",
   "homepage": "https://bsantillan.github.io/Portfolio/",
   "scripts": {
@@ -9,8 +9,13 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "typecheck": "tsc -b",
+    "test": "playwright test",
+    "test:a11y": "playwright test tests/a11y.spec.ts",
+    "deploy": "node scripts/deploy.mjs",
+    "images": "node scripts/optimize-images.mjs",
+    "og": "node scripts/og-image.mjs",
+    "screenshots": "node scripts/screenshots.mjs"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -20,6 +25,7 @@
     "@axe-core/playwright": "^4.14.1",
     "@eslint/js": "^9.19.0",
     "@playwright/test": "^1.65.1",
+    "@types/node": "^22.20.7",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
